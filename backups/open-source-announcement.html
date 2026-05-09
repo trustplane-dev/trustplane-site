@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustPlane Auth | Open-source trust for APIs and machine identity</title>
+    <meta name="description" content="TrustPlane Auth is an open-source auth plane for proof-bound machine authorization across APIs, gateways, clusters, clouds, and agentic runtimes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span class="brand-text">TrustPlane</span>
+            </div>
+            <nav class="main-nav">
+                <a href="https://github.com/trustplane-dev/trustplane-auth/wiki" target="_blank" rel="noopener">Docs</a>
+                <a href="https://github.com/trustplane-dev/trustplane-auth" target="_blank" rel="noopener">GitHub</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <h1>Open-source trust for APIs and machine identity</h1>
+                    <p class="subtitle">Verify who is calling what, replace long-lived shared secrets with short-lived credentials, and keep an evidence-grade audit trail for every critical action.</p>
+                    <div class="hero-ctas">
+                        <a href="#quickstart" class="btn btn-primary">Get started</a>
+                        <a href="https://github.com/trustplane-dev/trustplane-auth" class="btn btn-secondary" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-strip">
+            <div class="container trust-inner">
+                <div class="trust-item">
+                    <span class="trust-label">License</span>
+                    <span class="trust-value">Apache-2.0</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-label">Repository</span>
+                    <span class="trust-value"><a href="https://github.com/trustplane-dev/trustplane-auth" class="trust-link">trustplane-dev/trustplane-auth</a></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Core Capabilities</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3>Prove every request</h3>
+                        <p>Bind identity and authorization to the request itself, not just to a static key.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Keep credentials short-lived</h3>
+                        <p>Issue scoped, temporary credentials after verification instead of passing around long-lived secrets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                        </div>
+                        <h3>Enforce at the boundary</h3>
+                        <p>Apply controls where requests enter provider systems, gateways, or service edges.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <h3>Audit decisions, not just outcomes</h3>
+                        <p>Keep verifiable records of what was approved, verified, issued, denied, and why.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quickstart" id="quickstart">
+            <div class="container">
+                <div class="quickstart-inner">
+                    <div class="quickstart-content">
+                        <h2>Quickstart in minutes</h2>
+                        <p>Clone the repo, build the CLI, and issue your first verified passport.</p>
+                        <ul class="docs-links">
+                            <li><a href="https://github.com/trustplane-dev/trustplane-auth/wiki" target="_blank" rel="noopener">Read the Wiki &rarr;</a></li>
+                        </ul>
+                    </div>
+                    <div class="quickstart-code-wrapper">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" id="copyBtn" aria-label="Copy code">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <pre><code id="quickstartCode">git clone https://github.com/trustplane-dev/trustplane-auth.git
+cd trustplane-auth
+
+# Build the CLI
+make build
+
+# Issue a sample passport
+./bin/trustplane issue \
+  --subject spiffe://example.local/ns/default/sa/demo \
+  --audience example-api \
+  --trust-domain example.local</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community" id="community">
+            <div class="container community-inner">
+                <h2>Built in public</h2>
+                <p>Track releases, read the roadmap, open an issue, or pick up a good-first issue. If trust is the product, the project itself should be inspectable.</p>
+                <div class="community-links">
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/issues" class="community-link" target="_blank" rel="noopener">
+                        <div class="community-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <span>Issues</span>
+                    </a>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/blob/main/CONTRIBUTING.md" class="community-link" target="_blank" rel="noopener">
+                        <div class="community-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <span>Contributing</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span class="brand-text">TrustPlane</span>
+                </div>
+                <p class="footer-tagline">Open-source auth plane for proof-bound machine authorization.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Project</h4>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth">Repository</a>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/issues">Issues</a>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/blob/main/ROADMAP.md">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/wiki">Documentation</a>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/blob/main/CONTRIBUTING.md">Contributing</a>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://github.com/trustplane-dev/trustplane-auth/blob/main/LICENSE">Apache-2.0 License</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustPlane Authors. Licensed under Apache 2.0.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

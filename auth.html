@@ -61,7 +61,7 @@
       <div class="ftext">
         <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Request-bound proofs, not standing tokens</h3>
-        <p>Each call carries a proof tied to its parameters. Tamper the path or replay the proof and verification fails closed — so a compromised or injected agent can't act beyond the call it was authorized for.</p>
+        <p>Each call carries a proof tied to its parameters. Tamper the path or replay the proof and verification fails closed, so a compromised or injected agent can't act beyond the call it was authorized for.</p>
       </div>
       <div class="fvis"><pre class="term"><span class="cm"># sign one specific call</span>
 $ trustplane sign --method GET --path /orders \
@@ -78,7 +78,7 @@ $ trustplane sign --method GET --path /orders \
       <div class="ftext">
         <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 7H6a3 3 0 0 0 0 6h2"/><path d="M14 17h4a3 3 0 0 0 0-6h-2"/><path d="M8 10h8"/></svg></div>
         <h3>A drop-in boundary, no rewrite required</h3>
-        <p>A reverse-proxy adapter verifies requests in front of your existing API, in your own infrastructure. Add a new caller by publishing trust material — no code change, no adapter redeploy. Kubernetes-compatible, never Kubernetes-required.</p>
+        <p>A reverse-proxy adapter verifies requests in front of your existing API, in your own infrastructure. Add a new caller by publishing trust material, with no code change and no adapter redeploy. Kubernetes-compatible, never Kubernetes-required.</p>
       </div>
       <div class="fvis"><pre class="term"><span class="cm"># your service is unchanged</span>
 caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
@@ -103,7 +103,7 @@ caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
       <div class="gi"><span class="d"></span><div><b>Request binding</b><br><span>Method, path, body and time are bound into the proof; any mismatch denies.</span></div></div>
       <div class="gi"><span class="d"></span><div><b>Policy &amp; freshness</b><br><span>Enforces signed policy with freshness guarantees so stale policy never silently applies.</span></div></div>
       <div class="gi"><span class="d"></span><div><b>Multi-anchor sources</b><br><span>Accept callers from multiple trust anchors with per-route source rules.</span></div></div>
-      <div class="gi"><span class="d"></span><div><b>Local verification</b><br><span>Decisions are made at the boundary — no per-request call back to a central service.</span></div></div>
+      <div class="gi"><span class="d"></span><div><b>Local verification</b><br><span>Decisions are made at the boundary, with no per-request call back to a central service.</span></div></div>
       <div class="gi"><span class="d"></span><div><b>Evidence-grade audit</b><br><span>Each allow/deny is recorded and tied to the exact request it bound.</span></div></div>
       <div class="gi"><span class="d"></span><div><b>Stable deny reasons</b><br><span>Clear, machine-readable reasons (e.g. <code>jti_replay</code>) for every denial.</span></div></div>
     </div>
@@ -118,7 +118,7 @@ caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
       <h2 style="margin-top:14px">Built on identity, not in place of it.</h2>
     </div>
     <div>
-      <p class="lead">TrustPlane doesn't reinvent identity, and it doesn't want to replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and applies the request-bound, proof-of-possession model that the IETF is standardizing through <a href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC 9449)</a>, the <a href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">WIMSE</a> working group, and OAuth Transaction Tokens — pointed at the place most of us have been ignoring: agents and machine systems.</p>
+      <p class="lead">TrustPlane doesn't reinvent identity, and it doesn't want to replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and applies the request-bound, proof-of-possession model that the IETF is standardizing through <a href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC 9449)</a>, the <a href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">WIMSE</a> working group, and OAuth Transaction Tokens, pointed at the place most of us have been ignoring: agents and machine systems.</p>
     </div>
   </div>
 </section>

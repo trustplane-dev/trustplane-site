@@ -24,7 +24,7 @@
 {"@context":"https://schema.org","@type":"Organization","name":"TrustPlane","url":"https://trustplane.dev","logo":"https://trustplane.dev/assets/logo.svg","description":"Cryptographic, proof-bound authorization for AI agents and machine systems.","sameAs":["https://github.com/trustplane-dev"]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","description":"TrustPlane verifies a cryptographic proof on every request and issues short-lived, request-scoped authorization for AI agents and machine-to-machine APIs — replacing long-lived API keys and bearer tokens.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Proof-bound, request-bound authorization","Replay-safe single-use verification","Local verification without phone-home","Fleet-wide signed policy distribution and instant revocation","Per-request evidence-grade audit","Built on SPIFFE, OIDC, DPoP and WIMSE-style proof tokens"]}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","description":"TrustPlane verifies a cryptographic proof on every request and issues short-lived, request-scoped authorization for AI agents and machine-to-machine APIs, replacing long-lived API keys and bearer tokens.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Proof-bound, request-bound authorization","Replay-safe single-use verification","Local verification without phone-home","Fleet-wide signed policy distribution and instant revocation","Per-request evidence-grade audit","Built on SPIFFE, OIDC, DPoP and WIMSE-style proof tokens"]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -96,9 +96,9 @@
   <div class="wrap">
     <span class="kicker">The problem</span>
     <div class="twocol" style="margin-top:22px">
-      <p class="statement">A long-lived token is <span class="cyan">standing authority</span>. Hand one to an autonomous agent and a single leak — or one prompt injection — authorizes <span class="cyan">every</span> call it can reach.</p>
+      <p class="statement">A long-lived token is <span class="cyan">standing authority</span>. Hand one to an autonomous agent and a single leak, or one prompt injection, authorizes <span class="cyan">every</span> call it can reach.</p>
       <div class="bullets">
-        <div class="bullet"><b>Presented, not proven</b><p>API keys and bearer tokens grant access by mere possession. Whoever holds the string is the client — from anywhere, until it's rotated.</p></div>
+        <div class="bullet"><b>Presented, not proven</b><p>API keys and bearer tokens grant access by mere possession. Whoever holds the string is the client, from anywhere, until it's rotated.</p></div>
         <div class="bullet"><b>Not bound to the request</b><p>A token that may read <code>/orders</code> can be replayed against <code>/admin</code> the moment anything slips. The credential authorizes the actor, never the action.</p></div>
         <div class="bullet"><b>Invisible after the fact</b><p>Keys leak into code, logs, and prompts. Without per-request proof there is no way to tell a legitimate call from a hijacked one.</p></div>
       </div>
@@ -119,12 +119,12 @@
     <div class="shead">
       <span class="kicker">How it works</span>
       <h2>Prove the request. Don't present a secret.</h2>
-      <p class="lead">TrustPlane turns a workload's existing identity into a short-lived, request-bound credential — verified locally, with no phone-home.</p>
+      <p class="lead">TrustPlane turns a workload's existing identity into a short-lived, request-bound credential that's verified locally, with no phone-home.</p>
     </div>
     <div class="steps">
       <div class="st"><div class="num">01</div><h3>Identity</h3><p>Start from SPIFFE/SPIRE or OIDC/JWT. No static secret to store or leak.</p></div>
       <div class="st"><div class="num">02</div><h3>Proof</h3><p>Sign a proof bound to the exact method, path, body and time of this call.</p></div>
-      <div class="st"><div class="num">03</div><h3>Verify</h3><p>The adapter checks signature, audience, binding and policy — then consumes the proof once.</p></div>
+      <div class="st"><div class="num">03</div><h3>Verify</h3><p>The adapter checks signature, audience, binding and policy, then consumes the proof once.</p></div>
       <div class="st"><div class="num">04</div><h3>Audit</h3><p>Every allow/deny decision is recorded and tied to the request it bound.</p></div>
     </div>
   </div>
@@ -145,7 +145,7 @@
         <p>A drop-in verifying boundary in front of your existing APIs and agents. Verifies every request locally, fails closed, and never moves your data plane out of your environment.</p>
         <ul>
           <li>Request-bound, single-use proofs</li>
-          <li>Local verification — no phone-home</li>
+          <li>Local verification, no phone-home</li>
           <li>Drop-in reverse-proxy adapter, no rewrite</li>
           <li>Per-request, evidence-grade audit</li>
         </ul>
@@ -154,7 +154,7 @@
       <div class="card is-control">
         <span class="tag tag-control">TrustPlane Control · the governance plane</span>
         <h3>Govern trust across the fleet</h3>
-        <p>Enroll callers, compile and sign policy, and distribute it across every Auth deployment — with instant revocation, audit, and multitenant fleet management. Managed or self-hosted.</p>
+        <p>Enroll callers, compile and sign policy, and distribute it across every Auth deployment, with instant revocation, audit, and multitenant fleet management. Managed or self-hosted.</p>
         <ul>
           <li>Auto-enrollment &amp; trust anchors</li>
           <li>Signed policy &amp; bundle distribution</li>
@@ -177,8 +177,8 @@
     <div class="cols-3">
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div><h3>Request-bound proofs</h3><p>Each call carries a proof tied to its method, path, body and time. Tamper or replay and it fails closed.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Single-use verification</h3><p>Proofs are consumed once. A stolen proof can't be replayed against another endpoint.</p></div>
-      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 7H6a3 3 0 0 0 0 6h2"/><path d="M14 17h4a3 3 0 0 0 0-6h-2"/><path d="M8 10h8"/></svg></div><h3>Drop-in boundary</h3><p>A reverse-proxy adapter verifies in front of your API — no rewrite, Kubernetes-compatible, never required.</p></div>
-      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Add a client, no redeploy</h3><p>Onboard a new caller by publishing trust material — not by changing code or shipping a secret.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 7H6a3 3 0 0 0 0 6h2"/><path d="M14 17h4a3 3 0 0 0 0-6h-2"/><path d="M8 10h8"/></svg></div><h3>Drop-in boundary</h3><p>A reverse-proxy adapter verifies in front of your API. No rewrite, Kubernetes-compatible, never required.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Add a client, no redeploy</h3><p>Onboard a new caller by publishing trust material, not by changing code or shipping a secret.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg></div><h3>Fleet-wide distribution</h3><p>Compile, sign and distribute policy across every Auth deployment, with freshness guarantees.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>Evidence-grade audit</h3><p>Every allow/deny decision is recorded and tied to the exact request it authorized.</p></div>
     </div>
@@ -212,12 +212,12 @@
     <div class="shead">
       <span class="kicker">Architecture</span>
       <h2>A runtime in your infrastructure, governed centrally.</h2>
-      <p class="lead">The Auth Plane runs in your environment, in the request path. The Control Plane governs the fleet — policy, signing, revocation and audit — as managed service or self-hosted.</p>
+      <p class="lead">The Auth Plane runs in your environment, in the request path. The Control Plane governs the whole fleet: policy, signing, revocation and audit, as a managed service or self-hosted.</p>
     </div>
     <div class="arch">
       <div class="control"><b>TrustPlane Control</b><div class="m">policy · signed distribution · instant revocation · audit · RBAC</div></div>
       <div class="pipe">▲ per-request audit&nbsp;&nbsp;·&nbsp;&nbsp;signed policy + revocation ▼</div>
-      <div class="ftag">TrustPlane Auth — runs in your own infrastructure, in the request path</div>
+      <div class="ftag">TrustPlane Auth: runs in your own infrastructure, in the request path</div>
       <div class="row">
         <div class="unit"><b>Auth</b><span>cluster</span></div>
         <div class="unit"><b>Auth</b><span>edge / cloud / VM</span></div>
@@ -238,7 +238,7 @@
       <div class="card"><h3>AI agents calling APIs</h3><p>Authorize first- and third-party agents without long-lived keys. Every request carries verifiable identity and proof.</p></div>
       <div class="card"><h3>Service-to-service</h3><p>Replace internal API keys with request-level proofs. Every call is verifiable, auditable, replay-protected.</p></div>
       <div class="card"><h3>Provider-managed APIs</h3><p>Enforce per-request authorization at your boundary without rewriting upstream APIs or sharing credentials.</p></div>
-      <div class="card"><h3>Cross-org machine access</h3><p>Partner machine clients enroll through trust anchors. Authorization is cryptographic — not trust-on-first-use.</p></div>
+      <div class="card"><h3>Cross-org machine access</h3><p>Partner machine clients enroll through trust anchors. Authorization is cryptographic, not trust-on-first-use.</p></div>
     </div>
     <p class="center" style="margin-top:32px"><a class="btn btn-ghost" href="/solutions.html">See all solutions →</a></p>
   </div>
@@ -252,7 +252,7 @@
     <span class="kicker">From the team</span>
     <h2>Why we built this</h2>
     <p>Secrets were never meant to be handed to software that acts on its own. An API key is a password that never sleeps: whoever holds it is you, from anywhere, until someone notices. That was a manageable risk back when a person pasted a key into a config file once a quarter.</p>
-    <p>It stops being manageable when an autonomous agent is making thousands of calls an hour and can be talked into making the wrong one. We didn't want to build another secrets manager, or another gateway with a longer config file. We wanted the request itself to carry proof, so the boundary can decide — for that exact call, every time — whether it's allowed.</p>
+    <p>It stops being manageable when an autonomous agent is making thousands of calls an hour and can be talked into making the wrong one. We didn't want to build another secrets manager, or another gateway with a longer config file. We wanted the request itself to carry proof, so the boundary can decide whether each exact call is allowed, every time.</p>
     <p>That's the whole idea. Most of what's on this site is the plumbing that makes it practical.</p>
     <p class="sign">— The TrustPlane team</p>
   </div></div>
@@ -263,7 +263,7 @@
   <div class="wrap">
     <span class="kicker" style="justify-content:center">Get started</span>
     <h2>Authorize the action, not just the actor.</h2>
-    <p class="lead">Put a verifying boundary in front of your APIs and agents — in your own infrastructure, free to start.</p>
+    <p class="lead">Put a verifying boundary in front of your APIs and agents, in your own infrastructure, free to start.</p>
     <div class="actions">
       <a class="btn btn-primary btn-lg" href="/downloads.html">Get started free <span class="arr">→</span></a>
       <a class="btn btn-ghost btn-lg" href="/pricing.html#contact">Talk to sales</a>

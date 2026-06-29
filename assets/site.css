@@ -301,6 +301,15 @@ footer.site .ext::after{content:"↗";font-size:.78em;margin-left:3px}
 .gi b{font-size:.98rem}
 .gi span{color:var(--ink-2);font-size:.92rem}
 
+/* ---------- pull quote & manifesto (humanizing blocks) ---------- */
+.pullquote{max-width:840px;margin:0 auto;text-align:center}
+.pullquote blockquote{font-family:var(--display);font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:600;
+  line-height:1.4;color:var(--ink);margin:0;letter-spacing:-.01em}
+.manifesto{max-width:680px}
+.manifesto h2{font-size:1.9rem;margin-bottom:18px}
+.manifesto p{color:var(--ink-2);font-size:1.06rem;line-height:1.75;margin:0 0 1.1rem}
+.manifesto .sign{font-family:var(--mono);font-size:.85rem;color:var(--ink-3);margin-top:4px}
+
 /* ---------- responsive ---------- */
 @media(max-width:920px){
   .hero .grid,.twocol,.cols-2,.feat,.plane{grid-template-columns:minmax(0,1fr)}

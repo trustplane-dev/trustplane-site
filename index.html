@@ -62,12 +62,12 @@
     <div>
       <span class="kicker">Cryptographic authorization layer</span>
       <h1>Authorization for AI agents and machine systems.</h1>
-      <p class="lead">TrustPlane verifies a cryptographic proof on <em>every</em> request — bound to the exact call and impossible to replay — then issues short-lived, request-scoped authorization. No long-lived API keys. No standing tokens for an agent to leak or be tricked into misusing.</p>
+      <p class="lead">Give an agent an API key and you've handed it standing power: anything that key can reach, it can be tricked into reaching. TrustPlane works differently. Every request carries a proof tied to that <em>one</em> call. Verify it, and it's spent. Nothing long-lived sits around waiting to leak.</p>
       <div class="actions">
         <a class="btn btn-primary btn-lg" href="/downloads.html">Get started free <span class="arr">→</span></a>
         <a class="btn btn-ghost btn-lg" href="/auth.html">See how it works</a>
       </div>
-      <p class="note">Runs in your own infrastructure · Works with SPIFFE/SPIRE · OIDC/JWT</p>
+      <p class="note">Public preview · runs in your own infrastructure · works with SPIFFE/SPIRE and OIDC/JWT</p>
     </div>
     <div class="flow">
       <div class="lbl">One request · verified at the boundary</div>
@@ -106,6 +106,13 @@
   </div>
 </section>
 
+<!-- ===== PULL QUOTE ===== -->
+<section class="section-soft" style="padding:64px 0">
+  <div class="wrap"><div class="pullquote">
+    <blockquote>"A token authorizes whoever is holding it. A proof authorizes one specific call. For software that runs on its own, that difference is the whole game."</blockquote>
+  </div></div>
+</section>
+
 <!-- ===== HOW IT WORKS ===== -->
 <section class="section-soft">
   <div class="wrap">
@@ -128,8 +135,8 @@
   <div class="wrap">
     <div class="shead">
       <span class="kicker">The platform</span>
-      <h2>Two planes. One trust model.</h2>
-      <p class="lead">A runtime that enforces in your infrastructure, and a control plane that governs trust across your whole fleet.</p>
+      <h2>How TrustPlane fits together</h2>
+      <p class="lead">A runtime that enforces inside your infrastructure, and a control plane that decides who's trusted across the whole fleet.</p>
     </div>
     <div class="plane">
       <div class="card">
@@ -239,6 +246,18 @@
 
 </main>
 
+<!-- ===== WHY WE BUILT THIS ===== -->
+<section>
+  <div class="wrap"><div class="manifesto">
+    <span class="kicker">From the team</span>
+    <h2>Why we built this</h2>
+    <p>Secrets were never meant to be handed to software that acts on its own. An API key is a password that never sleeps: whoever holds it is you, from anywhere, until someone notices. That was a manageable risk back when a person pasted a key into a config file once a quarter.</p>
+    <p>It stops being manageable when an autonomous agent is making thousands of calls an hour and can be talked into making the wrong one. We didn't want to build another secrets manager, or another gateway with a longer config file. We wanted the request itself to carry proof, so the boundary can decide — for that exact call, every time — whether it's allowed.</p>
+    <p>That's the whole idea. Most of what's on this site is the plumbing that makes it practical.</p>
+    <p class="sign">— The TrustPlane team</p>
+  </div></div>
+</section>
+
 <!-- ===== CTA BAND ===== -->
 <section class="ctaband">
   <div class="wrap">
@@ -257,13 +276,13 @@
   <div class="top">
     <div>
       <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="">TrustPlane</a>
-      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems. Authorize the action, not just the actor.</p>
+      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p>
     </div>
     <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/control.html">TrustPlane Control</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a></div>
     <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
     <div><h4>Company</h4><a href="/pricing.html#contact">Contact sales</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
   </div>
-  <div class="legal"><span>© 2026 TrustPlane</span><span>Authorize the action, not just the actor.</span></div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
 </div></footer>
 
 </body>

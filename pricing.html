@@ -22,9 +22,10 @@
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is TrustPlane Auth free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The TrustPlane Auth runtime is free to start and runs in your own infrastructure. You can verify proof-bound requests in front of your APIs without a paid plan."}},
-{"@type":"Question","name":"What do paid plans add?","acceptedAnswer":{"@type":"Answer","text":"Paid plans add TrustPlane Control: managed enrollment, signed policy distribution across your fleet, instant revocation, evidence-grade audit, multitenant management and RBAC. Enterprise adds self-hosting, SSO, SLAs and support."}},
-{"@type":"Question","name":"Can I self-host TrustPlane Control?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Enterprise plan supports running the full control plane inside your own environment for sovereignty and compliance alignment."}}
+{"@type":"Question","name":"Is TrustPlane Auth really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Auth runtime runs in your own infrastructure and you can put it in front of your APIs without talking to us first."}},
+{"@type":"Question","name":"What do the paid plans add?","acceptedAnswer":{"@type":"Answer","text":"Paid plans add TrustPlane Control: managed enrollment, signing and distributing policy across your fleet, fast revocation, and searchable audit. Enterprise adds self-hosting, SSO and support."}},
+{"@type":"Question","name":"Can I self-host TrustPlane Control?","acceptedAnswer":{"@type":"Answer","text":"Yes, on the Enterprise plan you run the full control plane in your own environment. Either way your data plane never leaves, because requests are verified locally by Auth."}},
+{"@type":"Question","name":"Do I have to replace OAuth or my service mesh?","acceptedAnswer":{"@type":"Answer","text":"No. TrustPlane sits at the request boundary and consumes the identity you already have, such as SPIFFE or OIDC. It is an authorization layer for machine traffic, not a replacement for your mesh or identity provider."}}
 ]}
 </script>
 </head>
@@ -47,7 +48,7 @@
 <section class="phero">
   <div class="wrap center">
     <span class="kicker" style="justify-content:center">Pricing</span>
-    <h1>Start free. Scale when you're ready.</h1>
+    <h1>Start free, scale when you need to.</h1>
     <p class="lead" style="margin:14px auto 0;max-width:620px">Run the proof-bound Auth runtime for free in your own infrastructure. Add Control when you need fleet-scale governance, audit, and revocation.</p>
   </div>
 </section>
@@ -75,7 +76,8 @@
         <span class="badge">Most popular</span>
         <div class="tname">Team</div>
         <div class="tsub">Managed Control for growing fleets</div>
-        <div class="price">$<span id="teamprice">—</span> <small>/ month</small></div>
+        <div class="price">Usage-based</div>
+        <div class="tsub" style="margin:2px 0 0">Priced to the fleet you run — get a quote</div>
         <ul>
           <li>Everything in Developer</li>
           <li>Managed TrustPlane Control</li>
@@ -104,7 +106,6 @@
         <a class="btn btn-ghost" href="#contact">Talk to sales</a>
       </div>
     </div>
-    <p class="note-sample">Sample pricing — tier names and figures are illustrative placeholders for review, not a published price list.</p>
   </div>
 </section>
 
@@ -134,10 +135,11 @@
   <div class="wrap">
     <div class="shead"><span class="kicker">FAQ</span><h2>Questions, answered.</h2></div>
     <div class="faq">
-      <details open><summary>Is TrustPlane Auth free?</summary><p>Yes. The TrustPlane Auth runtime is free to start and runs in your own infrastructure. You can verify proof-bound requests in front of your APIs without a paid plan.</p></details>
-      <details><summary>What do paid plans add?</summary><p>Paid plans add TrustPlane Control: managed enrollment, signed policy distribution across your fleet, instant revocation, evidence-grade audit, multitenant management and RBAC. Enterprise adds self-hosting, SSO, SLAs and support.</p></details>
-      <details><summary>Can I self-host TrustPlane Control?</summary><p>Yes. The Enterprise plan supports running the full control plane inside your own environment for sovereignty and compliance alignment. Your data plane — the Auth deployments — always stays in your infrastructure.</p></details>
-      <details><summary>Do I have to use Kubernetes?</summary><p>No. The Auth runtime is Kubernetes-compatible but never Kubernetes-required. It runs at the edge, in clusters, on VMs, or as an agent sidecar.</p></details>
+      <details open><summary>Is TrustPlane Auth really free?</summary><p>Yes, genuinely. The Auth runtime runs in your own infrastructure and you can put it in front of your APIs without talking to us first. We'd rather you try it than fill out a form.</p></details>
+      <details><summary>What do the paid plans actually add?</summary><p>Control — the part that gets painful by hand once you're past a couple of services. Managed enrollment, signing and shipping policy to your whole fleet, revocation that lands in seconds, and audit you can actually search. Enterprise adds self-hosting, SSO, and the support and paperwork bigger teams need.</p></details>
+      <details><summary>Can I self-host Control?</summary><p>Yes. On Enterprise you run the whole control plane in your own environment. Either way your data plane never leaves — requests are always verified locally by Auth, in your infrastructure.</p></details>
+      <details><summary>Do I have to rip out OAuth or my service mesh?</summary><p>No, and please don't. TrustPlane sits at the request boundary and consumes the identity you already have (SPIFFE, OIDC). It's an authorization layer for machine traffic, not a replacement for your mesh or your identity provider.</p></details>
+      <details><summary>Do I need Kubernetes?</summary><p>No. The adapter is happy in a cluster, but it also runs at the edge, on a VM, or as a sidecar next to an agent. Kubernetes-compatible, never Kubernetes-required.</p></details>
     </div>
   </div>
 </section>
@@ -165,7 +167,7 @@
     <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
     <div><h4>Company</h4><a href="#contact">Contact sales</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
   </div>
-  <div class="legal"><span>© 2026 TrustPlane</span><span>Authorize the action, not just the actor.</span></div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
 </div></footer>
 
 </body>

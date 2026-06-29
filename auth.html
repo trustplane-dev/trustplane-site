@@ -45,7 +45,7 @@
   <div class="wrap">
     <span class="kicker">TrustPlane Auth · the runtime</span>
     <h1>The proof-bound authorization runtime.</h1>
-    <p class="lead">TrustPlane Auth is a drop-in verifying boundary that runs in <strong>your</strong> infrastructure, in the request path. It verifies a request-bound, single-use cryptographic proof on every call — locally, with no phone-home — and forwards only what it can prove.</p>
+    <p class="lead">TrustPlane Auth is a drop-in verifying boundary that runs in <strong>your</strong> infrastructure, right in the request path. It checks a request-bound, single-use proof on every call, decides locally without phoning home, and forwards only what it can actually prove.</p>
     <div class="actions">
       <a class="btn btn-primary btn-lg" href="/downloads.html">Get TrustPlane Auth <span class="arr">→</span></a>
       <a class="btn btn-ghost btn-lg" href="https://docs.auth.trustplane.dev">Read the docs ↗</a>
@@ -118,7 +118,7 @@ caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
       <h2 style="margin-top:14px">Built on identity, not in place of it.</h2>
     </div>
     <div>
-      <p class="lead">TrustPlane doesn't reinvent identity. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and implements the proof-of-possession, request-bound model the IETF is converging on through <strong>DPoP</strong>, <strong>WIMSE</strong> workload identity &amp; proof tokens, and <strong>OAuth Transaction Tokens</strong> — applied today to agents and machine systems.</p>
+      <p class="lead">TrustPlane doesn't reinvent identity, and it doesn't want to replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and applies the request-bound, proof-of-possession model that the IETF is standardizing through <a href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC 9449)</a>, the <a href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">WIMSE</a> working group, and OAuth Transaction Tokens — pointed at the place most of us have been ignoring: agents and machine systems.</p>
     </div>
   </div>
 </section>
@@ -145,7 +145,7 @@ caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
     <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
     <div><h4>Company</h4><a href="/pricing.html#contact">Contact sales</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
   </div>
-  <div class="legal"><span>© 2026 TrustPlane</span><span>Authorize the action, not just the actor.</span></div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
 </div></footer>
 
 </body>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# AI / answer engines are welcome to read the structured summary
+# llms.txt: https://trustplane.dev/llms.txt
+
+Sitemap: https://trustplane.dev/sitemap.xml

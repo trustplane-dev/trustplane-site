@@ -38,6 +38,7 @@
       <h1>Proof-bound authorization where machine traffic enters.</h1>
       <p class="lead">TrustPlane Auth runs near your protected APIs, tools, and services. It verifies a short-lived passport plus per-request proof, applies local policy, denies unsafe calls before the upstream runs, and emits decision evidence. Open source, local, and offline — no mandatory phone-home.</p>
       <div class="actions"><a class="btn primary large" href="https://github.com/trustplane-dev">View on GitHub</a><a class="btn secondary large" href="https://docs.auth.trustplane.dev">Read the docs</a></div>
+      <p style="margin-top:14px;font-size:13px;opacity:.65">Public preview · CLI, Helm chart, container images, and Go/TypeScript SDKs available.</p>
     </div>
   </section>
 
@@ -48,15 +49,18 @@
         <h2>Make the boundary smart enough to say no.</h2>
         <p class="lead">A machine caller should not get a free pass because it holds a token-shaped string. Auth rebuilds the request transcript and checks identity, audience, request binding, policy, freshness, and replay state before forwarding traffic.</p>
       </div>
-      <pre class="terminal"><span class="dim">incoming</span> POST /v1/refunds
-<span class="dim">caller</span> agent.checkout.prod
-<span class="dim">policy</span> payments.refunds.v18
+      <pre class="terminal"><span class="dim"># sign one specific call</span>
+$ trustplane sign --method GET --path /orders --audience acme.orders
+<span class="ok">✓ allow</span>  verified · single-use · audited
 
-<span class="info">verify</span> passport + transcript-v1 request binding
-<span class="info">check</span> route/source policy, freshness, replay state
-<span class="ok">allow</span> forward upstream with audit context
+<span class="dim"># replay the same proof?</span>
+<span class="deny">✗ deny</span>  jti_replay
 
-<span class="deny">deny</span> replay, request mismatch, stale bundle, unknown source</pre>
+<span class="dim"># tamper the path after signing?</span>
+<span class="deny">✗ deny</span>  request_binding_mismatch
+
+<span class="dim"># stale or unsigned policy bundle?</span>
+<span class="deny">✗ deny</span>  fail-closed</pre>
     </div>
   </section>
 

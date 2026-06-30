@@ -65,11 +65,12 @@
       <div>
         <span class="eyebrow">Open-source machine authorization</span>
         <h1>Make every machine request prove itself.</h1>
-        <p class="lead">AI agents, service accounts, and internal services now act at software speed. TrustPlane Auth lets each caller prove one specific request — instead of presenting a long-lived secret — and verifies it locally before it reaches your API. Open source. No phone-home.</p>
+        <p class="lead">Give an agent an API key and you've handed it standing power: anything that key can reach, it can be tricked into reaching. TrustPlane Auth works differently — every request carries a proof tied to that one call. Verify it, and it's spent. Nothing long-lived sits around waiting to leak.</p>
         <div class="actions">
           <a class="btn primary large" href="https://github.com/trustplane-dev">View on GitHub</a>
           <a class="btn dark large" href="https://docs.auth.trustplane.dev">Read the docs</a>
         </div>
+        <p style="margin-top:16px;font-size:13px;opacity:.65">Open source · public preview · runs in your own infrastructure · works with SPIFFE/SPIRE and OIDC/JWT</p>
         <div class="proof-strip" aria-label="TrustPlane authorization workflow">
           <div><b>Identify</b><span>workload, agent, client</span></div>
           <div><b>Prove</b><span>one intended request</span></div>
@@ -122,6 +123,21 @@
         <div class="item"><div><b>A key is a bearer secret.</b><span>Whoever holds the string is the client — copyable, replayable, and valid from anywhere until someone rotates it. Agents multiply how many of these exist.</span></div></div>
         <div class="item"><div><b>A key is not bound to the request.</b><span>A token that can read <code>/orders</code> can be replayed against <code>/admin/delete-everything</code> if the server forgets to check. It proves who, never what this specific request is allowed to do.</span></div></div>
         <div class="item"><div><b>Audit needs request-level evidence.</b><span>Reviews ask the same things: what called what, why was it allowed, which policy applied, and how fast can we revoke it?</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From identity to a verified request — in four steps.</h2>
+      </div>
+      <div class="numbered">
+        <div class="item"><div><b>01 · Identity</b><span>Start from the workload identity you already have — SPIFFE/SPIRE, OIDC/JWT, or a local issuer. No static secret to store or leak.</span></div></div>
+        <div class="item"><div><b>02 · Prove</b><span>Sign a short-lived passport plus transcript-v1 proof bound to the exact method, path, body, and time of this one call.</span></div></div>
+        <div class="item"><div><b>03 · Verify</b><span>A local verifier checks signature, audience, request binding, and policy — then consumes the proof once so it cannot be replayed.</span></div></div>
+        <div class="item"><div><b>04 · Audit</b><span>Every allow/deny decision is recorded and tied to the exact request it authorized.</span></div></div>
       </div>
     </div>
   </section>
@@ -210,7 +226,7 @@
 
   <section class="band">
     <div class="wrap">
-      <p class="quote">"The goal is not to make agents sound safer. It is to make every machine action something your infrastructure can verify, deny, revoke, and explain."<small>TrustPlane product principle</small></p>
+      <p class="quote">"A token authorizes whoever is holding it. A proof authorizes one specific call. For software that runs on its own, that difference is the whole game."<small>TrustPlane product principle</small></p>
     </div>
   </section>
 
@@ -233,9 +249,23 @@
   </section>
 </main>
 
+  <section class="band">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">From the team</span>
+        <h2>Why we built this.</h2>
+      </div>
+      <div>
+        <p class="lead">Secrets were never meant to be handed to software that acts on its own. An API key is a password that never sleeps: whoever holds it is you, from anywhere, until someone notices. That was a manageable risk when a person pasted a key into a config file once a quarter.</p>
+        <p class="lead">It stops being manageable when an autonomous agent is making thousands of calls an hour and can be talked into making the wrong one. We didn't want to build another secrets manager, or another gateway with a longer config file. We wanted the request itself to carry proof, so the boundary can decide whether each exact call is allowed, every time.</p>
+        <p class="lead">That's the whole idea — and it's open source. Most of what's here is the plumbing that makes it practical.<br><small>— The TrustPlane team</small></p>
+      </div>
+    </div>
+  </section>
+
 <section class="cta">
   <div class="wrap">
-    <h2>Stop shipping standing secrets to your machines.</h2>
+    <h2>Authorize the action, not just the actor.</h2>
     <p class="lead">Start with the open-source runtime: read the docs, clone from GitHub, and put proof-bound authorization in front of one API or tool.</p>
     <div class="actions">
       <a class="btn primary large" href="https://github.com/trustplane-dev">View on GitHub</a>

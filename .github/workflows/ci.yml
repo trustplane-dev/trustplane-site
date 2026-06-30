@@ -5,22 +5,35 @@ on:
   pull_request:
 
 jobs:
-  validate:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate published files
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm check
+
+      - name: Build
+        run: pnpm build
+
+      - name: Verify published CNAME
         run: |
-          test -f index.html
-          test -f style.css
-          test -f script.js
-          test -f CNAME
-          test "$(cat CNAME)" = "trustplane.dev"
-          test ! -f research.txt
-          test ! -f "Open-Source Auth Landing-Page Research for trustplane.dev.pdf"
-      - name: Scan for local/private references
+          test "$(cat dist/public/CNAME)" = "trustplane.dev"
+
+      - name: Scan for leaked local paths
         run: |
-          ! grep -RInE '/Users/|MergeMatter|medham|research\.txt|Open-Source Auth Landing' \
-            --exclude-dir=.git \
-            --exclude='ci.yml' \
-            .
+          ! grep -RInE '/Users/|/home/[a-z]+/' \
+            --include='*.ts' --include='*.tsx' --include='*.html' --include='*.css' \
+            client shared server

@@ -1,0 +1,358 @@
+/*
+ * TRUSTPLANE MARKETING SITE — GLOBAL STYLES
+ * Design Philosophy: Dark Precision Engineering
+ * Base: #0a0b0d (near-black), Accent: #00d4ff (electric cyan)
+ * Fonts: Space Grotesk (display) + IBM Plex Mono (code/labels) + Inter (body)
+ * Layout: Asymmetric, grid-anchored, infrastructure-grade
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Trustplane custom tokens */
+  --color-tp-cyan: var(--tp-cyan);
+  --color-tp-cyan-dim: var(--tp-cyan-dim);
+  --color-tp-surface: var(--tp-surface);
+  --color-tp-surface-2: var(--tp-surface-2);
+  --color-tp-border: var(--tp-border);
+}
+
+:root {
+  --radius: 0.375rem;
+  /* Trustplane dark theme — always dark */
+  --background: oklch(0.085 0.008 240);
+  --foreground: oklch(0.94 0.006 240);
+  --card: oklch(0.11 0.009 240);
+  --card-foreground: oklch(0.94 0.006 240);
+  --popover: oklch(0.11 0.009 240);
+  --popover-foreground: oklch(0.94 0.006 240);
+  --primary: oklch(0.82 0.18 200);
+  --primary-foreground: oklch(0.085 0.008 240);
+  --secondary: oklch(0.15 0.01 240);
+  --secondary-foreground: oklch(0.75 0.01 240);
+  --muted: oklch(0.14 0.008 240);
+  --muted-foreground: oklch(0.55 0.015 240);
+  --accent: oklch(0.82 0.18 200);
+  --accent-foreground: oklch(0.085 0.008 240);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.82 0.18 200);
+  --chart-1: oklch(0.82 0.18 200);
+  --chart-2: oklch(0.7 0.15 200);
+  --chart-3: oklch(0.6 0.12 200);
+  --chart-4: oklch(0.5 0.1 200);
+  --chart-5: oklch(0.4 0.08 200);
+  --sidebar: oklch(0.10 0.009 240);
+  --sidebar-foreground: oklch(0.94 0.006 240);
+  --sidebar-primary: oklch(0.82 0.18 200);
+  --sidebar-primary-foreground: oklch(0.085 0.008 240);
+  --sidebar-accent: oklch(0.15 0.01 240);
+  --sidebar-accent-foreground: oklch(0.94 0.006 240);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.82 0.18 200);
+  /* Trustplane custom */
+  --tp-cyan: #00d4ff;
+  --tp-cyan-dim: rgba(0, 212, 255, 0.12);
+  --tp-surface: rgba(255, 255, 255, 0.04);
+  --tp-surface-2: rgba(255, 255, 255, 0.07);
+  --tp-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Light theme variant — WCAG AAA high contrast */
+.light {
+  /* Backgrounds: Pure white and very light gray */
+  --background: oklch(1 0 0);
+  --card: oklch(0.98 0.001 240);
+  --popover: oklch(0.98 0.001 240);
+  
+  /* Foregrounds: Deep charcoal for maximum readability (7:1+ contrast) */
+  --foreground: oklch(0.15 0.01 240);
+  --card-foreground: oklch(0.15 0.01 240);
+  --popover-foreground: oklch(0.15 0.01 240);
+  
+  /* Primary: Deep blue (not light blue) */
+  --primary: oklch(0.35 0.25 250);
+  --primary-foreground: oklch(1 0 0);
+  
+  /* Secondary: Dark slate gray */
+  --secondary: oklch(0.95 0.001 240);
+  --secondary-foreground: oklch(0.2 0.01 240);
+  
+  /* Muted: Medium gray for secondary text */
+  --muted: oklch(0.92 0.002 240);
+  --muted-foreground: oklch(0.35 0.015 240);
+  
+  /* Accent: Deep saturated blue (not light cyan) */
+  --accent: oklch(0.35 0.25 250);
+  --accent-foreground: oklch(1 0 0);
+  
+  /* Destructive: Red */
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  
+  /* Borders: Medium gray for definition */
+  --border: oklch(0.88 0.002 240);
+  --input: oklch(0.94 0.002 240);
+  --ring: oklch(0.35 0.25 250);
+  
+  /* Chart colors: Deep blues */
+  --chart-1: oklch(0.35 0.25 250);
+  --chart-2: oklch(0.42 0.23 250);
+  --chart-3: oklch(0.48 0.21 250);
+  --chart-4: oklch(0.54 0.19 250);
+  --chart-5: oklch(0.6 0.17 250);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.001 240);
+  --sidebar-foreground: oklch(0.15 0.01 240);
+  --sidebar-primary: oklch(0.35 0.25 250);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.001 240);
+  --sidebar-accent-foreground: oklch(0.15 0.01 240);
+  --sidebar-border: oklch(0.88 0.002 240);
+  --sidebar-ring: oklch(0.35 0.25 250);
+  
+  /* Trustplane light theme custom — high contrast */
+  --tp-cyan: #0052a3;
+  --tp-cyan-dim: rgba(0, 82, 163, 0.12);
+  --tp-surface: rgba(0, 0, 0, 0.04);
+  --tp-surface-2: rgba(0, 0, 0, 0.07);
+  --tp-border: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark theme — default */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  code, pre, .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Trustplane utility classes */
+  .tp-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tp-cyan);
+  }
+
+  .tp-card {
+    background: var(--tp-surface);
+    border: 1px solid var(--tp-border);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .tp-card:hover {
+    border-color: rgba(0, 212, 255, 0.25);
+    background: var(--tp-surface-2);
+  }
+
+  .tp-glow {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.08), 0 0 80px rgba(0, 212, 255, 0.04);
+  }
+
+  .tp-glow-strong {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), 0 0 60px rgba(0, 212, 255, 0.08);
+  }
+
+  .tp-grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .tp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    background: var(--tp-cyan);
+    color: #050a0d;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    border-radius: 0.375rem;
+    border: none;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .tp-btn-primary:hover {
+    background: #33ddff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .tp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    background: transparent;
+    color: oklch(0.94 0.006 240);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .tp-btn-ghost:hover {
+    border-color: rgba(0, 212, 255, 0.35);
+    color: var(--tp-cyan);
+    background: rgba(0, 212, 255, 0.05);
+  }
+
+  .tp-section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+  }
+
+  /* Animated flow line */
+  @keyframes flowPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes nodePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(0,212,255,0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes scanLine {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  @keyframes dash {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  .flow-node {
+    animation: nodePulse 2s ease-in-out infinite;
+  }
+
+  .flow-line {
+    animation: flowPulse 1.5s ease-in-out infinite;
+  }
+}

@@ -1,27 +1,51 @@
 # TrustPlane Site
 
-Static public site for `trustplane.dev`.
+Public marketing site for `trustplane.dev`.
 
-## Local Preview
+Built with Vite + React + TypeScript (SPA, client-side routing via `wouter`),
+deployed to GitHub Pages.
+
+## Prerequisites
+
+- Node.js 20.19+ or 22.12+
+- pnpm (pinned via the `packageManager` field; use `corepack enable` to get it)
+
+## Local Development
 
 ```bash
-python3 -m http.server 8080
+corepack enable
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Then open:
+The dev server runs at http://localhost:3000.
 
-```text
-http://localhost:8080
+## Build
+
+```bash
+pnpm build
 ```
+
+Static output is written to `dist/public/` (this is what gets deployed).
 
 ## Deployment
 
-This repo deploys to GitHub Pages from `main` using GitHub Actions.
+This repo deploys to GitHub Pages from `main` via GitHub Actions
+(`.github/workflows/pages.yml`):
 
-Canonical domain:
+1. `pnpm install --frozen-lockfile`
+2. `pnpm build` → `dist/public`
+3. Copy `index.html` → `404.html` (SPA deep-link fallback)
+4. Upload `dist/public` and deploy to Pages
 
-```text
-trustplane.dev
-```
+Canonical domain: `trustplane.dev` (set via `client/public/CNAME`, emitted into
+the build output). `.nojekyll` is included so Pages serves files as-is.
 
-Only public site assets should live here. Research notes, drafts, and source PDFs should stay outside the published repository.
+## Notes
+
+- The contact form posts to a standalone API endpoint (override with
+  `VITE_CONTACT_API`); no backend runs in this repo.
+- Documentation links point to the TrustPlane Auth docs site
+  (`docs.auth.trustplane.dev`, built from the `trustplane-auth-docs` repo).
+- Only public site source should live here. Research notes, drafts, and source
+  PDFs should stay outside the published repository.

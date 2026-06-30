@@ -314,8 +314,8 @@ export default function Hero() {
               transition: "all 0.6s ease 0.38s",
             }}
           >
-            <a href="/contact" className="tp-btn-primary" style={{ fontSize: "0.9375rem", padding: "0.75rem 1.75rem" }}>
-              Contact Trustplane
+            <a href="https://github.com/trustplane-dev" target="_blank" rel="noreferrer" className="tp-btn-primary" style={{ fontSize: "0.9375rem", padding: "0.75rem 1.75rem" }}>
+              View on GitHub
               <ArrowRight size={16} />
             </a>
             <a href="https://docs.auth.trustplane.dev" className="tp-btn-ghost" style={{ fontSize: "0.9375rem", padding: "0.75rem 1.75rem" }}>

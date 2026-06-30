@@ -31,7 +31,7 @@ export default function Footer() {
       items: [
         { label: "Why Trustplane", href: "/#why" },
         { label: "Security", href: "/security" },
-        { label: "Contact Trustplane", href: "/contact" },
+        { label: "GitHub", href: "https://github.com/trustplane-dev" },
       ],
     },
   ];
@@ -191,7 +191,7 @@ export default function Footer() {
             {[
               { label: "Documentation", href: "https://docs.auth.trustplane.dev" },
               { label: "Security", href: "/security" },
-              { label: "Contact", href: "/contact" },
+              { label: "GitHub", href: "https://github.com/trustplane-dev" },
             ].map((item) => (
               item.href.startsWith("http") ? (
                 <a

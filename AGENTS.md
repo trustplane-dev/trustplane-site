@@ -68,8 +68,12 @@ not the open-source docs.
   `/cli/overview`, `/deploy/overview`, `/reference/release-artifacts`.
   These docs cover **TrustPlane Auth only** — there is no Economy section.
   When linking docs, use real slugs (deep links to non-existent pages 404).
-- **Contact form** posts to a standalone external API endpoint (overridable via
-  `VITE_CONTACT_API`). There is no backend in this repo.
+- **No contact/sales form.** As an open-source project, calls-to-action point to
+  **GitHub** (`https://github.com/trustplane-dev`) and the docs — not a sales
+  contact form. The org's core repo (`trustplane-auth`) may still be private
+  during open-sourcing; the GitHub CTAs link to the org page so they never 404.
+  (The enterprise variant retains a `/contact` form posting to an external API
+  via `VITE_CONTACT_API` — see `variant/enterprise-full`.)
 - Analytics: the upstream source had an unconfigured umami `<script>` using
   `%VITE_ANALYTICS_*%` placeholders; it was removed to avoid a broken tag. Wire
   in real analytics intentionally if needed.

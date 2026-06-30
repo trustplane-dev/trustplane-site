@@ -88,11 +88,13 @@ export default function FinalCTA() {
             }}
           >
             <a
-              href="/contact"
+              href="https://github.com/trustplane-dev"
+              target="_blank"
+              rel="noreferrer"
               className="tp-btn-primary"
               style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}
             >
-              Contact Trustplane
+              View on GitHub
               <ArrowRight size={18} />
             </a>
             <a

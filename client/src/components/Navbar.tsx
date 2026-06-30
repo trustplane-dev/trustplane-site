@@ -105,11 +105,9 @@ export default function Navbar() {
             <a href="https://docs.auth.trustplane.dev" className="tp-btn-ghost" style={{ padding: "0.5rem 1rem", fontSize: "0.8125rem" }}>
               Read the Docs
             </a>
-            <Link href="/contact">
-            <a className="tp-btn-primary" style={{ padding: "0.5rem 1rem", fontSize: "0.8125rem" }}>
-              Contact Trustplane
+            <a href="https://github.com/trustplane-dev" target="_blank" rel="noreferrer" className="tp-btn-primary" style={{ padding: "0.5rem 1rem", fontSize: "0.8125rem" }}>
+              GitHub
             </a>
-            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -152,11 +150,9 @@ export default function Navbar() {
               <a href="https://docs.auth.trustplane.dev" className="tp-btn-ghost" style={{ justifyContent: "center" }}>
                 Read the Docs
               </a>
-              <Link href="/contact">
-              <a onClick={() => setMobileOpen(false)} className="tp-btn-primary" style={{ justifyContent: "center" }}>
-                Contact Trustplane
+              <a href="https://github.com/trustplane-dev" target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)} className="tp-btn-primary" style={{ justifyContent: "center" }}>
+                GitHub
               </a>
-              </Link>
             </div>
           </div>
         )}

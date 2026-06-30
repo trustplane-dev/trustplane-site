@@ -6,7 +6,7 @@
 <title>TrustPlane Auth — Open-Source Proof-Bound Authorization for AI Agents and APIs</title>
 <meta name="description" content="TrustPlane Auth is an open-source, proof-bound authorization runtime for AI agents, machine clients, and service APIs. Each request proves itself — bound to method, path, body, audience, and time — and is verified locally before it reaches your API. A secure alternative to long-lived API keys.">
 <link rel="canonical" href="https://trustplane.dev/">
-<meta name="keywords" content="AI agent authorization, machine authorization, non-human identity, MCP authorization, service to service authorization, API key alternative, machine to machine security, proof bound authorization, open source authorization, replay protection, SPIFFE">
+<meta name="keywords" content="AI agent authorization, machine authorization, non-human identity, MCP authorization, service to service authorization, API key alternative, machine to machine security, proof bound authorization, open source authorization, replay protection, SPIFFE, OIDC, DPoP, WIMSE, proof of possession, OAuth transaction tokens">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -36,7 +36,8 @@
 {"@type":"Question","name":"How do you authorize MCP or tool-server calls?","acceptedAnswer":{"@type":"Answer","text":"Place a TrustPlane Auth verifier in front of the MCP or tool server. Agent calls must carry a short-lived passport plus per-request proof; the verifier enforces route and source policy locally and denies anything replayed, modified, stale, or from an unauthorized caller before the tool executes."}},
 {"@type":"Question","name":"Does TrustPlane Auth replace OAuth, IAM, or a service mesh?","acceptedAnswer":{"@type":"Answer","text":"No. TrustPlane Auth is not an OAuth replacement, not generic IAM, and not a service mesh. It adds request-bound, short-lived, proof-bound authorization on top of the workload identity you already have (SPIFFE/SPIRE, OIDC/JWT, or a local issuer). Your application still owns business authorization such as tenants, roles, and resources."}},
 {"@type":"Question","name":"Do I need Kubernetes or a hosted service to use it?","acceptedAnswer":{"@type":"Answer","text":"No. TrustPlane Auth is Kubernetes-compatible but not Kubernetes-required, and it works locally and offline with no account, database, or hosted bundle source. SPIFFE/SPIRE is a recommended production identity integration on Kubernetes, but it is optional."}},
-{"@type":"Question","name":"Is TrustPlane Auth open source and how do I start?","acceptedAnswer":{"@type":"Answer","text":"Yes. TrustPlane Auth is open source. Start from the documentation at docs.auth.trustplane.dev and the GitHub organization at github.com/trustplane-dev, which includes caller-side SDKs for Go and Node.js (TypeScript)."}}
+{"@type":"Question","name":"Is TrustPlane Auth open source and how do I start?","acceptedAnswer":{"@type":"Answer","text":"Yes. TrustPlane Auth is open source. Start from the documentation at docs.auth.trustplane.dev and the GitHub organization at github.com/trustplane-dev, which includes caller-side SDKs for Go and Node.js (TypeScript)."}},
+{"@type":"Question","name":"Does TrustPlane Auth work with SPIFFE, OIDC, and MCP?","acceptedAnswer":{"@type":"Answer","text":"Yes. It consumes existing workload identity from SPIFFE/SPIRE and OIDC/JWT, applies a request-bound proof-of-possession model aligned with the direction the IETF is standardizing through DPoP (RFC 9449) and the WIMSE working group, and can protect MCP and tool servers without rewriting them."}}
 ]}
 </script>
 </head>
@@ -181,6 +182,18 @@
   </section>
 
   <section>
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">Open standards</span>
+        <h2>Built on identity, not in place of it.</h2>
+      </div>
+      <div>
+        <p class="lead">TrustPlane Auth doesn't reinvent identity or replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong> for workload identity, and applies the request-bound, proof-of-possession model the IETF is standardizing through <a class="ext" href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC&nbsp;9449)</a>, the <a class="ext" href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">IETF WIMSE</a> working group, and OAuth Transaction Tokens — pointed at the place that has been ignored: AI agents and machine systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <div class="section-head center">
         <span class="eyebrow">Where it fits</span>
@@ -214,6 +227,7 @@
         <details><summary>Do I need Kubernetes or a hosted service?</summary><p>No. TrustPlane Auth is Kubernetes-compatible but not Kubernetes-required, and it works locally and offline with no account, database, or hosted bundle source. SPIFFE/SPIRE is a recommended production identity integration on Kubernetes, but it is optional.</p></details>
         <details><summary>What stops a stolen passport from being replayed?</summary><p>Four things compound: short expiry, audience and route scoping, transcript-v1 request binding (so it only works for the exact request), and atomic replay consume (the <code>jti</code> is one-time).</p></details>
         <details><summary>Is it open source, and how do I start?</summary><p>Yes — it is open source. Start from the <a class="ext" href="https://docs.auth.trustplane.dev">documentation</a> and the <a class="ext" href="https://github.com/trustplane-dev">GitHub organization</a>, which includes caller-side SDKs for Go and Node.js (TypeScript).</p></details>
+        <details><summary>Does it work with SPIFFE, OIDC, and MCP?</summary><p>Yes. It consumes existing workload identity from SPIFFE/SPIRE and OIDC/JWT, applies a request-bound proof-of-possession model aligned with the direction of <a class="ext" href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC&nbsp;9449)</a> and the <a class="ext" href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">IETF WIMSE</a> working group, and can protect MCP and tool servers without rewriting them.</p></details>
       </div>
     </div>
   </section>

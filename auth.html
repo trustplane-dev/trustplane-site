@@ -6,7 +6,7 @@
 <title>TrustPlane Auth — Proof-Bound Runtime Authorization for Machine Requests</title>
 <meta name="description" content="TrustPlane Auth is the open-source runtime that verifies short-lived passports and per-request transcript-v1 proof before a request reaches your API. Local enforcement, replay protection, signed policy bundles, and per-decision audit.">
 <link rel="canonical" href="https://trustplane.dev/auth.html">
-<meta name="keywords" content="runtime authorization, AI agent authorization runtime, machine request verification, proof bound authorization, transcript-v1, replay protection, signed policy bundle, brownfield adapter, local policy enforcement">
+<meta name="keywords" content="runtime authorization, AI agent authorization runtime, machine request verification, proof bound authorization, transcript-v1, replay protection, signed policy bundle, brownfield adapter, local policy enforcement, SPIFFE, OIDC, DPoP, WIMSE, proof of possession">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -104,6 +104,17 @@
         <div class="card dark-card"><h3>Works with your identity</h3><p>Use SPIFFE/SPIRE, OIDC/JWT, or a local issuer — Auth adds request-bound proof on top.</p></div>
         <div class="card dark-card"><h3>Kubernetes optional</h3><p>Runs as local processes, on VMs, at the edge, and in CI. SPIFFE/SPIRE is recommended, not required.</p></div>
         <div class="card dark-card"><h3>Caller SDKs</h3><p>Sign proof-bound requests from Go and Node.js (TypeScript); a Python SDK is planned.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="standards">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">Open standards</span>
+        <h2>Built on identity, not in place of it.</h2>
+      </div>
+      <div>
+        <p class="lead">TrustPlane Auth doesn't reinvent identity, and it doesn't want to replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and applies the request-bound, proof-of-possession model the IETF is standardizing through <a class="ext" href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC&nbsp;9449)</a>, the <a class="ext" href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">WIMSE</a> working group, and OAuth Transaction Tokens — pointed at the place that has been ignored: agents and machine systems.</p>
       </div>
     </div>
   </section>

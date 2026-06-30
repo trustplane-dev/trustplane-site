@@ -5,7 +5,7 @@
 
 import { useRef } from "react";
 import { useInView } from "@/components/hooks/useInView";
-import { Store, Globe, Building2, Network, Cpu } from "lucide-react";
+import { Store, Globe, Building2, Network } from "lucide-react";
 
 const useCases = [
   {
@@ -27,11 +27,6 @@ const useCases = [
     icon: Network,
     title: "Internal service-to-service authorization",
     body: "Replace internal API keys with request-level proofs. Every service-to-service call is verifiable, auditable, and replay-protected.",
-  },
-  {
-    icon: Cpu,
-    title: "Priced actions with governed spend",
-    body: "Use the optional Economy extension where a route must authorize spend against the same request-linked trust chain as the core authorization decision.",
   },
 ];
 

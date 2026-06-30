@@ -24,7 +24,6 @@ export default function Navbar() {
     { label: "Why Trustplane", href: "/#why" },
     { label: "Architecture", href: "/architecture" },
     { label: "Provider Boundary", href: "/provider-boundary" },
-    { label: "Economy", href: "/economy" },
     { label: "Security", href: "/security" },
     { label: "Audit", href: "/#audit" },
   ];

@@ -5,7 +5,7 @@
 
 import { useRef } from "react";
 import { useInView } from "@/components/hooks/useInView";
-import { Bot, ArrowLeftRight, Layers, WalletCards } from "lucide-react";
+import { Bot, ArrowLeftRight, Layers } from "lucide-react";
 
 const capabilities = [
   {
@@ -27,13 +27,6 @@ const capabilities = [
     tag: "Provider Boundary",
     title: "Enforce at a provider-owned boundary without rewriting the upstream API.",
     body: "The packaged provider adapter verifies Trustplane decisions, evaluates readiness, and forwards only authorized traffic into existing upstream services.",
-    accent: false,
-  },
-  {
-    icon: WalletCards,
-    tag: "Economy Extension",
-    title: "Add governed spend to priced actions without weakening the auth path.",
-    body: "Economy is optional and route-bound. Trustplane authorizes the request first, then reserves and settles spend against the same request evidence only where enabled.",
     accent: false,
   },
 ];

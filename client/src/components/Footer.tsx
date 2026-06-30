@@ -15,7 +15,6 @@ export default function Footer() {
         { label: "Core Runtime", href: "/#what" },
         { label: "Architecture", href: "/architecture" },
         { label: "Provider Boundary", href: "/provider-boundary" },
-        { label: "Economy", href: "/economy" },
         { label: "Audit & Evidence", href: "/#audit" },
       ],
     },
@@ -25,7 +24,6 @@ export default function Footer() {
         { label: "Documentation", href: "https://docs.auth.trustplane.dev" },
         { label: "Architecture", href: "https://docs.auth.trustplane.dev/architecture/overview" },
         { label: "Provider Integration", href: "https://docs.auth.trustplane.dev/deploy/overview" },
-        { label: "Economy Extension", href: "https://docs.auth.trustplane.dev" },
       ],
     },
     {

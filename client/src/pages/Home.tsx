@@ -3,7 +3,7 @@
  * Design: Dark Precision Engineering
  * Sections: Hero, SocialProof, WhyMatters, WhatTrustplaneDoes, CoreCapabilities,
  *           Architecture, HowItWorks, IdentityModel, ProviderOnboarding, UseCases,
- *           AuditEvidence, AdvancedCapabilities, FinalCTA
+ *           AuditEvidence, FinalCTA
  */
 
 import Navbar from "@/components/Navbar";
@@ -19,7 +19,6 @@ import ProviderOnboarding from "@/components/sections/ProviderOnboarding";
 import UseCases from "@/components/sections/UseCases";
 import ComicStrip from "@/components/sections/ComicStrip";
 import AuditEvidence from "@/components/sections/AuditEvidence";
-import AdvancedCapabilities from "@/components/sections/AdvancedCapabilities";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -46,7 +45,6 @@ export default function Home() {
         <UseCases />
         <ComicStrip />
         <AuditEvidence />
-        <AdvancedCapabilities />
         <FinalCTA />
       </main>
       <Footer />

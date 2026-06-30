@@ -76,7 +76,7 @@ export default function FinalCTA() {
               marginBottom: "2.5rem",
             }}
           >
-            Trustplane gives enterprises a control plane, auth plane, provider-owned boundary model, and optional Economy extension without weakening the authorization chain.
+            Trustplane is the open-source control plane and auth plane for request-bound machine authorization, with provider-owned boundary enforcement that never weakens the authorization chain.
           </p>
 
           <div

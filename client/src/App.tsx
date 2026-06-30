@@ -6,7 +6,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ArchitecturePage from "./pages/Architecture";
 import ContactPage from "./pages/Contact";
-import EconomyPage from "./pages/Economy";
 import Home from "./pages/Home";
 import ProviderBoundaryPage from "./pages/ProviderBoundary";
 import SecurityPage from "./pages/Security";
@@ -17,7 +16,6 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/architecture"} component={ArchitecturePage} />
       <Route path={"/provider-boundary"} component={ProviderBoundaryPage} />
-      <Route path={"/economy"} component={EconomyPage} />
       <Route path={"/security"} component={SecurityPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/404"} component={NotFound} />

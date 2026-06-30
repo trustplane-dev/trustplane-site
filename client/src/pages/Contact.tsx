@@ -153,7 +153,6 @@ export default function ContactPage() {
                         <SelectItem value="Architecture review">Architecture review</SelectItem>
                         <SelectItem value="Enterprise deployment">Enterprise deployment</SelectItem>
                         <SelectItem value="Provider integration">Provider integration</SelectItem>
-                        <SelectItem value="Economy extension">Economy extension</SelectItem>
                         <SelectItem value="General inquiry">General inquiry</SelectItem>
                       </SelectContent>
                     </Select>
@@ -206,8 +205,8 @@ export default function ContactPage() {
                 <div style={{ display: "grid", gap: "1rem" }}>
                   {[
                     "Your deployment model: Trustplane SaaS, customer-owned environment, or hybrid.",
-                    "Whether you are authorizing AI agents, service-to-service calls, provider-managed APIs, or priced actions.",
-                    "Whether you need the provider boundary model, the Economy extension, or both.",
+                    "Whether you are authorizing AI agents, service-to-service calls, or provider-managed APIs.",
+                    "Whether you need the provider boundary model, SDK integration, or deployment guidance.",
                   ].map((item) => (
                     <div key={item} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
                       <span

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TrustPlane Control - Govern Machine Access Across Fleets</title>
-<meta name="description" content="TrustPlane Control governs machine access across Auth deployments: enrollment, policy distribution, revocation, fleet visibility, audit, RBAC, managed service, and self-hosted enterprise options.">
+<title>TrustPlane Control — Govern Trust Across Your Fleet</title>
+<meta name="description" content="TrustPlane Control is the governance plane for TrustPlane Auth. Auto-enroll callers, compile and sign policy, distribute it across every Auth deployment, revoke instantly, and audit every decision — multitenant and fleet-wide. Managed or self-hosted.">
 <link rel="canonical" href="https://trustplane.dev/control.html">
-<meta name="keywords" content="machine access control plane, AI agent access governance, authorization control plane, policy distribution, machine access audit, trust anchor enrollment, self hosted authorization control plane">
+<meta name="keywords" content="machine authorization control plane, trust anchor management, signed policy distribution, instant revocation, multitenant authorization, fleet management, evidence audit, RBAC, self-hosted authorization">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="alternate" hreflang="en" href="https://trustplane.dev/control.html">
 <link rel="alternate" hreflang="x-default" href="https://trustplane.dev/control.html">
@@ -18,8 +18,8 @@
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TrustPlane">
-<meta property="og:title" content="TrustPlane Control - Govern Machine Access Across Fleets">
-<meta property="og:description" content="Govern enrollment, policy, revocation, audit, and fleet operations for machine authorization.">
+<meta property="og:title" content="TrustPlane Control — Govern Trust Across Your Fleet">
+<meta property="og:description" content="The governance plane for TrustPlane Auth: enrollment, signed policy distribution, instant revocation, audit — multitenant and fleet-wide. Managed or self-hosted.">
 <meta property="og:url" content="https://trustplane.dev/control.html">
 <meta property="og:image" content="https://trustplane.dev/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -33,71 +33,93 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Control","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes","description":"Governance plane for machine authorization: enrollment, policy distribution, revocation, fleet visibility, audit, RBAC, managed and self-hosted deployment models."}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Control","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes","description":"The governance plane for TrustPlane Auth: enrollment, signed policy distribution, instant revocation, evidence audit, multitenant fleet management. Managed or self-hosted.","offers":{"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"USD"}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"TrustPlane Control","item":"https://trustplane.dev/control.html"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"TrustPlane Control — Governance Plane for Machine Authorization","description":"The governance plane for TrustPlane Auth: enrollment, signed policy distribution, instant revocation, evidence audit, multitenant fleet management.","author":{"@type":"Organization","name":"TrustPlane","url":"https://trustplane.dev"},"publisher":{"@type":"Organization","name":"TrustPlane","url":"https://trustplane.dev"},"about":["enrollment","policy distribution","revocation","audit","multitenant fleet management","RBAC"],"mainEntityOfPage":"https://trustplane.dev/control.html"}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HowTo","name":"Govern machine access with TrustPlane Control","description":"How TrustPlane Control governs enrollment, policy, revocation, and audit across an Auth fleet.","step":[{"@type":"HowToStep","position":1,"name":"Enroll clients","text":"Manage trust anchors and enrollment workflows for machine clients across your fleet."},{"@type":"HowToStep","position":2,"name":"Distribute policy","text":"Compile, sign, and distribute policy bundles across every Auth deployment with freshness guarantees."},{"@type":"HowToStep","position":3,"name":"Revoke instantly","text":"Revoke access and propagate the revocation across the fleet in seconds."},{"@type":"HowToStep","position":4,"name":"Audit decisions","text":"Search and report on authorization decisions with evidence-grade audit records."}]}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"TrustPlane Control — Governance Plane","description":"The governance plane for TrustPlane Auth: enrollment, signed policy distribution, instant revocation, evidence audit, multitenant fleet management.","author":{"@type":"Organization","name":"TrustPlane","url":"https://trustplane.dev"},"publisher":{"@type":"Organization","name":"TrustPlane","url":"https://trustplane.dev"},"mainEntityOfPage":"https://trustplane.dev/control.html"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What does TrustPlane Control add?","acceptedAnswer":{"@type":"Answer","text":"Control adds trust anchor management, enrollment workflows, policy distribution, revocation, fleet visibility, audit search, roles, and enterprise deployment options."}},
 {"@type":"Question","name":"Can teams start with Auth before buying Control?","acceptedAnswer":{"@type":"Answer","text":"Yes. The preview path is designed for teams to start with Auth and add Control when they need fleet governance, policy distribution, revocation, and audit workflows."}},
-{"@type":"Question","name":"Is self-hosted Control available?","acceptedAnswer":{"@type":"Answer","text":"Self-hosted Control is positioned for enterprise teams with sovereignty, compliance, or internal platform requirements."}},
-{"@type":"Question","name":"Does managed Control see our API traffic?","acceptedAnswer":{"@type":"Answer","text":"The intended architecture keeps Auth enforcement in your infrastructure. Control governs policy, enrollment, revocation, and audit operations rather than acting as a per-request data-plane hop."}}
+{"@type":"Question","name":"Is self-hosted Control available?","acceptedAnswer":{"@type":"Answer","text":"Self-hosted Control is positioned for enterprise teams with sovereignty, compliance, or internal platform requirements."}}
 ]}
 </script>
 </head>
 <body>
+
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
-  <nav class="navlinks" aria-label="Primary"><a href="/auth.html">Auth</a><a href="/control.html">Control</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Subscriptions</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a></nav>
-  <div class="nav-actions"><a class="link" href="/pricing.html#contact">Talk to sales</a><a class="btn primary" href="/pricing.html">See subscriptions</a></div>
+  <nav class="navlinks" aria-label="Primary">
+    <a href="/auth.html">Auth</a><a href="/control.html">Control</a><a href="/solutions.html">Solutions</a>
+    <a href="/pricing.html">Pricing</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a><a href="/downloads.html">Downloads</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="ghost-link" href="/pricing.html#contact">Talk to sales</a>
+    <a class="btn btn-primary" href="/pricing.html">See plans <span class="arr">→</span></a>
+  </div>
 </div></header>
 
 <main>
-  <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow">TrustPlane Control</span>
-      <h1>Govern machine access before it becomes another shadow system.</h1>
-      <p class="lead">TrustPlane Control gives security and platform teams the operating layer around Auth: who is trusted, what policy is active, where enforcement is running, what changed, and what must be revoked now.</p>
-      <div class="actions"><a class="btn primary large" href="/pricing.html">Compare subscriptions</a><a class="btn secondary large" href="/pricing.html#contact">Talk to sales</a></div>
-    </div>
-  </section>
 
-  <section>
-    <div class="wrap split">
-      <div class="section-head">
-        <span class="eyebrow">Governance model</span>
-        <h2>The control plane for authorization operations.</h2>
-        <p class="lead">Static credentials turn machine access into a thousand local decisions. Control centralizes the operational work without pulling your data plane out of your environment.</p>
-      </div>
-      <div class="numbered">
-        <div class="item"><div><b>Enroll machine identities.</b><span>Define trust anchors, accepted callers, approval rules, and environment boundaries for agent and service access.</span></div></div>
-        <div class="item"><div><b>Publish signed policy.</b><span>Distribute policy to Auth deployments with versioning, freshness, and operational visibility.</span></div></div>
-        <div class="item"><div><b>Revoke and prove.</b><span>Pull access quickly, track propagation, and keep audit evidence connected to runtime decisions.</span></div></div>
-      </div>
+<section class="phero">
+  <div class="wrap">
+    <span class="kicker">TrustPlane Control · the governance plane</span>
+    <h1>Govern trust across your entire fleet.</h1>
+    <p class="lead">TrustPlane Control is where you decide who's trusted and what they can do, then sign that policy and ship it to every Auth deployment, pull it back in seconds, and prove what happened. It's multitenant and fleet-aware. Run it as a managed service, or host the whole thing yourself.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-lg" href="/pricing.html">See plans <span class="arr">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="/pricing.html#contact">Talk to sales</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band">
-    <div class="wrap">
-      <div class="section-head center"><span class="eyebrow">Capabilities</span><h2>What enterprise teams expect from the control plane.</h2></div>
-      <div class="grid-3">
-        <div class="card"><div class="meta">Enrollment</div><h3>Trust anchors and caller onboarding</h3><p>Register machine clients, services, and agent runtimes through governed enrollment instead of ad hoc secret sharing.</p></div>
-        <div class="card"><div class="meta">Policy</div><h3>Versioned policy releases</h3><p>Promote, roll back, and distribute policy bundles across environments and Auth fleets with clear operational state.</p></div>
-        <div class="card"><div class="meta">Revocation</div><h3>Fast access removal</h3><p>Disable a caller, key material, policy path, or trust anchor and track where that change has landed.</p></div>
-        <div class="card"><div class="meta">Audit</div><h3>Evidence-ready records</h3><p>Search authorization decisions and control-plane actions for reviews, customer assurance, and incident response.</p></div>
-        <div class="card"><div class="meta">RBAC</div><h3>Operator roles and separation</h3><p>Give platform, security, and application teams scoped control over environments and policies.</p></div>
-        <div class="card"><div class="meta">Fleet</div><h3>Multi-environment visibility</h3><p>Track Auth deployments, active policy versions, runtime health, and authorization activity across teams.</p></div>
-      </div>
+<!-- the lifecycle -->
+<section>
+  <div class="wrap">
+    <div class="shead"><span class="kicker">The trust lifecycle</span><h2>From enrollment to enforcement, in one place.</h2></div>
+    <div class="steps">
+      <div class="st"><div class="num">01</div><h3>Enroll</h3><p>Callers enroll through trust anchors. Approvals can be automatic for matching identities, or held for review.</p></div>
+      <div class="st"><div class="num">02</div><h3>Compile &amp; sign</h3><p>Control compiles your policy into a signed bundle the Auth runtime can verify cryptographically.</p></div>
+      <div class="st"><div class="num">03</div><h3>Distribute</h3><p>Signed policy propagates to every Auth deployment in the fleet, with freshness tracking.</p></div>
+      <div class="st"><div class="num">04</div><h3>Revoke &amp; audit</h3><p>Revoke a key or anchor and watch it land across the fleet. Every decision is recorded as evidence.</p></div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- capabilities -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="shead"><span class="kicker">Capabilities</span><h2>Enterprise governance, built in.</h2></div>
+    <div class="cols-3">
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/></svg></div><h3>Trust anchors &amp; enrollment</h3><p>Define the identities you trust and how new callers enroll, with auto-approval policies for matching subjects.</p></div>
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Signed policy distribution</h3><p>Compile, sign and ship policy bundles across the fleet, with version history and freshness guarantees.</p></div>
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 6 6 18M6 6l12 12"/></svg></div><h3>Instant revocation</h3><p>Revoke a client, key, or anchor and propagate the change to every Auth deployment in seconds.</p></div>
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></div><h3>Multitenant &amp; fleets</h3><p>Isolate tenants and environments; manage many Auth fleets and sites from a single control plane.</p></div>
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>Evidence-grade audit</h3><p>Search and export per-request decisions and control-plane actions: who approved, revoked, and published what.</p></div>
+      <div class="card is-control"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Roles &amp; access (RBAC)</h3><p>Platform and tenant roles, scoped permissions, and least-privilege controls for your team.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- deployment -->
+<section>
+  <div class="wrap twocol">
+    <div>
+      <span class="kicker">Deployment</span>
+      <h2 style="margin-top:14px">Managed, or run it yourself.</h2>
+      <p class="lead">Most teams start on the managed service and never look back. When your security or compliance posture needs it, the same control plane runs entirely inside your own environment.</p>
+    </div>
+    <div class="bullets">
+      <div class="bullet"><b>Managed service (default)</b><p>We run Control; you manage policy. The data plane, your Auth deployments themselves, never leaves your infrastructure.</p></div>
+      <div class="bullet"><b>Self-hosted (enterprise)</b><p>Run the full control plane in your own environment for maximum sovereignty and compliance alignment.</p></div>
+      <div class="bullet"><b>Your data plane never leaves</b><p>Regardless of where Control runs, requests are verified locally by Auth, in your infrastructure.</p></div>
+    </div>
+  </div>
+</section>
 
   <section>
     <div class="wrap">
@@ -116,40 +138,30 @@
     </div>
   </section>
 
-  <section class="dark-band">
-    <div class="wrap split">
-      <div class="section-head">
-        <span class="eyebrow">Deployment</span>
-        <h2>Managed for speed. Self-hosted for control.</h2>
-        <p class="lead">Most teams should start with managed Control and keep Auth enforcement inside their infrastructure. Enterprise teams with sovereignty or compliance needs can use a self-hosted Control deployment path.</p>
-      </div>
-      <div class="grid-2">
-        <div class="card dark-card"><div class="meta">Managed</div><h3>Control as a service</h3><p>Faster onboarding, less operational burden, and the same local enforcement posture for Auth deployments.</p></div>
-        <div class="card dark-card"><div class="meta">Enterprise</div><h3>Self-hosted Control</h3><p>Run the governance plane in your own environment for procurement, sovereignty, or internal platform requirements.</p></div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Control questions.</h2></div>
-      <div class="faq">
-        <details open><summary>What does TrustPlane Control add?</summary><p>Control adds trust anchor management, enrollment workflows, policy distribution, revocation, fleet visibility, audit search, roles, and enterprise deployment options.</p></details>
-        <details><summary>Can teams start with Auth before buying Control?</summary><p>Yes. The preview path is designed for teams to start with Auth and add Control when they need fleet governance, policy distribution, revocation, and audit workflows.</p></details>
-        <details><summary>Is self-hosted Control available?</summary><p>Self-hosted Control is positioned for enterprise teams with sovereignty, compliance, or internal platform requirements.</p></details>
-        <details><summary>Does managed Control see our API traffic?</summary><p>The intended architecture keeps Auth enforcement in your infrastructure. Control governs policy, enrollment, revocation, and audit operations rather than acting as a per-request data-plane hop.</p></details>
-      </div>
-    </div>
-  </section>
 </main>
 
-<section class="cta"><div class="wrap"><h2>Bring machine authorization under control.</h2><p class="lead">Review the subscription paths or talk through the Control deployment model that fits your environment.</p><div class="actions"><a class="btn primary large" href="/pricing.html">See subscriptions</a><a class="btn dark large" href="/pricing.html#contact">Contact sales</a></div></div></section>
+<section class="ctaband">
+  <div class="wrap">
+    <span class="kicker" style="justify-content:center">Get started</span>
+    <h2>Govern trust at fleet scale.</h2>
+    <p class="lead">See plans, or talk to us about managed and self-hosted Control.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-lg" href="/pricing.html">See plans <span class="arr">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="/pricing.html#contact">Talk to sales</a>
+    </div>
+  </div>
+</section>
 
-<footer><div class="wrap"><div class="top">
-  <div><a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a><p>Authorization infrastructure for AI agents, machine clients, and service APIs.</p></div>
-  <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/control.html">TrustPlane Control</a><a href="/pricing.html">Subscriptions</a></div>
-  <div><h4>Solutions</h4><a href="/solutions.html">AI agents</a><a href="/solutions.html#mcp">MCP and tools</a><a href="/solutions.html#partners">Partner access</a></div>
-  <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a></div>
-  <div><h4>Company</h4><a href="/pricing.html#contact">Contact</a><a href="/llms.txt">llms.txt</a></div>
-</div><div class="legal"><span>© 2026 TrustPlane</span><span>Govern access across fleets.</span></div></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="top">
+    <div><a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
+      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p></div>
+    <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/control.html">TrustPlane Control</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a></div>
+    <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+    <div><h4>Company</h4><a href="/pricing.html#contact">Contact sales</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
+  </div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
+</div></footer>
+
 </body>
 </html>

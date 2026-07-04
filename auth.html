@@ -3,42 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TrustPlane Auth — Proof-Bound Runtime Authorization for Machine Requests</title>
-<meta name="description" content="TrustPlane Auth is the open-source runtime that verifies short-lived passports and per-request transcript-v1 proof before a request reaches your API. Local enforcement, replay protection, signed policy bundles, and per-decision audit.">
+<title>TrustPlane Auth - Runtime Authorization for Machine Requests</title>
+<meta name="description" content="TrustPlane Auth is the runtime authorization layer for AI agents, machine clients, and service APIs. Enforce locally, verify request intent, and audit every decision.">
 <link rel="canonical" href="https://trustplane.dev/auth.html">
-<meta name="keywords" content="runtime authorization, AI agent authorization runtime, machine request verification, proof bound authorization, transcript-v1, replay protection, signed policy bundle, brownfield adapter, local policy enforcement, SPIFFE, OIDC, DPoP, WIMSE, proof of possession">
+<meta name="keywords" content="runtime authorization, AI agent authorization runtime, machine request verification, service API authorization, MCP server authorization, local policy enforcement">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://trustplane.dev/auth.html">
+<link rel="alternate" hreflang="x-default" href="https://trustplane.dev/auth.html">
+<meta name="author" content="TrustPlane">
+<meta name="article:modified_time" content="2026-06-30">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0B1020">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="TrustPlane Auth">
-<meta property="og:title" content="TrustPlane Auth — Proof-Bound Runtime Authorization for Machine Requests">
-<meta property="og:description" content="Open-source local enforcement for AI agents, machine clients, and service APIs. Verify each request, not a reusable secret.">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane Auth - Runtime Authorization for Machine Requests">
+<meta property="og:description" content="Local authorization enforcement for AI agents, machine clients, and service APIs.">
 <meta property="og:url" content="https://trustplane.dev/auth.html">
 <meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TrustPlane — proof-bound authorization for AI agents and machine systems.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:image:alt" content="TrustPlane — proof-bound authorization for AI agents and APIs">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Auth","applicationCategory":"SecurityApplication","operatingSystem":"Linux, macOS, Kubernetes","isAccessibleForFree":true,"license":"https://opensource.org/license/mit","description":"Open-source runtime that verifies short-lived passports and per-request transcript-v1 proof near protected APIs, enforces route/source policy locally, and records authorization decisions for audit.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Auth","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","description":"Runtime authorization layer that verifies machine requests near protected APIs and records authorization decisions for audit."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"TrustPlane Auth","item":"https://trustplane.dev/auth.html"}]}
 </script>
 </head>
 <body>
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="">TrustPlane</a>
-  <nav class="navlinks" aria-label="Primary"><a href="/auth.html">Auth</a><a href="/solutions.html">Solutions</a><a href="/downloads.html">Get started</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a></nav>
-  <div class="nav-actions"><a class="link" href="https://docs.auth.trustplane.dev">Read the docs</a><a class="btn primary" href="https://github.com/trustplane-dev">View on GitHub</a></div>
+  <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
+  <nav class="navlinks" aria-label="Primary"><a href="/auth.html">Auth</a><a href="/control.html">Control</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Subscriptions</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a></nav>
+  <div class="nav-actions"><a class="link" href="/pricing.html#contact">Talk to sales</a><a class="btn primary" href="/downloads.html">Start building</a></div>
 </div></header>
 
 <main>
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow">TrustPlane Auth</span>
-      <h1>Proof-bound authorization where machine traffic enters.</h1>
-      <p class="lead">TrustPlane Auth runs near your protected APIs, tools, and services. It verifies a short-lived passport plus per-request proof, applies local policy, denies unsafe calls before the upstream runs, and emits decision evidence. Open source, local, and offline — no mandatory phone-home.</p>
-      <div class="actions"><a class="btn primary large" href="https://github.com/trustplane-dev">View on GitHub</a><a class="btn secondary large" href="https://docs.auth.trustplane.dev">Read the docs</a></div>
-      <p style="margin-top:14px;font-size:13px;opacity:.65">Public preview · CLI, Helm chart, container images, and Go/TypeScript SDKs available.</p>
+      <h1>Runtime authorization where machine traffic enters.</h1>
+      <p class="lead">TrustPlane Auth enforces near protected APIs, tools, and services. It verifies machine requests, applies local policy, denies unsafe calls early, and emits decision evidence.</p>
+      <div class="actions"><a class="btn primary large" href="/downloads.html">Get the preview</a><a class="btn secondary large" href="https://docs.auth.trustplane.dev">Read the docs</a></div>
     </div>
   </section>
 
@@ -47,36 +61,51 @@
       <div class="section-head">
         <span class="eyebrow">Runtime job</span>
         <h2>Make the boundary smart enough to say no.</h2>
-        <p class="lead">A machine caller should not get a free pass because it holds a token-shaped string. Auth rebuilds the request transcript and checks identity, audience, request binding, policy, freshness, and replay state before forwarding traffic.</p>
+        <p class="lead">A machine caller should not get a free pass because it has a token-shaped string. Auth evaluates caller, request, policy, freshness, and replay signals before forwarding traffic.</p>
       </div>
-      <pre class="terminal"><span class="dim"># sign one specific call</span>
-$ trustplane sign --method GET --path /orders --audience acme.orders
-<span class="ok">✓ allow</span>  verified · single-use · audited
+      <pre class="terminal"><span class="dim">incoming</span> POST /v1/refunds
+<span class="dim">caller</span> agent.checkout.prod
+<span class="dim">policy</span> payments.refunds.v18
 
-<span class="dim"># replay the same proof?</span>
-<span class="deny">✗ deny</span>  jti_replay
+<span class="info">verify</span> identity, audience, request binding
+<span class="info">check</span> policy, freshness, replay state
+<span class="ok">allow</span> forward upstream with audit context
 
-<span class="dim"># tamper the path after signing?</span>
-<span class="deny">✗ deny</span>  request_binding_mismatch
-
-<span class="dim"># stale or unsigned policy bundle?</span>
-<span class="deny">✗ deny</span>  fail-closed</pre>
+<span class="deny">deny</span> replay, mismatch, stale policy, unknown caller</pre>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <div class="section-head center"><span class="eyebrow">Capabilities</span><h2>What Auth ships today.</h2></div>
+      <div class="section-head center"><span class="eyebrow">Capabilities</span><h2>What Auth handles in the request path.</h2></div>
       <div class="grid-3">
-        <div class="card"><div class="meta">Passports</div><h3>Issue &amp; verify</h3><p>Mint and locally verify a short-lived, audience-scoped, proof-bound passport derived from an existing workload identity.</p></div>
-        <div class="card"><div class="meta">Request binding</div><h3>transcript-v1</h3><p>Bind a passport to <em>this exact request</em> — method, path, body hash, audience, route, and a nonce/time bucket.</p></div>
-        <div class="card"><div class="meta">Replay protection</div><h3>One-time jti</h3><p>Consume each proof once, atomically, with in-memory or Redis-backed shared replay state for multi-replica deployments.</p></div>
-        <div class="card"><div class="meta">Bundle policy</div><h3>Per-route rules + freshness</h3><p>Authorize by route and source with fail-closed staleness handling, all evaluated from a local bundle.</p></div>
-        <div class="card"><div class="meta">Signed bundles</div><h3>Trust you can verify</h3><p>Build, sign, verify, refresh, and remove trust and policy material; production loading rejects unsigned or tampered bundles.</p></div>
-        <div class="card"><div class="meta">Trust anchors</div><h3>Add a client, no redeploy</h3><p>Authorize many issuers and clients per route; add a new client by publishing trust material — the adapter and Deployment do not change.</p></div>
-        <div class="card"><div class="meta">Brownfield adapter</div><h3>In front of an unmodified API</h3><p>A reverse-proxy verifier that returns clear allow / 401 / 403 outcomes before traffic reaches the upstream service.</p></div>
-        <div class="card"><div class="meta">Broker</div><h3>Local issuance, optional SPIFFE</h3><p>A local broker issues request-bound passports and can require SPIFFE/SPIRE attested workload identity on Kubernetes.</p></div>
-        <div class="card"><div class="meta">Audit events</div><h3>Stable decision records</h3><p>A stable JSON record of every allow/deny with caller, route, policy, and reason — useful for review and incidents.</p></div>
+        <div class="card"><div class="meta">Verification</div><h3>Request-aware decisions</h3><p>Evaluate machine requests using caller identity, intended action, target audience, route, method, freshness, and policy context.</p></div>
+        <div class="card"><div class="meta">Replay resistance</div><h3>Stop reused authorization material</h3><p>Detect replay and mismatch conditions before traffic reaches sensitive APIs or tool handlers.</p></div>
+        <div class="card"><div class="meta">Local enforcement</div><h3>No per-request dependency on Control</h3><p>Auth is built to make decisions locally using trusted configuration and policy state distributed to the runtime.</p></div>
+        <div class="card"><div class="meta">Integration</div><h3>Fit existing infrastructure</h3><p>Use gateway, sidecar, service-adjacent, or cluster deployment models rather than rewriting every protected application.</p></div>
+        <div class="card"><div class="meta">Evidence</div><h3>Emit useful audit events</h3><p>Record allow and deny decisions with the policy and caller context operators need during reviews and incidents.</p></div>
+        <div class="card"><div class="meta">Operations</div><h3>Clear failure modes</h3><p>Stable deny reasons help engineering teams debug access without hiding security decisions behind generic 403s.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">How it compares</span>
+        <h2>TrustPlane Auth vs API keys, OAuth, and SPIFFE.</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Approach</th><th>What it proves</th><th>Bound to request?</th><th>Replayable if stolen?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>API key</strong></td><td>Whoever holds the secret</td><td class="n">No</td><td class="n">Yes</td></tr>
+            <tr><td><strong>OAuth client credentials</strong></td><td>Client is authorized</td><td class="n">No</td><td class="n">Yes — until expiry</td></tr>
+            <tr><td><strong>SPIFFE / SPIRE</strong></td><td>Workload identity</td><td class="n">No (identity, not request)</td><td class="y">No (short-lived SVIDs)</td></tr>
+            <tr><td><strong>DPoP (RFC 9449)</strong></td><td>Client proves key possession</td><td class="y">Partially</td><td class="y">No</td></tr>
+            <tr><td><strong>TrustPlane Auth</strong></td><td>One specific request is authorized</td><td class="y">Yes (method/path/body/time)</td><td class="y">No (one-time jti)</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -98,40 +127,29 @@ $ trustplane sign --method GET --path /orders --audience acme.orders
   <section class="dark-band">
     <div class="wrap split">
       <div class="section-head">
-        <span class="eyebrow">Local-first by design</span>
-        <h2>Decisions happen in your infrastructure.</h2>
-        <p class="lead">Auth verifies using local trust material and policy during request handling. It works offline, with no account, database, or hosted bundle source required to run — so sensitive request traffic never has to leave your environment.</p>
-        <div class="actions"><a class="btn primary large" href="https://docs.auth.trustplane.dev">Read the docs</a><a class="btn dark large" href="https://github.com/trustplane-dev">View on GitHub</a></div>
+        <span class="eyebrow">With Control</span>
+        <h2>Auth gets stronger when the fleet is governed.</h2>
+        <p class="lead">Teams can begin with runtime enforcement, then use TrustPlane Control to manage enrollment, policy releases, revocation, audit search, and enterprise operator access across every Auth deployment.</p>
+        <div class="actions"><a class="btn dark large" href="/control.html">See Control</a><a class="btn primary large" href="/pricing.html">Compare subscriptions</a></div>
       </div>
       <div class="grid-2">
-        <div class="card dark-card"><h3>No mandatory phone-home</h3><p>The verifier does not depend on a hosted service at request time; trust and policy are mounted locally.</p></div>
-        <div class="card dark-card"><h3>Works with your identity</h3><p>Use SPIFFE/SPIRE, OIDC/JWT, or a local issuer — Auth adds request-bound proof on top.</p></div>
-        <div class="card dark-card"><h3>Kubernetes optional</h3><p>Runs as local processes, on VMs, at the edge, and in CI. SPIFFE/SPIRE is recommended, not required.</p></div>
-        <div class="card dark-card"><h3>Caller SDKs</h3><p>Sign proof-bound requests from Go and Node.js (TypeScript); a Python SDK is planned.</p></div>
-      </div>
-    </div>
-  </section>
-  <section id="standards">
-    <div class="wrap split">
-      <div class="section-head">
-        <span class="eyebrow">Open standards</span>
-        <h2>Built on identity, not in place of it.</h2>
-      </div>
-      <div>
-        <p class="lead">TrustPlane Auth doesn't reinvent identity, and it doesn't want to replace your IdP. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and applies the request-bound, proof-of-possession model the IETF is standardizing through <a class="ext" href="https://datatracker.ietf.org/doc/html/rfc9449" rel="noopener">DPoP (RFC&nbsp;9449)</a>, the <a class="ext" href="https://datatracker.ietf.org/group/wimse/about/" rel="noopener">WIMSE</a> working group, and OAuth Transaction Tokens — pointed at the place that has been ignored: agents and machine systems.</p>
+        <div class="card dark-card"><h3>Signed policy delivery</h3><p>Publish policy changes to Auth deployments with versioning, freshness, and rollback-friendly operations.</p></div>
+        <div class="card dark-card"><h3>Revocation path</h3><p>Remove compromised or retired machine access without waiting for every service team to redeploy.</p></div>
+        <div class="card dark-card"><h3>Fleet observability</h3><p>See which environments are enforcing, which policy version is active, and where decisions are happening.</p></div>
+        <div class="card dark-card"><h3>Audit workflow</h3><p>Connect runtime decisions back to the governance events that approved, changed, or revoked access.</p></div>
       </div>
     </div>
   </section>
 </main>
 
-<section class="cta"><div class="wrap"><h2>Put proof-bound authorization in front of the next machine workflow.</h2><p class="lead">Clone it from GitHub, follow the quickstart, and verify one real API or tool.</p><div class="actions"><a class="btn primary large" href="https://github.com/trustplane-dev">View on GitHub</a><a class="btn dark large" href="https://docs.auth.trustplane.dev">Open docs</a></div></div></section>
+<section class="cta"><div class="wrap"><h2>Put authorization in front of the next machine workflow.</h2><p class="lead">Start with Auth, then add Control when you need fleet operations and enterprise governance.</p><div class="actions"><a class="btn primary large" href="/downloads.html">See downloads</a><a class="btn dark large" href="https://docs.auth.trustplane.dev">Open docs</a></div></div></section>
 
 <footer><div class="wrap"><div class="top">
-  <div><a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="">TrustPlane</a><p>Open-source authorization infrastructure for AI agents, machine clients, and service APIs.</p></div>
-  <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/solutions.html">Solutions</a><a href="/downloads.html">Get started</a></div>
+  <div><a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a><p>Authorization infrastructure for AI agents, machine clients, and service APIs.</p></div>
+  <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/control.html">TrustPlane Control</a><a href="/pricing.html">Subscriptions</a></div>
   <div><h4>Solutions</h4><a href="/solutions.html">AI agents</a><a href="/solutions.html#mcp">MCP and tools</a><a href="/solutions.html#partners">Partner access</a></div>
-  <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a class="ext" href="https://github.com/trustplane-dev/trustplane-auth-sdk-go">Go SDK</a><a class="ext" href="https://github.com/trustplane-dev/trustplane-auth-sdk-js">TypeScript SDK</a></div>
-  <div><h4>Resources</h4><a href="/llms.txt">llms.txt</a><a href="/sitemap.xml">Sitemap</a></div>
-</div><div class="legal"><span>© 2026 TrustPlane</span><span>Prove the request. Don't present a secret.</span></div></div></footer>
+  <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a></div>
+  <div><h4>Company</h4><a href="/pricing.html#contact">Contact</a><a href="/llms.txt">llms.txt</a></div>
+</div><div class="legal"><span>© 2026 TrustPlane</span><span>Runtime authorization for machine traffic.</span></div></div></footer>
 </body>
 </html>

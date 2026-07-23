@@ -1,0 +1,46 @@
+# TrustPlane
+
+> TrustPlane is an authorization plane for AI agents, machine clients, service APIs, MCP/tool servers, and partner machine access. It helps teams verify machine requests, govern access centrally, enforce locally, revoke quickly, and produce useful authorization evidence.
+
+TrustPlane is designed for security, platform, and product teams that are shipping more automated and agentic workflows but do not want to rely on broad, long-lived machine credentials.
+
+Core positioning:
+- Category: machine authorization, AI agent authorization, MCP authorization, service-to-service authorization, non-human access governance.
+- Product promise: control centrally, enforce locally.
+- Primary problem: static API keys and broad bearer credentials create standing authority for software actors.
+- Primary buyer: security engineering, platform engineering, infrastructure, and teams launching agent or machine-to-machine workflows.
+- Primary adoption path: start with TrustPlane Auth for runtime enforcement; add TrustPlane Control for fleet governance, enrollment, policy distribution, revocation, audit, and enterprise operations.
+
+Product areas:
+- TrustPlane Auth: runtime authorization layer that runs near protected APIs, services, and tool servers. It verifies machine requests, applies policy locally, denies unsafe requests before upstream execution, and emits decision evidence.
+- TrustPlane Control: governance plane for machine access. It manages trust anchors, enrollment, policy releases, fleet state, revocation, audit, operator access, and managed or self-hosted enterprise deployment paths.
+
+What TrustPlane is:
+- Authorization infrastructure for AI agents and machine traffic.
+- A control plane plus runtime pattern for machine access operations.
+- A way to make machine access more verifiable, revocable, and auditable.
+- A product that can fit alongside identity providers, OIDC, SPIFFE, gateways, Kubernetes, service platforms, and MCP/tool servers.
+
+What TrustPlane is not:
+- Not a general human identity provider.
+- Not a service mesh replacement.
+- Not a secrets manager.
+- Not a claim that every enterprise artifact is generally available before the documentation says so.
+
+## Pages
+- [Home](https://trustplane.dev/): category narrative, product overview, Auth and Control split, outcomes, architecture, use cases, FAQ.
+- [TrustPlane Auth](https://trustplane.dev/auth.html): runtime authorization, local enforcement, request-path verification, deployment patterns, audit events.
+- [TrustPlane Control](https://trustplane.dev/control.html): control-plane governance, enrollment, signed policy distribution, revocation, fleet visibility, audit, RBAC, managed and self-hosted deployment paths.
+- [Solutions](https://trustplane.dev/solutions.html): AI agents, MCP and tool servers, service-to-service APIs, partner machine clients, platform standardization, customer assurance.
+- [Subscriptions](https://trustplane.dev/pricing.html): Auth preview, managed Control, enterprise self-hosted Control, buying and evaluation FAQ.
+- [Downloads and Offerings](https://trustplane.dev/downloads.html): docs-first adoption path, Auth preview, GitHub, Control offering paths, proof-of-value guidance.
+- [Documentation](https://docs.auth.trustplane.dev): current product documentation and implementation guidance.
+
+## Common questions this site answers
+- What is AI agent authorization?
+- How should teams govern machine-to-machine access?
+- How can MCP and tool server calls be authorized?
+- What is the difference between TrustPlane Auth and TrustPlane Control?
+- How can teams reduce standing authority for software actors?
+- How can machine authorization be enforced locally while governed centrally?
+- How can teams audit and revoke machine access across a fleet?

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloads — TrustPlane CLI, Helm, Images & SDKs</title>
+<meta name="description" content="Get TrustPlane: the CLI, Helm chart, container images, and SDKs for JavaScript, Python and Go. Install the proof-bound Auth runtime in your own infrastructure and start verifying requests.">
+<link rel="canonical" href="https://trustplane.dev/downloads.html">
+<meta name="keywords" content="TrustPlane download, TrustPlane CLI, TrustPlane Helm chart, TrustPlane SDK, JavaScript Python Go SDK, install authorization runtime">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://trustplane.dev/downloads.html">
+<link rel="alternate" hreflang="x-default" href="https://trustplane.dev/downloads.html">
+<meta name="author" content="TrustPlane">
+<meta name="article:modified_time" content="2026-06-30">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="Downloads — TrustPlane CLI, Helm, Images & SDKs">
+<meta property="og:description" content="Get the CLI, Helm chart, container images and SDKs. Install the proof-bound Auth runtime in your own infrastructure.">
+<meta property="og:url" content="https://trustplane.dev/downloads.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TrustPlane — proof-bound authorization for AI agents and machine systems.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:image:alt" content="TrustPlane — proof-bound authorization for AI agents and APIs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"Downloads","item":"https://trustplane.dev/downloads.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane","applicationCategory":"SecurityApplication","operatingSystem":"Linux, macOS, Kubernetes","isAccessibleForFree":true,"license":"https://opensource.org/license/mit","description":"Open-source, proof-bound authorization runtime for AI agents, machine clients, and service APIs.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"TrustPlane downloads","description":"Available artifacts in the public preview release.","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI","description":"Generate keys, issue and verify passports, sign requests."},{"@type":"ListItem","position":2,"name":"Adapter and broker images","description":"Brownfield reverse-proxy adapter and local broker."},{"@type":"ListItem","position":3,"name":"Helm chart","description":"Packaged chart for Kubernetes deployment."},{"@type":"ListItem","position":4,"name":"SDKs","description":"Go and TypeScript SDKs for signing proof-bound requests."}]}
+</script>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
+  <nav class="navlinks" aria-label="Primary">
+    <a href="./auth.html">Auth</a><a href="./control.html">Control</a><a href="./solutions.html">Solutions</a>
+    <a href="./pricing.html">Pricing</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a><a href="./downloads.html">Downloads</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="ghost-link" href="./pricing.html#contact">Talk to sales</a>
+    <a class="btn btn-primary" href="https://docs.auth.trustplane.dev">Quickstart ↗</a>
+  </div>
+</div></header>
+
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <span class="kicker">Downloads &amp; offerings</span>
+    <h1>Get TrustPlane.</h1>
+    <p class="lead">Install the proof-bound Auth runtime in your own infrastructure, wire up your language with an SDK, and start verifying requests. Everything below is part of the public preview.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-lg" href="https://docs.auth.trustplane.dev">Open the quickstart ↗</a>
+      <a class="btn btn-ghost btn-lg" href="https://github.com/trustplane-dev">View on GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><span class="kicker">Runtime &amp; tooling</span><h2>Run it where your workloads run.</h2></div>
+    <div class="dl">
+      <div class="card">
+        <div class="meta">COMMAND-LINE INTERFACE</div>
+        <h3>TrustPlane CLI <span class="pill">preview</span></h3>
+        <p>Sign proofs, manage trust material, and operate the runtime from your terminal and CI.</p>
+        <div class="copy">curl -fsSL https://downloads.auth.trustplane.dev/install.sh | sh</div>
+      </div>
+      <div class="card">
+        <div class="meta">KUBERNETES</div>
+        <h3>Helm chart <span class="pill">preview</span></h3>
+        <p>Deploy the verifying adapter and broker into your cluster with a single chart.</p>
+        <div class="copy">helm install trustplane-auth \
+  oci://ghcr.io/trustplane-dev/charts/trustplane-auth</div>
+      </div>
+      <div class="card">
+        <div class="meta">CONTAINER IMAGES</div>
+        <h3>Adapter &amp; broker images <span class="pill">preview</span></h3>
+        <p>Published container images for the verifying adapter and broker, ready for any orchestrator.</p>
+        <div class="copy">docker pull ghcr.io/trustplane-dev/adapter:latest</div>
+      </div>
+      <div class="card">
+        <div class="meta">CONFORMANCE</div>
+        <h3>Conformance vectors</h3>
+        <p>Shared test vectors so every SDK and integration verifies proofs identically.</p>
+        <div class="copy">github.com/trustplane-dev · conformance vectors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="wrap">
+    <div class="shead"><span class="kicker">SDKs</span><h2>Build in your language.</h2></div>
+    <div class="cols-3">
+      <div class="card"><div class="meta">JAVASCRIPT / TYPESCRIPT</div><h3>sdk-js <span class="pill">preview</span></h3><p>Sign and send proof-bound requests from Node and the edge.</p><div class="copy">npm install @trustplane/sdk</div></div>
+      <div class="card"><div class="meta">PYTHON</div><h3>sdk-python <span class="pill">preview</span></h3><p>Proof-bound requests for Python services and agents.</p><div class="copy">pip install trustplane</div></div>
+      <div class="card"><div class="meta">GO</div><h3>sdk-go</h3><p>A Go client for proof-bound requests and verification.</p><div class="copy">go get github.com/trustplane-dev/sdk-go</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="ctaband">
+  <div class="wrap">
+    <span class="kicker" style="justify-content:center">Next step</span>
+    <h2>From install to first verified request.</h2>
+    <p class="lead">The quickstart walks you from a fresh install to denying your first replayed proof.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-lg" href="https://docs.auth.trustplane.dev">Open the quickstart ↗</a>
+      <a class="btn btn-ghost btn-lg" href="./control.html">Govern it with Control →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site"><div class="wrap">
+  <div class="top">
+    <div><a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
+      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p></div>
+    <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./solutions.html">Solutions</a><a href="./pricing.html">Pricing</a></div>
+    <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="./downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="./llms.txt">llms.txt</a></div>
+    <div><h4>Company</h4><a href="./pricing.html#contact">Contact sales</a><a href="./solutions.html">Use cases</a><a href="./auth.html#standards">Standards</a></div>
+  </div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
+</div></footer>
+
+</body>
+</html>

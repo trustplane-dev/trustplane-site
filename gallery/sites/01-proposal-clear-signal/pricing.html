@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane Pricing — Free Develop Tier, Control Enterprise $399/mo, Control Edge</title>
+<meta name="description" content="TrustPlane pricing: Develop is free forever. Control Enterprise is $399/month with two Auth Sites included — add sites at $49/month and trust anchor sources at $29/month. Control Edge brings the control plane on-premises.">
+<link rel="canonical" href="https://trustplane.dev/pricing.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane Pricing — Start Free, Scale to Enterprise Governance">
+<meta property="og:description" content="Develop: $0. Control Enterprise: $399/mo with transparent add-ons. Control Edge: the control plane in your environment.">
+<meta property="og:url" content="https://trustplane.dev/pricing.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"TrustPlane","description":"Authorization plane for AI agents, MCP servers, and machine-to-machine traffic. Runtime enforcement in customer infrastructure, governed by a managed or self-hosted control plane.","brand":{"@type":"Brand","name":"TrustPlane"},"offers":[
+{"@type":"Offer","name":"Develop","price":"0","priceCurrency":"USD","description":"Free tier: TrustPlane Auth runtime, CLI, adapter, middleware, and documentation. No credit card required.","url":"https://trustplane.dev/pricing.html"},
+{"@type":"Offer","name":"Control Enterprise","price":"399","priceCurrency":"USD","description":"Managed TrustPlane Control at USD 399 per month. Includes two Auth Sites, each with an included trust anchor source slot. Add-ons: additional Auth Site USD 49 per site per month; additional trust anchor source USD 29 per source per month.","url":"https://trustplane.dev/pricing.html","priceSpecification":{"@type":"UnitPriceSpecification","price":"399","priceCurrency":"USD","unitText":"per month"}},
+{"@type":"Offer","name":"Control Edge","priceCurrency":"USD","description":"Self-hosted TrustPlane Control for on-premises and air-gapped environments with signed offline license artifacts. Custom pricing.","url":"https://trustplane.dev/pricing.html#contact"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://trustplane.dev/pricing.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much does TrustPlane cost?","acceptedAnswer":{"@type":"Answer","text":"TrustPlane Develop is free and includes the full Auth runtime. Control Enterprise is USD 399 per month and includes two Auth Sites, each with an included trust anchor source slot. Additional Auth Sites are USD 49 per site per month and additional trust anchor sources are USD 29 per source per month. Control Edge, the self-hosted control plane, is priced per engagement."}},
+{"@type":"Question","name":"What is an Auth Site?","acceptedAnswer":{"@type":"Answer","text":"An Auth Site is a governed enforcement location: one verified distribution target that receives signed policy and trust material from Control — for example, the boundary in front of one API, cluster, or tool-server environment."}},
+{"@type":"Question","name":"What happens if I cancel Control Enterprise?","acceptedAnswer":{"@type":"Answer","text":"Running enforcement is never disabled. Cancellation blocks new activations, but existing Auth Sites, trust anchors, clients, and policy keep operating. Billing state never enters the authorization hot path."}},
+{"@type":"Question","name":"Can I evaluate TrustPlane without a sales call?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Develop tier is self-serve and free with no time limit. Sales conversations are for Control Enterprise rollout planning, Control Edge, and procurement."}}
+]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="TrustPlane home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2E5BFF"/><path d="M9 17.5 14 22l9-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      TrustPlane
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="./auth.html">Auth</a>
+      <a href="./control.html">Control</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="https://docs.auth.trustplane.dev">Docs</a>
+      <a href="https://github.com/trustplane-dev">GitHub</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="link" href="#contact">Talk to an engineer</a>
+      <a class="btn primary" href="https://docs.auth.trustplane.dev">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero center">
+    <div class="wrap narrow">
+      <span class="eyebrow">Pricing</span>
+      <h1>Priced like infrastructure, not like fear.</h1>
+      <p class="lead">Enforcement is free — it runs in your infrastructure and it should never be a meter. You pay for governance: the control plane that makes a fleet of machine identities operable. Numbers below, no “request a quote” games.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap plans">
+      <article class="card plan">
+        <div class="meta">Start here</div>
+        <h3>Develop</h3>
+        <div class="price">$0</div>
+        <div class="per">free, no card, no time limit</div>
+        <p>For engineers putting the first authorization boundary in front of an API, service, or MCP server.</p>
+        <ul>
+          <li>Full TrustPlane Auth runtime</li>
+          <li>Brownfield HTTP adapter and Go middleware</li>
+          <li>Local issuer, verifier, and CLI</li>
+          <li>Signed local trust bundles, replay protection</li>
+          <li>Decision events with clear deny reasons</li>
+          <li>Docs and community support</li>
+        </ul>
+        <a class="btn ghost" href="https://docs.auth.trustplane.dev">Start building</a>
+      </article>
+
+      <article class="card plan featured">
+        <div class="meta">Managed control plane</div>
+        <h3>Control Enterprise</h3>
+        <div class="price">$399<span> / month</span></div>
+        <div class="per">includes 2 Auth Sites, each with a trust anchor source slot</div>
+        <p>For teams running machine access as an operation: enrollment, signed policy releases, revocation, audit.</p>
+        <ul>
+          <li>Everything in Develop</li>
+          <li>Managed TrustPlane Control tenant</li>
+          <li>2 Auth Sites included; add more for $49/site/mo</li>
+          <li>Included trust anchor source per site; extras $29/source/mo</li>
+          <li>Signed policy distribution and revocation workflows</li>
+          <li>Fleet visibility, audit trail, operator roles, environments</li>
+          <li>Subscription managed through secure checkout; cancel anytime — running enforcement is never switched off</li>
+        </ul>
+        <a class="btn primary" href="#contact">Get Control Enterprise</a>
+      </article>
+
+      <article class="card plan">
+        <div class="meta">Self-hosted control plane</div>
+        <h3>Control Edge</h3>
+        <div class="price">Talk to us</div>
+        <div class="per">annual engagement, sized to your environment</div>
+        <p>For organizations that need the control plane inside their own boundary — sovereignty, regulation, or air gap.</p>
+        <ul>
+          <li>Everything in Control Enterprise, self-hosted</li>
+          <li>Runs in your cloud, data center, or air-gapped site</li>
+          <li>Signed offline license artifacts (Ed25519), grace windows</li>
+          <li>Offline verification — no call-home requirement</li>
+          <li>Deployment design, migration, and upgrade support</li>
+          <li>Security review, procurement, and legal support</li>
+        </ul>
+        <a class="btn ghost" href="#contact">Talk to us</a>
+      </article>
+    </div>
+    <div class="wrap">
+      <p class="price-note">Prices in USD. Control Enterprise is a monthly subscription with add-on quantities you can change as the fleet grows. Each purchased Auth Site carries its first trust anchor source slot; additional automated sources at a site use add-on capacity allocated to that exact site. Manual client onboarding and source key rotation never consume add-on capacity.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head center"><span class="eyebrow">Add-ons</span><h2>Two add-ons. That's the whole catalog.</h2></div>
+      <div class="table-wrap" style="max-width:760px;margin:0 auto">
+        <table>
+          <thead><tr><th>Add-on</th><th>What it buys</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td><b>Auth Site</b></td><td>One more governed enforcement location, with its first trust anchor source slot included</td><td>$49 / site / month</td></tr>
+            <tr><td><b>Trust anchor source</b></td><td>One more automated trust anchor source at a specific Auth Site</td><td>$29 / source / month</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note" style="text-align:center;max-width:640px;margin:20px auto 0">A worked example: base plan (2 sites) + 3 extra sites + 2 extra sources = $399 + $147 + $58 = <b>$604/month</b>, governing five enforcement locations.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="eyebrow">Compare</span><h2>What changes as you scale.</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Capability</th><th>Develop</th><th>Control Enterprise</th><th>Control Edge</th></tr></thead>
+          <tbody>
+            <tr><td>Runtime enforcement in your infrastructure</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Passport verification, replay protection, deny reasons</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Trust anchors &amp; enrollment workflows</td><td class="dim">Manual, file-based</td><td class="yes">Managed</td><td class="yes">Self-hosted</td></tr>
+            <tr><td>Signed policy distribution to Auth Sites</td><td class="dim">Manual, file-based</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Central revocation</td><td class="dim">Manual</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Fleet visibility &amp; audit</td><td class="dim">Local events only</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Operator roles, SSO/SCIM foundation, environments</td><td class="dim">—</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+            <tr><td>Control plane location</td><td class="dim">—</td><td>Managed by us</td><td>Your environment, incl. air gap</td></tr>
+            <tr><td>Licensing</td><td class="dim">Free</td><td>Monthly subscription</td><td>Signed offline license, grace windows</td></tr>
+            <tr><td>Procurement, security review, support commitments</td><td class="dim">Community</td><td>Standard</td><td>Custom MSA &amp; SLAs</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">The fine print, up front</span>
+        <h2>What cancellation actually does.</h2>
+      </div>
+      <div>
+        <div class="promise"><b>Your enforcement is not a hostage.</b><p>If a subscription lapses or you cancel, existing Auth Sites, trust anchors, clients, and policy keep running exactly as configured. Billing state can block <em>new</em> activations — it never revokes running access.</p></div>
+        <div class="promise"><b>Prices are boring on purpose.</b><p>Flat base, two add-ons, no per-request meter. Authorization decisions happen in your infrastructure, so charging you per decision would be charging you for your own CPU.</p></div>
+        <div class="promise"><b>Grandfathering is the default.</b><p>If packaging changes under you, existing capacity is grandfathered. Reconciliation happens on your schedule, not by surprise.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Buying questions, answered plainly.</h2></div>
+      <div class="faq">
+        <details open><summary>What exactly is an Auth Site?</summary><p>One governed enforcement location: a verified distribution target that receives signed policy and trust material from Control. Think “the boundary in front of this API in this environment.” You can run Auth in as many places as you like on Develop; Auth Sites are the ones Control governs for you.</p></details>
+        <details><summary>Why is the runtime free?</summary><p>Because the runtime in your infrastructure is the part you should never be locked out of. The control plane — enrollment, policy releases, revocation, audit, roles — is the operational product, and that's what Enterprise pays for.</p></details>
+        <details><summary>Can we start on Develop and move to Enterprise later?</summary><p>Yes, that's the intended path. Auth deployments you already run become governed Auth Sites when you connect Control. Nothing gets reinstalled.</p></details>
+        <details><summary>How does Control Edge licensing work offline?</summary><p>Edge licenses are signed artifacts (Ed25519) your deployment verifies locally — including fully offline. Licenses carry validity windows and explicit grace policy, so a renewal conversation never becomes an outage.</p></details>
+        <details><summary>Do you offer annual billing or discounts?</summary><p>Control Enterprise is monthly by default. Annual terms, volume, and design-partner arrangements are conversations we're happy to have: <a href="mailto:hello@trustplane.dev">hello@trustplane.dev</a>.</p></details>
+        <details><summary>Who should be in the buying conversation?</summary><p>Usually security engineering, platform engineering, and whoever owns the agent or machine workflows. For Edge, bring compliance and procurement in early — we're comfortable with security questionnaires and legal review.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cta" id="contact">
+      <h2>Scope your rollout with an engineer.</h2>
+      <p class="lead">Tell us about your agents, services, environments, and what your auditors ask for. You'll get an architecture opinion, not a discovery-call script.</p>
+      <div class="actions">
+        <a class="btn primary large" href="mailto:hello@trustplane.dev?subject=TrustPlane%20Control%20Enterprise">Email hello@trustplane.dev</a>
+        <a class="btn ghost large" href="https://docs.auth.trustplane.dev">Or just start free</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="./index.html"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2E5BFF"/><path d="M9 17.5 14 22l9-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>TrustPlane</a>
+        <p>Authorization infrastructure for AI agents, machine clients, and service APIs. A Mergematter Labs product.</p>
+      </div>
+      <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./pricing.html">Pricing</a></div>
+      <div><h4>Use cases</h4><a href="./index.html#use-cases">AI agents</a><a href="./auth.html">MCP &amp; tools</a><a href="./control.html">Partner access</a></div>
+      <div><h4>Developers</h4><a href="https://docs.auth.trustplane.dev">Documentation</a><a href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+      <div><h4>Company</h4><a href="https://mergematter.io">Mergematter Labs</a><a href="mailto:hello@trustplane.dev">Contact</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Mergematter Labs · TrustPlane</span><span>Control centrally. Enforce locally.</span></div>
+  </div>
+</footer>
+</body>
+</html>

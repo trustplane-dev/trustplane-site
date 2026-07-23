@@ -1,0 +1,26 @@
+name: Site CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate published files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          test -f CNAME
+          test "$(cat CNAME)" = "trustplane.dev"
+          test ! -f research.txt
+          test ! -f "Open-Source Auth Landing-Page Research for trustplane.dev.pdf"
+      - name: Scan for local/private references
+        run: |
+          ! grep -RInE '/Users/|MergeMatter|medham|research\.txt|Open-Source Auth Landing' \
+            --exclude-dir=.git \
+            --exclude='ci.yml' \
+            .

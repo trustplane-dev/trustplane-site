@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane — Site Gallery &amp; Design Review</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{
+  --bg:#0c0f16;--bg2:#11151f;--panel:#151b28;--panel2:#1a2130;--line:#242d3f;--line2:#2f3a52;
+  --text:#e7ecf3;--muted:#98a4b8;--dim:#6a7688;
+  --accent:#4d7cff;--green:#28d09a;--amber:#ecb44a;--pink:#e879f9;
+  --sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+header.top{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0e1220,rgba(14,18,32,0))}
+.top .wrap{padding:38px 28px 30px}
+.brand{display:flex;align-items:center;gap:11px;font:700 1.05rem var(--sans);letter-spacing:-.01em}
+.brand svg{flex:none}
+h1{font-size:clamp(1.8rem,3.4vw,2.5rem);letter-spacing:-.025em;margin:22px 0 10px;font-weight:700}
+.sub{color:var(--muted);max-width:60em;font-size:1.02rem}
+.meturow{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{font:600 .72rem var(--mono);letter-spacing:.03em;padding:7px 12px;border:1px solid var(--line2);border-radius:99px;color:var(--muted);background:var(--panel)}
+.chip b{color:var(--text)}
+main{padding:20px 0 80px}
+.sec{margin-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:14px;padding:0 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.sec-head h2{font-size:1.15rem;letter-spacing:-.01em;font-weight:700}
+.sec-head span{font:500 .8rem var(--mono);color:var(--dim)}
+.sec-head p{width:100%;color:var(--muted);font-size:.92rem;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .14s,border-color .14s,box-shadow .14s}
+.card:hover{transform:translateY(-4px);border-color:var(--line2);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--bg2);border-bottom:1px solid var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.num{position:absolute;top:10px;left:10px;font:700 .72rem var(--mono);background:rgba(6,9,15,.8);border:1px solid var(--line2);color:var(--text);padding:4px 8px;border-radius:7px;backdrop-filter:blur(4px)}
+.tags{position:absolute;top:10px;right:10px;display:flex;gap:6px}
+.tag{font:600 .62rem var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:4px 7px;border-radius:6px;backdrop-filter:blur(4px)}
+.tag.static{background:rgba(40,208,154,.16);color:#7ff0cf;border:1px solid rgba(40,208,154,.3)}
+.tag.spa{background:rgba(77,124,255,.16);color:#a9c1ff;border:1px solid rgba(77,124,255,.3)}
+.tag.app{background:rgba(232,180,74,.16);color:#f4d18c;border:1px solid rgba(232,180,74,.3)}
+.tag.new{background:rgba(232,121,249,.16);color:#f0b6fb;border:1px solid rgba(232,121,249,.3)}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.body h3{font-size:1.02rem;letter-spacing:-.01em;font-weight:650}
+.body .src{font:500 .72rem var(--mono);color:var(--dim);word-break:break-all}
+.body p{color:var(--muted);font-size:.88rem;flex:1}
+.body .foot{display:flex;gap:10px;align-items:center;margin-top:4px}
+.btn{font:600 .82rem var(--sans);padding:8px 14px;border-radius:8px;background:var(--accent);color:#fff;transition:background .14s}
+.btn:hover{background:#3d6cf0}
+.btn.ghost{background:transparent;border:1px solid var(--line2);color:var(--muted)}
+.btn.ghost:hover{color:var(--text);border-color:var(--text)}
+.altlinks{font:500 .74rem var(--mono);color:var(--dim)}
+.altlinks a{color:var(--accent)}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:.85rem;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="8" fill="#4d7cff"/><path d="M9 17.5 14 22l9-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      TrustPlane · Site Gallery
+    </div>
+    <h1>Every site, one board.</h1>
+    <p class="sub">A live, click-through catalog of every TrustPlane marketing/site build we have — across all <code>trustplane-site</code> branches and the standalone experiments in the monorepo. Built for stakeholder review: open any tile to walk the actual pages. Each thumbnail is a real render of that build's home page.</p>
+    <div class="meturow">
+      <span class="chip"><b>14</b> builds</span>
+      <span class="chip"><b>3</b> new proposals</span>
+      <span class="chip"><b>6</b> repo branches</span>
+      <span class="chip"><b>5</b> standalone builds</span>
+      <span class="chip">rendered <b>2026-07-23</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- SECTION 1 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2>New enterprise proposals</h2><span>this session · feature/enterprise-redesign-proposals</span>
+        <p>Three fresh directions, same substance: Auth + Control narrative, the three subscriptions with real Dodo pricing, full SEO/GEO structured data. These are the recommended starting points for the enterprise redesign.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <a class="shot" href="./sites/01-proposal-clear-signal/index.html"><span class="num">01</span><span class="tags"><span class="tag new">new</span><span class="tag static">static</span></span><img src="./thumbs/01-proposal-clear-signal.png" alt="Clear Signal"></a>
+          <div class="body"><h3>Clear Signal</h3><div class="src">proposals/v1-clear-signal</div><p>Warm light editorial, practitioner-first. Tailscale × Stripe calm. “Software has hands now.”</p>
+            <div class="foot"><a class="btn" href="./sites/01-proposal-clear-signal/index.html">Open ↗</a><a class="btn ghost" href="./sites/01-proposal-clear-signal/pricing.html">Pricing</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/02-proposal-command-plane/index.html"><span class="num">02</span><span class="tags"><span class="tag new">new</span><span class="tag static">static</span></span><img src="./thumbs/02-proposal-command-plane.png" alt="Command Plane"></a>
+          <div class="body"><h3>Command Plane</h3><div class="src">proposals/v2-command-plane</div><p>Dark instrument-panel authority. Live decision stream, ALWAYS/NEVER runtime contract. Linear × Cloudflare.</p>
+            <div class="foot"><a class="btn" href="./sites/02-proposal-command-plane/index.html">Open ↗</a><a class="btn ghost" href="./sites/02-proposal-command-plane/pricing.html">Pricing</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/03-proposal-ledger/index.html"><span class="num">03</span><span class="tags"><span class="tag new">new</span><span class="tag static">static</span></span><img src="./thumbs/03-proposal-ledger.png" alt="The Ledger"></a>
+          <div class="body"><h3>The Ledger</h3><div class="src">proposals/v3-ledger</div><p>Ivory broadsheet serif, board-room gravitas. Ledger-register hero, numbered covenants. Stripe × print.</p>
+            <div class="foot"><a class="btn" href="./sites/03-proposal-ledger/index.html">Open ↗</a><a class="btn ghost" href="./sites/03-proposal-ledger/pricing.html">Pricing</a></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2>Redesign branches — static multi-page</h2><span>trustplane-site · redesign/*</span>
+        <p>The earlier hand-authored static site rewrites. Each is a full multi-page site (index, auth, control, solutions, pricing, downloads). Close visual siblings — the differences are in voice, structure, and GTM angle.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <a class="shot" href="./sites/04-auth-control-site/index.html"><span class="num">04</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/04-auth-control-site.png" alt="auth-control-site"></a>
+          <div class="body"><h3>Auth + Control site</h3><div class="src">redesign/auth-control-site · b15a06c</div><p>The base “Site rewrite”: Auth+Control narrative, multi-page enterprise site with SEO/GEO.</p>
+            <div class="foot"><a class="btn" href="./sites/04-auth-control-site/index.html">Open ↗</a><a class="btn ghost" href="./sites/04-auth-control-site/pricing.html">Pricing</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/05-auth-control-humanised/index.html"><span class="num">05</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/05-auth-control-humanised.png" alt="auth-control-humanised"></a>
+          <div class="body"><h3>Auth + Control, humanised</h3><div class="src">redesign/auth-control-humanised · c97f825</div><p>Same design, humanising copy pass: warmer voice, honest pricing/FAQ, real standards links, less symmetry.</p>
+            <div class="foot"><a class="btn" href="./sites/05-auth-control-humanised/index.html">Open ↗</a><a class="btn ghost" href="./sites/05-auth-control-humanised/pricing.html">Pricing</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/06-enterprise-gtm-site/index.html"><span class="num">06</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/06-enterprise-gtm-site.png" alt="enterprise-gtm-site"></a>
+          <div class="body"><h3>Enterprise GTM</h3><div class="src">redesign/enterprise-gtm-site · fc0db89</div><p>Enterprise go-to-market redesign. “Let every machine request prove itself.” Tighter sales framing.</p>
+            <div class="foot"><a class="btn" href="./sites/06-enterprise-gtm-site/index.html">Open ↗</a><a class="btn ghost" href="./sites/06-enterprise-gtm-site/pricing.html">Pricing</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/07-opensource-geo/index.html"><span class="num">07</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/07-opensource-geo.png" alt="opensource-geo"></a>
+          <div class="body"><h3>Open-source / GEO</h3><div class="src">redesign/opensource-geo · e13c33f</div><p>Newest static branch (Jul 4). Adopts humanised HTML + merged CSS, leans into the open-source positioning.</p>
+            <div class="foot"><a class="btn" href="./sites/07-opensource-geo/index.html">Open ↗</a><a class="btn ghost" href="./sites/07-opensource-geo/pricing.html">Pricing</a></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2>React SPA builds</h2><span>Vite + wouter · rebuilt for this gallery</span>
+        <p>Single-page React apps. Built here with relative asset paths and hash routing so every page is reachable inside the gallery. Same lineage — a dark “powered by cryptographic proof” system. Note these deep-link to <code>#/architecture</code>, <code>#/security</code> etc.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <a class="shot" href="./sites/08-main-spa-current/index.html"><span class="num">08</span><span class="tags"><span class="tag app">production</span><span class="tag spa">react spa</span></span><img src="./thumbs/08-main-spa-current.png" alt="main SPA"></a>
+          <div class="body"><h3>Main — current production</h3><div class="src">trustplane-site@main · 63bac93</div><p>What <code>main</code> ships today: Vite React SPA migrated to GitHub Pages, GitHub-CTA (open-source) funnel.</p>
+            <div class="foot"><a class="btn" href="./sites/08-main-spa-current/index.html">Open ↗</a><a class="btn ghost" href="./sites/08-main-spa-current/index.html#/architecture">Architecture</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/09-enterprise-full-spa/index.html"><span class="num">09</span><span class="tags"><span class="tag spa">react spa</span></span><img src="./thumbs/09-enterprise-full-spa.png" alt="enterprise-full SPA"></a>
+          <div class="body"><h3>Enterprise full (SPA variant)</h3><div class="src">variant/enterprise-full · 94f70a0</div><p>The fuller enterprise SPA variant — extra sections and a contact funnel over the same React system.</p>
+            <div class="foot"><a class="btn" href="./sites/09-enterprise-full-spa/index.html">Open ↗</a><a class="btn ghost" href="./sites/09-enterprise-full-spa/index.html#/security">Security</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/12-mergematter-monorepo/index.html"><span class="num">12</span><span class="tags"><span class="tag app">company</span><span class="tag spa">react spa</span></span><img src="./thumbs/12-mergematter-monorepo.png" alt="mergematter monorepo site"></a>
+          <div class="body"><h3>Mergematter monorepo site</h3><div class="src">trustplane/marketing-site (dist)</div><p>The company/product marketing SPA from the main monorepo — the mergematter.io / trustplane.mergematter.io lineage, incl. an economy &amp; contact page.</p>
+            <div class="foot"><a class="btn" href="./sites/12-mergematter-monorepo/index.html">Open ↗</a><a class="btn ghost" href="./sites/12-mergematter-monorepo/index.html#/economy">Economy</a></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2>Standalone experiments &amp; console UI</h2><span>ppp/ folders (not in trustplane-site)</span>
+        <p>Separate site/theme experiments and the console (product app) redesign. Included so stakeholders can see the full breadth of what's been explored.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <a class="shot" href="./sites/10-site-v2/index.html"><span class="num">10</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/10-site-v2.png" alt="site v2"></a>
+          <div class="body"><h3>Site v2</h3><div class="src">ppp/trustplane-site-v2</div><p>A single-page static concept with its own styles — an earlier standalone take on the landing page.</p>
+            <div class="foot"><a class="btn" href="./sites/10-site-v2/index.html">Open ↗</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/11-dev-oss-landing/index.html"><span class="num">11</span><span class="tags"><span class="tag static">static</span></span><img src="./thumbs/11-dev-oss-landing.png" alt="dev oss landing"></a>
+          <div class="body"><h3>Open-source landing</h3><div class="src">ppp/trustplane-dev-oss-site</div><p>“Open-source trust for APIs and machine identity.” The OSS-angle landing page + research artifact.</p>
+            <div class="foot"><a class="btn" href="./sites/11-dev-oss-landing/index.html">Open ↗</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/13-theme-sample/index.html"><span class="num">13</span><span class="tags"><span class="tag app">console</span><span class="tag spa">react</span></span><img src="./thumbs/13-theme-sample.png" alt="theme sample"></a>
+          <div class="body"><h3>Theme sample (Auth Sites)</h3><div class="src">ppp/trustplane-theme-sample (dist)</div><p>A console theme sample — the Auth Sites management screen, showing the product UI direction &amp; design tokens.</p>
+            <div class="foot"><a class="btn" href="./sites/13-theme-sample/index.html">Open ↗</a></div></div>
+        </article>
+        <article class="card">
+          <a class="shot" href="./sites/14-console-redesign/index.html"><span class="num">14</span><span class="tags"><span class="tag app">console</span><span class="tag static">static</span></span><img src="./thumbs/14-console-redesign.png" alt="console redesign"></a>
+          <div class="body"><h3>Console redesign</h3><div class="src">ppp/trustplane-console-redesign</div><p>Product dashboard redesign — live decision stream &amp; trust anchors. Four variants to compare.</p>
+            <div class="foot"><a class="btn" href="./sites/14-console-redesign/index.html">A</a><a class="btn ghost" href="./sites/14-console-redesign/index-b.html">B</a><a class="btn ghost" href="./sites/14-console-redesign/index-c.html">C</a><a class="btn ghost" href="./sites/14-console-redesign/index-d.html">D</a></div></div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>TrustPlane site gallery · rendered 2026-07-23 · Mergematter Labs</span>
+    <span>Thumbnails are live renders. Open any tile to click through the real build.</span>
+  </div>
+</footer>
+</body>
+</html>

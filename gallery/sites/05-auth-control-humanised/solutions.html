@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solutions — Authorize AI Agents, M2M APIs & Machine Access | TrustPlane</title>
+<meta name="description" content="Use cases for TrustPlane: authorizing AI agents calling APIs and tools, service-to-service authorization, provider-managed APIs for machine clients, cross-organization machine access, and MCP authorization.">
+<link rel="canonical" href="https://trustplane.dev/solutions.html">
+<meta name="keywords" content="AI agent authorization, MCP authorization, machine-to-machine authorization, service-to-service authentication, provider-managed API security, cross-organization machine access, non-human identity">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="Solutions — Authorize AI Agents, M2M APIs & Machine Access | TrustPlane">
+<meta property="og:description" content="Where proof-bound authorization fits: AI agents, service-to-service, provider-managed APIs, cross-org machine access, MCP.">
+<meta property="og:url" content="https://trustplane.dev/solutions.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="">TrustPlane</a>
+  <nav class="navlinks" aria-label="Primary">
+    <a href="./auth.html">Auth</a><a href="./control.html">Control</a><a href="./solutions.html">Solutions</a>
+    <a href="./pricing.html">Pricing</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a><a href="./downloads.html">Downloads</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="ghost-link" href="./pricing.html#contact">Talk to sales</a>
+    <a class="btn btn-primary" href="./downloads.html">Get started <span class="arr">→</span></a>
+  </div>
+</div></header>
+
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <span class="kicker">Solutions</span>
+    <h1>Wherever machines call machines.</h1>
+    <p class="lead">TrustPlane checks a proof on every machine request, so each agent call, service call, and partner integration is verifiable, replay-safe, and logged. Here's where teams tend to reach for it first.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="feat">
+      <div class="ftext">
+        <span class="kicker">AI agents</span>
+        <h3>Authorize AI agents calling APIs and tools</h3>
+        <p>Autonomous agents are easy to trick and easy to over-permission. Instead of handing an agent a standing token, TrustPlane binds a proof to each call's parameters. A hijacked, prompt-injected, or replayed call fails verification, and every action is authorized and audited individually.</p>
+      </div>
+      <div class="fvis"><pre class="term"><span class="cm"># agent attempts a call it wasn't authorized for</span>
+agent → <span class="cy">verify</span> → tool API
+<span class="no">✗ deny</span>   request_binding_mismatch
+<span class="cm"># only the exact authorized call proceeds</span>
+<span class="ok">✓ allow</span>  single-use · audited</pre></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="ftext">
+        <span class="kicker">Service-to-service</span>
+        <h3>Replace internal API keys with request proofs</h3>
+        <p>Shared internal keys sprawl across services, logs, and config. TrustPlane lets every service-to-service call carry a request-level proof derived from existing workload identity, so it's verifiable, auditable, and replay-protected, with no secret to rotate.</p>
+      </div>
+      <div class="fvis"><pre class="term"><span class="cm"># from SPIFFE/OIDC identity, per call</span>
+svc-a → <span class="cy">trustplane-adapter</span> → svc-b
+        verify · enforce · audit
+<span class="ok">✓ allow</span>  no shared secret</pre></div>
+    </div>
+
+    <div class="feat">
+      <div class="ftext">
+        <span class="kicker">Provider-managed APIs</span>
+        <h3>Enforce per-request authorization at your boundary</h3>
+        <p>If you expose APIs to machine clients, you carry the risk of every credential you issue. TrustPlane enforces per-request authorization at your own boundary, without rewriting upstream APIs or managing a shared credential per caller.</p>
+      </div>
+      <div class="fvis"><pre class="term"><span class="cm"># onboard a machine client</span>
+publish trust material  →  <span class="cy">no redeploy</span>
+client calls            →  verified per request
+<span class="ok">✓ allow</span>  scoped · evidence-grade audit</pre></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="ftext">
+        <span class="kicker">Cross-organization &amp; MCP</span>
+        <h3>Cross-org machine access &amp; MCP authorization</h3>
+        <p>Partner machine clients and MCP servers shouldn't rely on trust-on-first-use or long-lived shared secrets. Partners enroll through trust anchors; authorization is cryptographic and request-bound, and protects MCP servers and APIs without rewriting them.</p>
+      </div>
+      <div class="fvis"><pre class="term"><span class="cm"># partner enrolls via trust anchor</span>
+partner identity → anchor → <span class="cy">enrolled</span>
+each request     → proof   → verified
+<span class="ok">✓ allow</span>  cryptographic · not trust-on-first-use</pre></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="ctaband">
+  <div class="wrap">
+    <span class="kicker" style="justify-content:center">Get started</span>
+    <h2>Pick the call you trust. Deny the rest.</h2>
+    <p class="lead">Start free with TrustPlane Auth, or talk to us about fleet-scale governance with Control.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-lg" href="./downloads.html">Get started free <span class="arr">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="./pricing.html#contact">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site"><div class="wrap">
+  <div class="top">
+    <div><a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="">TrustPlane</a>
+      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p></div>
+    <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./solutions.html">Solutions</a><a href="./pricing.html">Pricing</a></div>
+    <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="./downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="./llms.txt">llms.txt</a></div>
+    <div><h4>Company</h4><a href="./pricing.html#contact">Contact sales</a><a href="./solutions.html">Use cases</a><a href="./auth.html#standards">Standards</a></div>
+  </div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
+</div></footer>
+
+</body>
+</html>

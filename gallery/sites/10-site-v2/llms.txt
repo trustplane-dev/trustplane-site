@@ -1,0 +1,22 @@
+# Trustplane
+
+> Trustplane is a cryptographic authorization layer for AI agents and machine systems. It verifies a proof on every request — bound to the exact call and impossible to replay — and issues short-lived, request-scoped authorization, replacing long-lived API keys and OAuth bearer tokens.
+
+Trustplane authorizes the *action*, not just the actor. Each request carries a proof bound to its method, path, body and time; the proof is verified locally, used once, and audited. A hijacked, prompt-injected, or replayed call fails verification — unlike a standing bearer token that authorizes everything within scope.
+
+Key facts:
+- Category: authorization for AI agents and machine-to-machine (M2M) APIs; MCP authorization.
+- Core idea: proof-bound, request-bound, single-use credentials (not bearer tokens).
+- Built on open standards: SPIFFE/SPIRE and OIDC/JWT for identity; aligned with DPoP, WIMSE workload identity + proof tokens, and OAuth Transaction Tokens for request-bound proof-of-possession.
+- Architecture: Trustplane Auth (runtime) runs in the customer's own infrastructure, in the request path; Trustplane Control governs policy, signing, revocation and audit across a fleet (managed or self-hosted).
+- Not a bearer-token system; not a service mesh; not a CA or OAuth replacement.
+
+## Pages
+- [Home](https://trustplane.dev/): overview, how it works, comparison vs API keys/bearer tokens, architecture, use cases.
+
+## Common questions this site answers
+- How do I authorize an AI agent's API and tool calls?
+- How is proof-bound authorization different from API keys and OAuth bearer tokens?
+- How do I do secretless machine-to-machine authentication with SPIFFE or OIDC?
+- What is MCP authorization?
+- What is a replay-safe, request-bound credential?

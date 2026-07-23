@@ -1,0 +1,32 @@
+# TrustPlane
+
+> TrustPlane is a cryptographic authorization layer for AI agents and machine systems. It verifies a proof on every request — bound to the exact call and impossible to replay — and issues short-lived, request-scoped authorization, replacing long-lived API keys and OAuth bearer tokens.
+
+TrustPlane authorizes the *action*, not just the actor. Each request carries a proof bound to its method, path, body and time; the proof is verified locally, used once, and audited. A hijacked, prompt-injected, or replayed call fails verification — unlike a standing bearer token that authorizes everything within scope.
+
+Key facts:
+- Category: authorization for AI agents and machine-to-machine (M2M) APIs; MCP authorization; non-human identity.
+- Core idea: proof-bound, request-bound, single-use credentials (not bearer tokens).
+- Built on open standards: SPIFFE/SPIRE and OIDC/JWT for identity; aligned with DPoP, WIMSE workload identity + proof tokens, and OAuth Transaction Tokens for request-bound proof-of-possession.
+- Two planes:
+  - TrustPlane Auth (the runtime) runs in the customer's own infrastructure, in the request path. A drop-in verifying reverse-proxy adapter; verifies locally with no phone-home; public preview; CLI, Helm chart, container images, and SDKs for JavaScript, Python and Go.
+  - TrustPlane Control (the governance plane) manages enrollment and trust anchors, compiles and signs policy bundles, distributes them across the Auth fleet, handles instant revocation and evidence-grade audit, and provides multitenant fleet management and RBAC. Available as managed service (default) or self-hosted (enterprise).
+- Not a bearer-token system; not a service mesh; not a certificate authority or OAuth replacement.
+
+## Pages
+- [Home](https://trustplane.dev/): overview, how it works, comparison vs API keys/bearer tokens, the two planes, architecture, use cases.
+- [TrustPlane Auth](https://trustplane.dev/auth.html): the proof-bound runtime — request binding, replay protection, policy + freshness, local verification, audit.
+- [TrustPlane Control](https://trustplane.dev/control.html): the governance plane — enrollment, signed policy distribution, instant revocation, audit, multitenant fleets, RBAC, managed or self-hosted.
+- [Solutions](https://trustplane.dev/solutions.html): AI agents calling APIs/tools, service-to-service, provider-managed APIs, cross-organization machine access, MCP authorization.
+- [Pricing](https://trustplane.dev/pricing.html): Developer (free Auth), Team (managed Control), Enterprise (self-hosted Control, SSO, SLAs).
+- [Downloads](https://trustplane.dev/downloads.html): CLI, Helm chart, container images, SDKs (JavaScript, Python, Go), conformance vectors.
+- [Documentation](https://docs.auth.trustplane.dev): product documentation and quickstart.
+
+## Common questions this site answers
+- How do I authorize an AI agent's API and tool calls?
+- How is proof-bound authorization different from API keys and OAuth bearer tokens?
+- How do I do secretless machine-to-machine authentication with SPIFFE or OIDC?
+- What is the difference between TrustPlane Auth and TrustPlane Control?
+- What is MCP authorization?
+- What is a replay-safe, request-bound credential?
+- Can I self-host the control plane?

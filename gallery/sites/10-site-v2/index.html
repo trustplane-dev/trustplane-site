@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Trustplane — Authorization for AI agents and machine systems</title>
+<meta name="description" content="Trustplane verifies a cryptographic proof on every request — bound to the exact call and impossible to replay — and issues short-lived, request-scoped authorization. No long-lived API keys. No standing tokens for an agent to leak or be tricked into misusing.">
+<link rel="canonical" href="https://trustplane.dev/">
+<meta name="keywords" content="AI agent authorization, agentic authorization, MCP authorization, machine-to-machine authentication, proof-bound authorization, request-bound authorization, secretless authentication, workload identity, SPIFFE, OIDC, DPoP, WIMSE, replace API keys">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Trustplane">
+<meta property="og:title" content="Trustplane — Authorization for AI agents and machine systems">
+<meta property="og:description" content="A cryptographic proof on every request — bound to the exact call, impossible to replay. Short-lived, request-scoped authorization for agents and machine systems.">
+<meta property="og:url" content="https://trustplane.dev/">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Trustplane","url":"https://trustplane.dev","logo":"https://trustplane.dev/assets/logo.svg","description":"Cryptographic, proof-bound authorization for AI agents and machine systems.","sameAs":["https://github.com/trustplane-dev"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Trustplane","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","description":"Trustplane verifies a cryptographic proof on every request and issues short-lived, request-scoped authorization for AI agents and machine-to-machine APIs — replacing long-lived API keys and bearer tokens.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Proof-bound, request-bound authorization","Replay-safe single-use verification","Local verification without phone-home","Per-request evidence-grade audit","Built on SPIFFE, OIDC, DPoP and WIMSE-style proof tokens"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is Trustplane?","acceptedAnswer":{"@type":"Answer","text":"Trustplane is a cryptographic authorization layer for AI agents and machine systems. Instead of presenting a long-lived API key or bearer token, every request carries a proof bound to that exact call, which is verified locally, used once, and audited."}},
+{"@type":"Question","name":"How is Trustplane different from API keys and OAuth bearer tokens?","acceptedAnswer":{"@type":"Answer","text":"API keys and bearer tokens grant access by mere presentation, are long-lived, and are replayable if stolen. Trustplane authorization is short-lived, bound to the specific request, single-use, and audited per action."}},
+{"@type":"Question","name":"How do I authorize an AI agent's API and tool calls?","acceptedAnswer":{"@type":"Answer","text":"With Trustplane, every agent call carries a proof bound to its parameters. A hijacked, injected, or replayed call fails verification, and each action is authorized and audited individually instead of relying on one standing token."}},
+{"@type":"Question","name":"Does Trustplane work with SPIFFE, OIDC and MCP?","acceptedAnswer":{"@type":"Answer","text":"Yes. Trustplane consumes existing workload identity from SPIFFE/SPIRE and OIDC/JWT, aligns with proof-of-possession standards such as DPoP and WIMSE, and protects MCP servers and APIs without rewriting them."}}
+]}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 26 10.8v10.4L16 27 6 21.2V10.8L16 5Z" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/><path d="M16 11 21 13.8v4.4L16 21 11 18.2v-4.4L16 11Z" fill="#00d4ff" fill-opacity=".18" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      Trustplane
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#problem">Why</a>
+      <a href="#how">How it works</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#use-cases">Use cases</a>
+      <a href="#standards">Standards</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="https://github.com/trustplane-dev">Docs</a>
+      <a class="btn btn-primary" href="#get-started">Get started <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="kicker">Cryptographic authorization layer</span>
+        <h1>Authorization for AI agents and machine systems.</h1>
+        <p class="lead">Trustplane verifies a cryptographic proof on <em>every</em> request — bound to the exact call and impossible to replay — then issues short-lived, request-scoped authorization. No long-lived API keys. No standing tokens for an agent to leak or be tricked into misusing.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#get-started">Get started <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <p class="note">Works with SPIFFE / SPIRE · OIDC / JWT · runs in your own infrastructure</p>
+      </div>
+
+      <div class="flow">
+        <div class="glow"></div>
+        <div class="lbl">One request · verified at the boundary</div>
+        <div class="fnode">
+          <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+          <div><b>Caller</b><span>agent or service</span></div>
+        </div>
+        <div class="frail"></div>
+        <div class="fnode">
+          <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span>
+          <div><b>Request proof</b><span>bound to method · path · body · time</span></div>
+        </div>
+        <div class="frail"></div>
+        <div class="fnode hl">
+          <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b>Trustplane verify</b><span>signature · replay · policy</span></div>
+        </div>
+        <div class="frail"></div>
+        <div class="fnode">
+          <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+          <div><b>Protected API</b><span>receives only verified requests</span></div>
+        </div>
+        <div class="fverdict">
+          <span class="chip ok">✓ allow · single-use</span>
+          <span class="chip no">✗ replay · jti_replay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust divider-soft">
+  <div class="wrap">
+    <span class="t">Built on open identity &amp; proof-of-possession standards</span>
+    <div class="marks">
+      <span>SPIFFE / SPIRE</span><span>OIDC / JWT</span><span>DPoP</span><span>WIMSE</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <span class="kicker">The problem</span>
+    <div class="twocol" style="margin-top:26px">
+      <p class="statement">A long-lived token is <span class="cyan">standing authority</span>. Hand one to an autonomous agent and a single leak — or one prompt injection — authorizes <span class="cyan">every</span> call it can reach.</p>
+      <div class="bullets">
+        <div class="bullet"><b>Presented, not proven</b><p>API keys and bearer tokens grant access by mere possession. Whoever holds the string is the client — from anywhere, until it's rotated.</p></div>
+        <div class="bullet"><b>Not bound to the request</b><p>A token that may read <code>/orders</code> can be replayed against <code>/admin</code> the moment anything slips. The credential authorizes the actor, never the action.</p></div>
+        <div class="bullet"><b>Invisible after the fact</b><p>Keys leak into code, logs, and prompts. Without per-request proof there is no way to tell a legitimate call from a hijacked one.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="shead">
+      <span class="kicker">How it works</span>
+      <h2>Prove the request. Don't present a secret.</h2>
+      <p class="lead">Trustplane turns a workload's existing identity into a short-lived, request-bound credential — verified locally, with no phone-home.</p>
+    </div>
+    <div class="steps">
+      <div class="st"><div class="num">01</div><h3>Identity</h3><p>Start from SPIFFE/SPIRE or OIDC/JWT. No static secret to store or leak.</p>
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3.1-5.5 7-5.5s7 2 7 5.5"/></svg></span></div>
+      <div class="st"><div class="num">02</div><h3>Proof</h3><p>Sign a proof bound to the exact method, path, body and time of this call.</p>
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span></div>
+      <div class="st"><div class="num">03</div><h3>Verify</h3><p>The adapter checks signature, audience, binding and policy — then consumes the proof once.</p>
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></span></div>
+      <div class="st"><div class="num">04</div><h3>Audit</h3><p>Every allow/deny decision is recorded and tied to the request it bound.</p>
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 1 -->
+<section>
+  <div class="wrap">
+    <div class="feat">
+      <div class="ftext">
+        <div class="ficon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Request-bound proofs, not standing tokens</h3>
+        <p>Each call carries a proof tied to its parameters. Tamper the path or replay the proof and verification fails closed — so a compromised or injected agent can't act beyond the call it was authorized for.</p>
+      </div>
+      <div class="fvis">
+        <pre><span class="cm"># sign one specific call</span>
+$ trustplane sign --method GET --path /orders \
+    --audience acme.orders
+<span class="ok">✓ allow</span>   verified · single-use · audited
+
+<span class="cm"># replay the same proof?</span>
+<span class="no">✗ deny</span>    jti_replay
+<span class="cm"># tamper the path after signing?</span>
+<span class="no">✗ deny</span>    request_binding_mismatch</pre>
+      </div>
+    </div>
+
+    <!-- FEATURE 2 -->
+    <div class="feat rev">
+      <div class="ftext">
+        <div class="ficon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 7H6a3 3 0 0 0 0 6h2"/><path d="M14 17h4a3 3 0 0 0 0-6h-2"/><path d="M8 10h8"/></svg></div>
+        <h3>A drop-in boundary, no rewrite required</h3>
+        <p>A reverse-proxy adapter verifies requests in front of your existing API, in your own infrastructure. Add a new caller by publishing trust material — no code change, no adapter redeploy. Kubernetes-compatible, never Kubernetes-required.</p>
+      </div>
+      <div class="fvis">
+        <pre><span class="cm"># your service is unchanged</span>
+caller  →  <span class="cy">trustplane-adapter</span>  →  upstream API
+                │
+        verify · enforce policy · audit
+                │
+   <span class="ok">forwarded only when proven</span>
+        <span class="cm"># add a client = publish trust material</span>
+        <span class="cy">no redeploy</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <div class="wrap">
+    <span class="kicker">Why Trustplane</span>
+    <h2 style="margin-top:14px">API keys authorize a caller.<br>Agents need to authorize a call.</h2>
+    <table class="cmp">
+      <thead><tr><th>Capability</th><th>API key / OAuth bearer</th><th class="tp">Trustplane</th></tr></thead>
+      <tbody>
+        <tr><td>Lifetime</td><td>Long-lived</td><td class="ink">Seconds–minutes</td></tr>
+        <tr><td>Bound to the specific request</td><td class="n">No</td><td class="y">Yes</td></tr>
+        <tr><td>Replayable if stolen</td><td class="n">Yes</td><td class="y">No — single-use</td></tr>
+        <tr><td>Per-action authorization &amp; audit</td><td class="n">No</td><td class="y">Yes</td></tr>
+        <tr><td>Verifiable offline, no central call</td><td>—</td><td class="y">Yes</td></tr>
+        <tr><td>Onboard a new client</td><td>Code / secret change</td><td class="ink">Publish trust material</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="wrap">
+    <div class="shead">
+      <span class="kicker">Architecture</span>
+      <h2>A runtime in your infrastructure, governed centrally.</h2>
+      <p class="lead">The Auth Plane runs in your environment, in the request path. The Control Plane governs the fleet — policy, signing, revocation and audit — as managed service or self-hosted.</p>
+    </div>
+    <div class="arch">
+      <div class="control"><b>Trustplane Control</b><div class="m">policy · signed distribution · instant revocation · audit · RBAC</div></div>
+      <div class="pipe">▲ per-request audit&nbsp;&nbsp;·&nbsp;&nbsp;signed policy + revocation ▼</div>
+      <div class="ftag">Trustplane Auth — runs in your own infrastructure, in the request path</div>
+      <div class="row">
+        <div class="unit"><b>Auth</b><span>cluster</span></div>
+        <div class="unit"><b>Auth</b><span>edge / cloud / VM</span></div>
+        <div class="unit"><b>Auth</b><span>agent sidecar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases">
+  <div class="wrap">
+    <span class="kicker">Where Trustplane fits</span>
+    <h2 style="margin-top:14px">Built for machine and agent traffic.</h2>
+    <div class="cases">
+      <div class="case"><h3>AI agents calling internal &amp; external APIs</h3><p>Authorize first-party and third-party agents without issuing long-lived API keys. Every request carries verifiable identity and request proof.</p></div>
+      <div class="case"><h3>Provider-managed APIs for machine clients</h3><p>Enforce per-request authorization at your own boundary without rewriting upstream APIs or managing shared credentials per caller.</p></div>
+      <div class="case"><h3>Service-to-service authorization</h3><p>Replace internal API keys with request-level proofs. Every service-to-service call is verifiable, auditable, and replay-protected.</p></div>
+      <div class="case"><h3>Cross-organization machine access</h3><p>Partner machine clients enroll through trust anchors. Authorization is cryptographic — not trust-on-first-use.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section id="standards">
+  <div class="wrap twocol">
+    <div>
+      <span class="kicker">Open standards</span>
+      <h2 style="margin-top:14px">Built on identity, not in place of it.</h2>
+    </div>
+    <div>
+      <p class="lead">Trustplane doesn't reinvent identity. It consumes <strong>SPIFFE/SPIRE</strong> and <strong>OIDC/JWT</strong>, and implements the proof-of-possession, request-bound model the IETF is converging on through <strong>DPoP</strong>, <strong>WIMSE</strong> workload identity &amp; proof tokens, and <strong>OAuth Transaction Tokens</strong> — applied today to agents and machine systems.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- CTA -->
+<section class="cta" id="get-started">
+  <div class="wrap">
+    <span class="kicker" style="justify-content:center">Get started</span>
+    <h2>Authorize the action, not just the actor.</h2>
+    <p class="lead">Put a verifying boundary in front of your APIs and agents — in your own infrastructure, free to start.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/trustplane-dev">Get Trustplane Auth <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://trustplane.mergematter.io">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 26 10.8v10.4L16 27 6 21.2V10.8L16 5Z" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/><path d="M16 11 21 13.8v4.4L16 21 11 18.2v-4.4L16 11Z" fill="#00d4ff" fill-opacity=".18" stroke="#00d4ff" stroke-width="1.5"/></svg>Trustplane</a>
+        <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p>
+      </div>
+      <div><h4>Product</h4><a href="#how">How it works</a><a href="#architecture">Architecture</a><a href="#compare">Why Trustplane</a><a href="#use-cases">Use cases</a></div>
+      <div><h4>Developers</h4><a href="https://github.com/trustplane-dev">GitHub</a><a href="#get-started">Get started</a><a href="./llms.txt">llms.txt</a></div>
+      <div><h4>Company</h4><a href="https://trustplane.mergematter.io">About</a><a href="https://trustplane.mergematter.io">Contact</a><a href="#standards">Standards</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Trustplane</span><span>Authorize the action, not just the actor.</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

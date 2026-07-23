@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TrustPlane Control Plane — Sample B · Operator / Calm Precision</title>
+  <link rel="stylesheet" href="console-redesign-b.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="logo"></div><div class="name">TrustPlane</div></div>
+      <div class="nav-group-label eyebrow">Tenant</div>
+      <div class="nav-item active" data-page="dashboard"><span class="ico">▦</span> Dashboard</div>
+      <div class="nav-item"><span class="ico">◈</span> Providers</div>
+      <div class="nav-item"><span class="ico">⬡</span> APIs</div>
+      <div class="nav-item"><span class="ico">◎</span> Clients</div>
+      <div class="nav-item"><span class="ico">⚓</span> Agent Onboarding</div>
+      <div class="nav-item"><span class="ico">⊕</span> Integrations</div>
+      <div class="nav-item"><span class="ico">≣</span> Consumption</div>
+      <div class="nav-item" data-page="audit"><span class="ico">▤</span> Audit</div>
+      <div class="nav-item"><span class="ico">⚙</span> Settings</div>
+      <div class="nav-item"><span class="ico">▥</span> Billing</div>
+      <div class="nav-group-label eyebrow">Platform</div>
+      <div class="nav-item"><span class="ico">◴</span> Overview</div>
+      <div class="nav-item"><span class="ico">⧉</span> Tenants</div>
+      <div class="nav-item"><span class="ico">♥</span> Health</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="segmented"><span class="seg global">Global</span><span class="seg on tenant">Tenant</span></div>
+          <span class="pill">Tenant <b>acme-demo</b> ▾</span>
+        </div>
+        <div class="topbar-right">
+          <button class="btn btn-secondary">Invite</button>
+          <button class="btn btn-primary">Protect an API</button>
+          <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+          <span class="pill">ops@acme.io ▾</span>
+        </div>
+      </header>
+
+      <!-- ===== DASHBOARD ===== -->
+      <main class="content" id="page-dashboard">
+        <div class="page-head">
+          <div><h1>Dashboard</h1><div class="sub">Proof-bound authorization for <b style="color:var(--text)">acme-demo</b> — last 24 hours</div></div>
+          <button class="btn btn-secondary">Export</button>
+        </div>
+
+        <div class="grid k4" style="margin-bottom:18px">
+          <div class="card stat"><div class="eyebrow">Verified requests</div><div class="num">128,402</div><div class="delta"><span class="up">▲ 6.2%</span> vs prev 24h</div></div>
+          <div class="card stat"><div class="eyebrow">Deny rate</div><div class="num">0.41%</div><div class="delta"><span class="down">▼ 0.08%</span></div></div>
+          <div class="card stat"><div class="eyebrow">Active clients &amp; agents</div><div class="num">37</div><div class="delta"><span class="up">▲ 3</span> this week</div></div>
+          <div class="card stat"><div class="eyebrow">Attested workloads</div><div class="num">12</div><div class="delta"><span class="badge attested">attested_workload</span></div></div>
+        </div>
+
+        <div class="grid k2">
+          <div class="card">
+            <div class="card-head"><div class="card-title">Live decisions</div><span class="badge allow dot">streaming</span></div>
+            <table>
+              <thead><tr><th>Time</th><th>Subject</th><th>Route</th><th>Decision</th><th>Tier</th></tr></thead>
+              <tbody>
+                <tr><td class="mono" style="font-size:12px">14:02:11</td><td class="subj">orders-worker</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge allow">Allow</span></td><td><span class="badge attested">Attested</span></td></tr>
+                <tr><td class="mono" style="font-size:12px">14:02:10</td><td class="subj">n8n-runner</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge allow">Allow</span></td><td><span class="badge software">Software</span></td></tr>
+                <tr><td class="mono" style="font-size:12px">14:02:08</td><td class="subj">ec2:i-09f3a</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge deny">Deny</span></td><td><span class="badge software">Software</span></td></tr>
+                <tr><td class="mono" style="font-size:12px">14:02:05</td><td class="subj">orders-worker</td><td class="mono" style="font-size:12px">invoice.approve</td><td><span class="badge allow">Allow</span></td><td><span class="badge attested">Attested</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="card-title">Trust anchors</div><span class="muted" style="font-size:12px">route <span class="mono">mock-api.read</span></span></div>
+            <div class="src-row"><div><div class="iss">External JWKS</div><div class="td">acme.demo.external</div></div><span class="badge software">Software</span></div>
+            <div class="src-row"><div><div class="iss">DOKS SPIRE</div><div class="td">acme-demo-doks.local</div></div><span class="badge attested">Attested workload</span></div>
+            <div class="src-row"><div><div class="iss">EC2 JWKS</div><div class="td">acme.demo.ec2</div></div><span class="badge software">Software</span></div>
+            <div class="src-row"><div><div class="iss">EKS · n8n</div><div class="td">acme.demo.eks-n8n</div></div><span class="badge software">Software</span></div>
+            <div style="margin-top:14px" class="between"><span class="muted" style="font-size:13px">Freshness</span><span class="badge warn">Bounded · 300s</span></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ===== AUDIT (hero) ===== -->
+      <main class="content hidden" id="page-audit">
+        <div class="page-head">
+          <div><h1>Audit</h1><div class="sub">Every proof-bound decision — reason, matched source, tier, freshness, transcript</div></div>
+          <button class="btn btn-secondary">Export NDJSON</button>
+        </div>
+        <div class="filters">
+          <input class="input" placeholder="Search subject, request id, transcript…" style="min-width:300px" />
+          <select class="select"><option>All decisions</option><option>Deny only</option><option>Allow only</option></select>
+          <select class="select"><option>Any reason</option><option>jti_replay</option><option>insufficient_key_binding</option><option>source_subject_mismatch</option><option>stale_bundle_fail_closed</option></select>
+          <select class="select"><option>Any source</option><option>DOKS SPIRE</option><option>EC2 JWKS</option><option>EKS n8n</option></select>
+          <span class="pill">Last 24h ▾</span>
+        </div>
+        <div class="card" style="padding:0; overflow:hidden">
+          <table>
+            <thead><tr><th>Time</th><th>Subject</th><th>Route</th><th>Decision</th><th>Reason</th><th>Source</th><th>Tier</th><th>Transcript</th></tr></thead>
+            <tbody>
+              <tr class="sel" onclick="openDrawer(this)"><td class="mono" style="font-size:12px">14:02:08</td><td class="subj">ec2:i-09f3a2b</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge deny">Deny</span></td><td class="mono" style="font-size:12px;color:var(--danger)">insufficient_key_binding</td><td>EC2 JWKS</td><td><span class="badge software">Software</span></td><td class="hash">8f43…27aa4</td></tr>
+              <tr onclick="openDrawer(this)"><td class="mono" style="font-size:12px">14:02:05</td><td class="subj">orders-worker</td><td class="mono" style="font-size:12px">invoice.approve</td><td><span class="badge allow">Allow</span></td><td class="mono" style="font-size:12px">verified</td><td>DOKS SPIRE</td><td><span class="badge attested">Attested</span></td><td class="hash">6f1e…57ec2</td></tr>
+              <tr onclick="openDrawer(this)"><td class="mono" style="font-size:12px">14:01:58</td><td class="subj">n8n-runner</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge deny">Deny</span></td><td class="mono" style="font-size:12px;color:var(--danger)">jti_replay</td><td>EKS n8n</td><td><span class="badge software">Software</span></td><td class="hash">1ab2…99c3f</td></tr>
+              <tr onclick="openDrawer(this)"><td class="mono" style="font-size:12px">14:01:51</td><td class="subj">unknown</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge deny">Deny</span></td><td class="mono" style="font-size:12px;color:var(--danger)">source_subject_mismatch</td><td>External</td><td><span class="badge software">Software</span></td><td class="hash">c0ff…ee001</td></tr>
+              <tr onclick="openDrawer(this)"><td class="mono" style="font-size:12px">14:01:44</td><td class="subj">orders-worker</td><td class="mono" style="font-size:12px">mock-api.read</td><td><span class="badge allow">Allow</span></td><td class="mono" style="font-size:12px">verified</td><td>DOKS SPIRE</td><td><span class="badge attested">Attested</span></td><td class="hash">dead…beef2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="muted" style="margin-top:12px; font-size:13px">Select a row to open the decision trace →</div>
+      </main>
+    </div>
+  </div>
+
+  <div class="scrim" id="scrim" onclick="closeDrawer()"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <div><div class="eyebrow">Decision trace</div><div style="color:var(--text);font-weight:600;margin-top:5px">ec2:i-09f3a2b → mock-api.read</div></div>
+      <button class="icon-btn" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div style="margin-bottom:18px"><span class="badge deny" style="font-size:13px;padding:5px 12px">Deny · insufficient_key_binding</span></div>
+      <div class="row"><span class="key">Request id</span><span class="val mono" style="font-size:12.5px">req_01J8x…</span></div>
+      <div class="row"><span class="key">Issuer</span><span class="val">issuer.acme.demo/ec2-jwks</span></div>
+      <div class="row"><span class="key">Trust domain</span><span class="val">acme.demo.ec2</span></div>
+      <div class="row"><span class="key">Subject</span><span class="val">aws:ec2:us-east-1:i-09f3a2b</span></div>
+      <div class="row"><span class="key">Matched source</span><span class="val">EC2 JWKS rule</span></div>
+      <div class="row"><span class="key">Presented tier</span><span class="val"><span class="badge software">Software</span></span></div>
+      <div class="row"><span class="key">Required tier</span><span class="val"><span class="badge attested">Attested workload</span></span></div>
+      <div class="row"><span class="key">Replay (jti)</span><span class="val" style="color:var(--success)">Fresh ✓</span></div>
+      <div class="row"><span class="key">Request binding</span><span class="val" style="color:var(--success)">Matched ✓</span></div>
+      <div class="row" style="border:0"><span class="key">Freshness</span><span class="val"><span class="badge warn">Bounded · ok</span></span></div>
+      <div class="eyebrow" style="margin:20px 0 9px">Transcript-v1</div>
+      <pre class="code"><span class="k">method</span>  GET
+<span class="k">route</span>   mock-api.read
+<span class="k">aud</span>     <span class="s">acme.demo.mock-api</span>
+<span class="k">body</span>    sha256:<span class="n">8f434346…dc327aa4</span>
+<span class="k">nonce</span>   nonce-v1-7731
+<span class="k">jti</span>     01J8x…
+<span class="k">digest</span>  sha256:<span class="n">8f43…27aa4</span></pre>
+    </div>
+  </aside>
+
+  <script>
+    var root=document.documentElement, tbtn=document.getElementById('themeToggle');
+    function applyTheme(t){ root.setAttribute('data-theme',t); tbtn.textContent = t==='dark'?'🌙':'☀️'; localStorage.setItem('tp-theme-b',t); }
+    (function(){ var s=localStorage.getItem('tp-theme-b'); var pl=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches; applyTheme(s||(pl?'light':'dark')); })();
+    tbtn.addEventListener('click', function(){ applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
+    document.querySelectorAll('.nav-item[data-page]').forEach(function(el){ el.addEventListener('click', function(){
+      document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active');
+      var p=el.getAttribute('data-page');
+      document.getElementById('page-dashboard').classList.toggle('hidden', p!=='dashboard');
+      document.getElementById('page-audit').classList.toggle('hidden', p!=='audit');
+    });});
+    function openDrawer(row){ document.querySelectorAll('#page-audit tbody tr').forEach(r=>r.classList.remove('sel')); row.classList.add('sel'); document.getElementById('drawer').classList.add('open'); document.getElementById('scrim').classList.add('open'); }
+    function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('scrim').classList.remove('open'); }
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane Control — The Registry of Machine Access</title>
+<meta name="description" content="TrustPlane Control governs machine access at fleet scale: trust anchors, enrollment, signed policy releases, revocation tracked to convergence, audit evidence, operator roles. Managed at $399/month, or self-hosted as Control Edge.">
+<link rel="canonical" href="https://trustplane.dev/control.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane Control — The Registry of Machine Access">
+<meta property="og:description" content="Enroll. Release. Revoke. Prove. Managed at $399/mo or self-hosted as Control Edge.">
+<meta property="og:url" content="https://trustplane.dev/control.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,550;9..144,600&family=Inter:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"TrustPlane Control","item":"https://trustplane.dev/control.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is an Auth Site?","acceptedAnswer":{"@type":"Answer","text":"One governed enforcement location — a verified distribution target that receives signed policy and trust material from TrustPlane Control, such as the authorization boundary before one API, cluster, or tool-server environment."}},
+{"@type":"Question","name":"Is TrustPlane Control in the request path?","acceptedAnswer":{"@type":"Answer","text":"No. Control distributes signed policy and trust material ahead of time; verification happens locally at each Auth Site. If Control is unreachable, enforcement continues on the last distributed state."}},
+{"@type":"Question","name":"Can Control operate on-premises or air-gapped?","acceptedAnswer":{"@type":"Answer","text":"Yes. Control Edge is the self-hosted deployment, licensed through signed offline Ed25519 artifacts with explicit grace policy and no call-home requirement."}}
+]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="TrustPlane home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="4" fill="#14171A"/><path d="M9 17.5 14 22l9-11" stroke="#FCFBF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      TrustPlane
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="./auth.html">Auth</a>
+      <a href="./control.html">Control</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="https://docs.auth.trustplane.dev">Documentation</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="link" href="./pricing.html#contact">Talk to our team</a>
+      <a class="btn primary" href="./pricing.html">See pricing</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-top">
+        <span class="kicker">TrustPlane Control · $399/month · Edge by conversation</span>
+        <h1>One agent is a demonstration. A fleet is an estate.</h1>
+        <p class="lead">Control is the registry through which machine access is administered: clients enter by trust anchor, policy departs as signed releases, revocation proceeds to convergence, and the audit trail reads as a ledger because that is what it is. It stands above the fleet — and deliberately outside the request path.</p>
+        <div class="actions">
+          <a class="btn primary large" href="./pricing.html">Review Enterprise terms</a>
+          <a class="btn ghost large" href="./pricing.html#contact">Talk to our team</a>
+        </div>
+      </div>
+
+      <div class="ledger" aria-label="Fleet register (illustrative)">
+        <div class="ledger-head"><span>Fleet register — production estate</span><span>release v18 · converged 2 of 2 sites</span></div>
+        <table>
+          <thead><tr><th>Entry</th><th>Subject</th><th>Particulars</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="entry">site</td><td class="entry">payments-edge</td><td class="entry">policy v18 · 3 anchors · 41 clients</td><td class="v-allow">HEALTHY</td></tr>
+            <tr><td class="entry">site</td><td class="entry">agents-tools</td><td class="entry">policy v18 · 1 anchor · 12 clients</td><td class="v-allow">HEALTHY</td></tr>
+            <tr><td class="entry">client</td><td class="entry">partner-batch-07</td><td class="entry">revoked 14:02 UTC · propagated 2/2 sites</td><td class="v-deny">REVOKED</td></tr>
+            <tr><td class="entry">release</td><td class="entry">payments.refunds v17 → v18</td><td class="entry">signed · operator m.osei · 13:47 UTC</td><td class="v-allow">LIVE</td></tr>
+            <tr><td class="entry">audit</td><td class="entry">quarterly access review</td><td class="entry">evidence bundle prepared</td><td class="v-allow">READY</td></tr>
+          </tbody>
+        </table>
+        <div class="ledger-foot">Illustrative register. Enrollment · signed releases · revocation · audit — never a per-request hop.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="definition">
+        <p><b>TrustPlane Control</b> is the governance plane for machine access. It administers trust anchors, enrollment, signed policy releases, revocation, fleet visibility, audit evidence, operator roles, and environments across <b>Auth Sites</b> — the enforcement locations where TrustPlane Auth verifies requests. Offered managed, as Control Enterprise, or self-hosted, as Control Edge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">The administration</span>
+        <h2>Four verbs govern the life of a machine identity.</h2>
+      </div>
+      <div class="cols" style="grid-template-columns:repeat(4,1fr)">
+        <div><span class="num">i</span><h3>Enroll</h3><p>Every client enters through a trust anchor of your choosing — automated onboarding for fleets, manual vault ceremony where ceremony is warranted.</p></div>
+        <div><span class="num">ii</span><h3>Release</h3><p>Policy departs as signed, versioned releases, distributed per Auth Site. Each verifier can prove the provenance and version of the rules it enforces.</p></div>
+        <div><span class="num">iii</span><h3>Revoke</h3><p>Once, centrally, with propagation tracked per site until every verifier has converged — an answer rendered with a timestamp.</p></div>
+        <div><span class="num">iv</span><h3>Prove</h3><p>Who called what, under which policy version, amended by whom. Reviews, incidents, and customers receive records, not recollections.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slate">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">The constitution</span>
+        <h2>Boundaries that remain boundaries.</h2>
+        <p class="lead">A governance product is only as sound as its identity model. Control's rules are explicit, and they do not bend for convenience.</p>
+      </div>
+      <div>
+        <div class="clause"><span class="no">Art. 1</span><div><b>Login does not confer organization access.</b><p>Membership is explicit. SSO is optional organizational authority; SCIM is lifecycle. Neither silently acquires policy or billing power.</p></div></div>
+        <div class="clause"><span class="no">Art. 2</span><div><b>Offices are bounded.</b><p>The billing administrator administers billing. Policy authority, environment separation, and tenant isolation are separate, auditable capacities.</p></div></div>
+        <div class="clause"><span class="no">Art. 3</span><div><b>Environments are walls, not labels.</b><p>Development, staging, and production are separated at the level of policy distribution; a trial rollout cannot leak authority into production.</p></div></div>
+        <div class="clause"><span class="no">Art. 4</span><div><b>Billing is evidence, never authority.</b><p>Payment state informs commercial records. Capacity derives from Control's own subscription ledger — and nothing commercial ever touches the request path.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Residence</span>
+        <h2>Administered by us, or seated within your walls.</h2>
+      </div>
+      <div class="grid-2">
+        <article class="article">
+          <span class="kicker">Control Enterprise · $399/month</span>
+          <h3>The managed plane</h3>
+          <p>We operate Control; you govern the estate. Two Auth Sites included, each with its trust anchor source slot; further capacity at published rates.</p>
+          <ul>
+            <li>Additional Auth Sites at $49 per site, monthly</li>
+            <li>Additional trust anchor sources at $29 per source, monthly</li>
+            <li>Operations, availability, and upgrades borne by us</li>
+            <li>Cancellation never disables running enforcement</li>
+          </ul>
+          <p style="margin-top:26px"><a class="btn primary" href="./pricing.html">Review the terms</a></p>
+        </article>
+        <article class="article">
+          <span class="kicker">Control Edge · by conversation</span>
+          <h3>The resident plane</h3>
+          <p>The same governance plane deployed in your cloud, data center, or air-gapped site — for sovereignty, regulation, or an examiner who reads every diagram twice.</p>
+          <ul>
+            <li>Signed offline licenses (Ed25519) with stated grace windows</li>
+            <li>No call-home requirement; verification offline by design</li>
+            <li>Deployment design, migration, and upgrade counsel</li>
+            <li>Security review, procurement, and legal support</li>
+          </ul>
+          <p style="margin-top:26px"><a class="btn ghost" href="./pricing.html#contact">Open the conversation</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Questions of record</span>
+        <h2>Control, examined.</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Is Control in the request path?</summary><p>No. Control distributes signed policy and trust material in advance; Auth verifies locally. Should Control be briefly unreachable, enforcement proceeds on the last distributed state — by design, not by fortune.</p></details>
+        <details><summary>What, precisely, is governed?</summary><p>Auth Sites: concrete enforcement locations — “the boundary before the payments API, in production.” Clients, anchors, and policy attach to sites. The model stays legible because it maps to infrastructure one can point at.</p></details>
+        <details><summary>How does revocation propagate?</summary><p>Revocation amends the signed state Control distributes; propagation is tracked per site until convergence. The incident channel receives an answer bearing a timestamp.</p></details>
+        <details><summary>What does Control cost?</summary><p>$399 monthly, two Auth Sites included, each carrying a trust anchor source slot. Sites at $49, sources at $29, monthly. Edge is scoped per engagement. Particulars on the <a href="./pricing.html">pricing page</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <span class="kicker" style="text-align:center;display:block">Proceed</span>
+      <h2>Govern the fleet you already possess.</h2>
+      <p class="lead">Auth deployments in service become governed Auth Sites upon connection. Nothing is reinstalled; everything acquires an owner.</p>
+      <div class="actions">
+        <a class="btn primary large" href="./pricing.html">Engage Control Enterprise</a>
+        <a class="btn ghost large" href="mailto:hello@trustplane.dev?subject=TrustPlane%20Control%20Edge">Inquire after Edge</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="./index.html"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="4" fill="#FCFBF8"/><path d="M9 17.5 14 22l9-11" stroke="#14171A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>TrustPlane</a>
+        <p>Authorization infrastructure for AI agents, machine clients, and service APIs. A Mergematter Labs product.</p>
+      </div>
+      <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./pricing.html">Pricing</a></div>
+      <div><h4>Use cases</h4><a href="./index.html">AI agents</a><a href="./auth.html">MCP &amp; tools</a><a href="./control.html">Partner access</a></div>
+      <div><h4>Developers</h4><a href="https://docs.auth.trustplane.dev">Documentation</a><a href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+      <div><h4>Company</h4><a href="https://mergematter.io">Mergematter Labs</a><a href="mailto:hello@trustplane.dev">Contact</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Mergematter Labs · TrustPlane</span><span>Control centrally. Enforce locally.</span></div>
+  </div>
+</footer>
+</body>
+</html>

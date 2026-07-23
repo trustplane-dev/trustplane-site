@@ -1,0 +1,957 @@
+Open-Source Auth Landing-Page Research for
+trustplane.dev
+Executive summary
+The strongest open-source auth and identity landing pages share a narrow set of traits. They explain the
+problem in one sentence, expose Get started , Docs , and Source/GitHub  immediately, show a realistic
+install or integration path within the first screen or just below it, and use community/governance signals
+instead of sales-heavy proof. Dex, SPIFFE/SPIRE, Authelia, Tinyauth, Kanidm, and Keycloak are the clearest
+examples of this pattern. Their public pages foreground standards, installability, docs, and community
+access over pricing, lead capture, or enterprise forms. 
+By contrast, several modern auth products mix excellent developer UX with more commercial framing.
+Authentik, Logto, ZITADEL, Hanko, and Ory product pages are useful references for feature packaging and
+strong calls to action, but they also bring in “replace X,” pricing, cloud, compliance, or “contact us” language
+earlier than a pure OSS homepage usually should. For a minimal, pure open-source  trustplane.dev, those
+sites are better as secondary  inspiration than as the primary model. 
+A practical direction for trustplane.dev is therefore: docs-first navigation, one primary CTA, one GitHub
+CTA, no sales CTA above the fold, immediate install/quickstart proof, explicit license/repo visibility,
+and community/security links in the header or footer . The overall aesthetic should feel closer to Dex +
+Tinyauth + Authelia than to a SaaS homepage. 
+One important limitation: in this pass, I could review public materials for Trustplane  and Clawvisor , but I
+could not verify a clearly published OSS repo/license from the public landing materials I found. I therefore
+treated them as adjacent references , not as confirmed OSS exemplars for the main comparison catalog.
+Trustplane’s public docs emphasize machine identity, request proofs, short-lived JWTs, and audit; Clawvisor’s
+public site emphasizes human-in-the-loop task approvals, credential vaulting, and policy enforcement for AI
+agents. 
+Landscape catalog
+The table below focuses on public, high-signal projects in the same auth/identity landscape. The Official
+page  column lists the public domain label, while the Sources  column links to the official landing page and
+primary repo page used for the row. GitHub stars are point-in-time snapshots from the cited pages.1
+2
+3
+4
+1
+Project Official page LicensePrimary
+audienceCore featuresHero
+messaging and
+visual styleCTA types Docs structureCommunity
+signalsNotable UX
+patternsSources
+SPIFFE /
+SPIREspiffe.io Apache-2.0Platform,
+security,
+infra teamsWorkload
+identity,
+attestation,
+mTLS/JWT,
+cross-
+platform
+identity plane“Universal
+identity control
+plane for
+distributed
+systems.”
+CNCF-forward,
+technical, trust-
+heavy.Get started,
+DownloadHeader docs +
+blog; use cases,
+benefits, deep
+dive~2.3k★
+SPIRE repo;
+Slack; Stack
+Overflow;
+GitHubGovernance
+and ecosystem
+proof appear
+before any
+commercial
+framing
+Dex dexidp.io Apache-2.0Kubernetes/
+platform
+teams
+needing
+federationOIDC
+provider ,
+pluggable
+connectors,
+LDAP/SAML/
+OIDC
+federation“Federated
+OpenID
+Connect.”
+Sparse, dark,
+developer-
+native,
+comparison-
+driven.Get started,
+Source,
+DocumentationInstall →
+Configure →
+Connect; strong
+comparison
+section~10.8k★;
+CNCF Slack 
+#dexidp ;
+GitHub
+DiscussionsExcellent “what
+this is / what it
+isn’t”
+comparison
+block
+Keycloak keycloak.org Apache-2.0Broad IAM,
+SSO,
+enterprise/
+self-host
+teamsSSO,
+brokering,
+federation,
+admin
+console,
+authz
+services“Open Source
+Identity and
+Access
+Management.”
+Classic OSS,
+feature-first,
+information-
+dense.Get Started,
+DownloadGuides, Docs,
+Downloads,
+Community~33.9k★;
+1,350+
+contributors;
+mailing list +
+CNCF SlackOld-school but
+strong
+information
+scent; feature
+list is
+immediately
+useful
+Authentik goauthentik.ioMixed /
+source-
+available
+messaging
+in repoSelf-hosted
+SSO,
+platform,
+security
+teamsSAML,
+OAuth2/
+OIDC, LDAP,
+RADIUS,
+workflows,
+policy, app
+proxy“Take control of
+your identity
+needs…”
+Current site is
+polished but
+more
+commercial
+than pure OSS.Get Started,
+Reasons to
+Switch, PricingDocumentation,
+Integrations,
+Developer
+Docs,
+Installations~21.4k★;
+Discord;
+GitHub repo
+badges; site
+claims 1M+
+installsStrong
+comparison UX,
+but “replace X”
+framing adds
+enterprise
+weight
+Authelia authelia.com Apache-2.0Self-
+hosters,
+homelab,
+reverse-
+proxy, SMB
+opsMFA, SSO
+portal, OIDC
+provider ,
+policy,
+passkeys,
+reverse-proxy
+companionDirect product
+definition,
+extremely docs-
+like, low-noise.Get started,
+GitHub,
+DiscordOverview,
+Configuration,
+Integration,
+Reference,
+Contributing~26k★; 265
+contributors;
+DiscordA model for
+“documentation
+homepage as
+landing page”5
+6
+7
+8
+9
+2
+Project Official page LicensePrimary
+audienceCore featuresHero
+messaging and
+visual styleCTA types Docs structureCommunity
+signalsNotable UX
+patternsSources
+ZITADELzitadel.com/
+opensourceRepo:
+AGPL-3.0
+with
+exceptions;
+open-source
+page
+messaging
+is broaderDeveloper
+teams
+needing
+multi-
+tenant
+identityIAM, multi-
+tenancy, self-
+hosting,
+cloud bridge,
+open
+standards“Identity
+infrastructure,
+simplified for
+you.” Clean and
+modern, but
+cloud/
+enterprise
+paths are
+visible early.Try Cloud,
+Deploy Now,
+Start NowGet Started,
+Self-hosting,
+Docs,
+Roadmap,
+Changelog~13.6k★;
+Discord;
+issues/
+contributions
+clearly
+invitedGood
+separation of
+cloud vs OSS vs
+enterprise, but
+more
+commercial
+than ideal for
+pure OSS
+Logto logto.io MPL-2.0SaaS and AI
+app
+buildersOIDC/
+OAuth2.1,
+multi-
+tenancy,
+enterprise
+SSO, RBAC,
+M2M, PATs“Modern auth
+infrastructure
+for developers.”
+Very polished,
+very feature-
+rich, but
+noticeably
+SaaS-coded.Get started
+free, Contact
+us, StarExtensive docs/
+API/SDK/
+migration/
+resources IA~11k★; 82
+contributors;
+GitHub
+DiscussionsStrong feature
+packaging and
+integration
+proof; too
+much above-
+the-fold for a
+minimal OSS
+homepage
+SuperTokens supertokens.comApache-2.0
+core with
+separate EE
+pathsApp teams
+wanting
+embedded
+auth they
+can controlEmail/
+password,
+passwordless,
+session
+management,
+plugins, self-
+hosting“Open Source
+User
+Authentication.”
+Code snippet
+and fast-setup
+proof are front
+and center .Create app,
+Community,
+GitHubPhilosophy,
+architecture,
+docs, guides,
+community~14.7k★
+core repo;
+Discord;
+contributors
+section
+across reposExcellent code-
+in-hero pattern;
+homepage is
+long and
+marketing-
+heavy further
+down
+Hanko hanko.ioAGPL-3.0
+backend +
+MIT
+componentsProduct
+teams
+focused on
+passkeys
+and flexible
+loginPasskeys,
+passwords,
+SSO, 2FA, web
+components,
+passkey API“Modern
+Authentication.
+On Your
+Terms.”
+Attractive,
+privacy-first,
+but still a
+product
+marketing
+page.Get started for
+free, Talk to us,
+StarDocs,
+changelog,
+roadmap,
+product docs~8.6k★;
+Discord;
+GitHubGood passkey
+framing and
+clear product
+segmentation;
+more
+commercial
+than ideal10
+11
+12
+13
+3
+Project Official page LicensePrimary
+audienceCore featuresHero
+messaging and
+visual styleCTA types Docs structureCommunity
+signalsNotable UX
+patternsSources
+Kanidm kanidm.com MPL-2.0Admins,
+self-hosters,
+SMB-to-
+enterprise
+identityPasskeys,
+OIDC,
+gateway,
+LDAP,
+RADIUS, SSH
+key
+distribution,
+CLI“Modern and
+simple identity
+management
+platform
+written in rust.”
+Minimal,
+functional, very
+low-noise.Install, GitHub,
+DocumentationInstall, docs,
+support,
+comparison~4.2k★;
+Gitter +
+GitHub
+DiscussionsNear-ideal OSS
+austerity; little
+fluff, high
+clarity
+Pomerium pomerium.com Apache-2.0Zero-trust
+and
+identity-
+aware
+access
+teamsIdentity-
+aware proxy,
+policy
+enforcement,
+JWT access,
+auditing“Clientless
+access to
+critical
+workloads.”
+More access-
+proxy than IdP,
+but nearby and
+relevant.Get Started,
+Read the DocsDocs-led with
+how-it-works
+and use cases~4.5k★;
+GitHub
+DiscussionsGood policy-as-
+code framing;
+customer-story
+and plan
+framing make it
+feel more
+commercial
+Apereo CASapereo.github.io/
+casApache-2.0Enterprise
+SSO and
+protocol-
+heavy IAM
+teamsCAS protocol,
+SAML, OIDC,
+OAuth, MFA,
+multilingual
+SSO“Identity &
+Single Sign-On
+for all
+earthlings and
+beyond.”
+Feature-rich,
+formal, classic
+OSS/
+community
+framing.Explore docs,
+download/
+latest release,
+foundation/
+community
+pathsVersioned docs,
+protocol docs,
+release notes,
+support~11.2k★;
+Apereo
+Foundation
+community;
+office hours/
+newsStrong protocol
+credibility and
+versioned docs;
+less visually
+minimal
+Tinyauth tinyauth.app GPL-3.0Self-hosted
+app owners,
+homelab
+users,
+lightweight
+OIDC needsTiny OIDC
+server ,
+OAuth/LDAP,
+demo, env-
+var config“The tiniest
+authentication
+and
+authorization
+server …” Very
+concise, low-
+chrome, OSS-
+native.Get started,
+Demo, GitHub,
+DiscordGetting Started,
+Guides,
+Reference,
+Changelog~7.3k★;
+Discord;
+GitHub
+DiscussionsExceptional
+minimalism;
+immediate
+proof and
+community
+access
+A useful synthesis from the catalog is that the purest OSS feel  comes from projects that make the repo and
+docs feel like the product surface. Dex, Authelia, Tinyauth, Kanidm, and SPIFFE/SPIRE do that well. The more
+a homepage foregrounds pricing, “contact us,” replacement-comparison grids, or compliance badges, the
+more it drifts toward SaaS posture even if the software itself is open source. 14
+15
+16
+17
+18
+4
+Exemplary landing pages
+The six best references for a pure OSS, minimal, developer-trustworthy  trustplane.dev are Dex, SPIFFE/
+SPIRE, Authelia, Tinyauth, Kanidm, and Keycloak. They vary in polish, but all keep the user close to docs,
+installability, and community. 
+The image above is an annotated schematic reconstruction  of the public page structures, used here to
+highlight hero layout, CTA placement, docs access, and community signposts. It is not a pixel screenshot.
+The structures are based on the cited official pages. 
+PageWhy it is
+exemplaryInstall / try
+flowDocs and
+community
+placementEnterprise
+noiseWhat
+trustplane.dev
+should copySources
+DexClear one-
+line
+definition,
+strong
+protocol
+framing,
+visible
+source link,
+useful
+comparison
+sectionThree-step
+“Install /
+Configure /
+Connect”
+block
+appears
+earlyDocs,
+Community,
+Discussion in
+top navLowShort hero,
+primary OSS
+CTAs, early
+“what this is /
+isn’t” section
+SPIFFE /
+SPIREHigh-trust
+hero, CNCF
+proof,
+immediate
+use casesGet started
++ Download
+above foldDocs, blog,
+GitHub, Slack,
+Stack Overflow
+in headerLowGovernance/
+security proof
+without sales
+copy; use-case
+cards early
+AutheliaReads like
+product
+docs with a
+landing
+page shellOne obvious
+“Get started”
+CTAConfiguration,
+Integration,
+Reference,
+Contributing,
+Discord,
+GitHub at topVery lowMake the
+landing page
+part of the
+docs, not
+separate from
+them
+TinyauthTiny
+promise,
+tiny feature
+set, tiny
+page; very
+honestGet started
++ Demo
+immediatelyGitHub and
+Discord are in
+header and
+repeated in
+community
+sectionVery lowSmall
+homepage,
+same-page
+community
+section,
+minimal copy1
+Annotated OSS landing-page audit schematics
+1
+6
+5
+9
+17
+5
+PageWhy it is
+exemplaryInstall / try
+flowDocs and
+community
+placementEnterprise
+noiseWhat
+trustplane.dev
+should copySources
+KanidmSerious, low-
+ornament,
+admin-
+friendlyInstall, Docs,
+GitHub all
+top-levelSupport, docs,
+comparison,
+Gitter , GitHub
+DiscussionsVery lowFunctional top
+nav, no fluff,
+strong support
+pathways
+KeycloakDense but
+precise;
+excellent
+“feature-as-
+navigation”
+homepageGet Started
++ Download
+immediatelyGuides, Docs,
+Downloads,
+Community at
+topLow-to-
+mediumStrong IA and
+feature list;
+avoid copying
+its density
+The pattern to borrow is not “make the page look old” or “make it sparse for its own sake.” It is: make the
+page decisively useful before it becomes persuasive . That means the visitor can answer , in under 10
+seconds, what the project is, why it exists, how to try it, where the docs are, where the source is, and where
+to ask for help. Dex and Tinyauth are especially strong at that. 
+Trustplane.dev design system
+Direction
+For trustplane.dev, the best-fit direction is security-tool minimalism : serious, technical, standards-friendly,
+and opinionated, but not cold. The page should feel like a public project homepage maintained by
+engineers, not a funnel page maintained by demand generation. Use a single strong statement of purpose,
+one primary CTA, one GitHub CTA, and put the quickstart or install proof immediately below the hero. That
+direction is most aligned with Dex, Authelia, Tinyauth, Kanidm, and SPIFFE/SPIRE. 
+A practical warning: if trustplane.dev is meant to communicate pure open source , do not use that phrase
+unless the public repo and license are visible on launch day. Several successful OSS projects make the
+license visible or obvious from the homepage or repo surface; that materially improves trust. 
+Recommended style system
+Area Recommendation
+ToneCalm, direct, technical, audit-friendly. Avoid “revolutionize,” “enterprise-grade,” “AI-
+powered platform,” and comparison-page chest-thumping on the homepage.
+TypographyInter or IBM Plex Sans  for UI/body; JetBrains Mono  for code and badges.
+Use 2 weights in body UI, 1 mono weight for snippets.
+Page width 1200–1280px content max; keep hero copy narrow at ~10–12 words per line average.14
+19
+20
+21
+22
+6
+Area Recommendation
+ImageryPrefer one clean architecture diagram or terminal/code screenshot. No autoplay video in
+hero.
+Icons Very light use. Use line icons only where they carry meaning.
+VoiceWrite like project maintainers: “what it is,” “how it works,” “how to try it,” “how to
+contribute.”
+Suggested palette
+This palette intentionally stays sober and high-contrast.
+Token Hex Intended use
+Background #0B1020 Main page background
+Surface #11182B Cards and code panels
+Surface subtle #182138 Hover/background elevations
+Text primary #F4F7FB Headlines and body text
+Text secondary #B7C2D6 Supporting copy
+Border #2B3854 Dividers and card borders
+Accent primary #6EE7FF Primary highlights and links
+Accent secondary #8B9CFF Secondary accent / diagrams
+Success #4ADE80 “Verified,” “Open source,” install success
+Warning #FBBF24 Beta / in-progress notices
+Use a very dark background only if body text remains above WCAG contrast thresholds. WCAG guidance
+requires at least 4.5:1 for normal text  and 3:1 for large text . 
+Layout templates
+The homepage should use this order:
+flowchart TD
+    A[Header with Docs GitHub Community Security] --> B[Hero]
+    B --> C[Trust strip: License Repo Latest release]
+    C --> D[Core capabilities]
+    D --> E[Quickstart or Install]
+    E --> F[How it works]
+    F --> G[Docs entry points]23
+7
+    G --> H[Community and contributing]
+    H --> I[Footer]
+For responsive behavior , use a two-column desktop layout that collapses to a single content column on
+tablet/mobile. Keep the CTA row and install proof visible without horizontal scroll.
+flowchart TB
+    subgraph Desktop
+      D1[Left: headline and subhead] --- D2[Right: architecture visual or code 
+block]
+      D3[Feature cards in 3 columns]
+      D4[Quickstart panel + Docs cards]
+    end
+    subgraph Mobile
+      M1[Headline]
+      M2[CTA row]
+      M3[Short proof block]
+      M4[Quickstart]
+      M5[Feature cards]
+      M6[Docs]
+      M7[Community]
+    end
+A homepage template that fits the research well looks like this:
+Section Purpose Copy target
+Header Immediate orientation Docs, GitHub, Community, Security, Changelog
+HeroDefine the project in one
+sentence1 heading, 1 subhead, 2 CTAs
+Trust strip Show this is real OSSLicense, GitHub stars, latest release, CNCF/standards/
+governance if applicable
+CapabilitiesShow 3–5 outcomes, not 15
+features1 short sentence per card
+Quickstart Reduce perceived setup cost 3 steps or one code block
+How it
+worksBuild the mental model 3 concise stages
+Docs Channel the next clickConcepts, Quickstart, Integration, Security,
+Contributing
+Community Human contact point Discord/Slack/Discussions + contribution link
+8
+Section Purpose Copy target
+FooterKeep project infrastructure
+visibleRepo, docs, changelog, security policy, code of conduct,
+license
+Sample homepage copy
+The sample copy below is intentionally written in a pure OSS  voice. Where it echoes Trustplane’s public
+concepts such as machine identity, short-lived credentials, and evidence-grade audit, it does so by adapting
+wording from the public Trustplane docs rather than asserting a finalized public marketing position. 
+Hero
+Open-source trust for APIs and machine identity
+Verify who is calling what, replace long-lived shared secrets with short-lived credentials, and
+keep an evidence-grade audit trail for every critical action.
+Get started  · View on GitHub
+Feature cards
+Prove every request
+Bind identity and authorization to the request itself, not just to a static key.
+Keep credentials short-lived
+Issue scoped, temporary credentials after verification instead of passing around long-lived
+secrets.
+Enforce at the boundary
+Apply controls where requests enter provider systems, gateways, or service edges.
+Audit decisions, not just outcomes
+Keep verifiable records of what was approved, verified, issued, denied, and why.
+Install / quickstart section
+Quickstart in minutes
+Clone the repo, run the local stack, and send your first verified request through the demo
+policy.
+Community section
+Built in public
+Track releases, read the roadmap, open a discussion, or pick up a good-first issue. If trust is
+the product, the project itself should be inspectable.24
+9
+Content architecture and sample docs
+SEO-friendly headings
+For the homepage, these headings will read clearly to both humans and search engines:
+Level Suggested heading
+H1 Open-source trust for APIs and machine identity
+H2 Why shared API keys break down
+H2 What Trustplane does
+H2 Quickstart
+H2 How verification works
+H2 Docs and integrations
+H2 Security model
+H2 Community and contributing
+Those headings are more search-friendly than abstract brand metaphors because they expose the product
+category directly. The strongest reference pages tend to lead with the category or protocol, not with poetry. 
+Short-form copy rules
+Use these page-level rules consistently:
+Rule Recommendation
+Sentence length Prefer 10–20 words.
+Paragraph length One sentence in hero, two sentences max elsewhere.
+Feature cards One outcome sentence, not a mini whitepaper .
+Jargon Explain “proof,” “attestation,” or “boundary” once, then use consistently.
+Proof points Prefer protocol/governance/install facts over unverifiable hype.
+CTA text Use verbs: Get started, Read docs, View on GitHub, Join community.
+Recommended docs organization
+A docs IA that matches the best OSS examples:25
+10
+Docs section What belongs there
+Concepts Mental model, glossary, threat model, architecture overview
+Quickstart Local run, sample policy/config, first request, expected output
+Integration Gateway patterns, SDKs, provider adapters, deployment targets
+Security Trust assumptions, key handling, replay protection, credential lifecycle, audit model
+Operations Deployment, rotation, observability, upgrades, troubleshooting
+Contributing Dev setup, RFC/design notes, coding standards, release process
+Dex, Authelia, Tinyauth, Kanidm, and Keycloak all reinforce the same lesson: docs are not a separate
+website after the “marketing site” ends; they are the product surface . 
+Quickstart example pattern
+For trustplane.dev, the landing page should show a format , not a giant wall of config. A good pattern is:
+# illustrative homepage quickstart format
+gitclone<public-repo>
+cd<project>
+cp.env.example .env
+dockercompose up
+# open the local UI or send the sample request
+# inspect the audit output
+That works better on a landing page than a real production config because it communicates “I can try this
+today” without turning the homepage into docs.
+Security and privacy statement pattern
+Use one plain-language block near the footer or security section:
+Security and privacy
+Trustplane is designed so authorization decisions can be verified, credentials can be short-
+lived, and audit records can be reviewed after the fact. Security-sensitive behavior , disclosure
+reporting, and version support should be documented publicly before adoption.
+That kind of statement works better than a compliance badge wall on a pure OSS homepage. OSS visitors
+usually want clarity of model  before they want claims of certification. This is one reason SPIFFE/SPIRE, Dex,
+and Authelia feel trustworthy without sounding sales-led. 26
+27
+11
+Contributor onboarding pattern
+The contributor path should be visible from the homepage footer and from the docs nav:
+Contributing
+Start with the quickstart dev environment, read the architecture notes, and pick up a
+beginner issue or docs task. Design discussions happen in public. Security disclosures use the
+security policy, not public issues.
+That mirrors what successful OSS identity projects expose: contribution guidance, public discussion, and a
+separate path for vulnerabilities. 
+Implementation notes and limitations
+Build and component guidance
+For trustplane.dev, the most robust implementation is a static-first site  with content files and a tiny client
+footprint. A good component set is:
+Component Notes
+SiteHeader Brand, Docs, GitHub, Community, Security, Changelog
+Hero One sentence, two CTAs, optional small diagram/code panel
+TrustStrip License, stars, latest release, standards/governance badges
+FeatureGrid 4 cards max on homepage
+QuickstartPanel 3 steps or one short code snippet
+DocsCards Concepts, Quickstart, Integration, Security, Contributing
+CommunityStrip Discussions/Discord/Slack + contribution link
+Footer Repo, docs, changelog, security, code of conduct, privacy only if needed
+Keep assets lean: SVG logo, one architecture SVG, one annotated screenshot/diagram, and one code font.
+Avoid hero video, carousels, or heavy animated backgrounds.28
+12
+Notes for Antigravity, Manus, and Google AI Studio
+ToolBest use for this
+projectPractical note Sources
+AntigravityBrowser-agent QA,
+competitive layout
+capture, multi-page
+interaction testingThe publicly indexed “docs centre” describes itself
+as an independent reference site , not an official
+Google source; use it cautiously for workflow
+ideas, not as a source of contractual product
+truth.
+ManusFast layout/content
+iteration and preview
+publishingManus docs describe website-building and
+publishing flows, including versioned website
+management and website.*  publish/status
+endpoints; it is well suited to generating drafts
+and preview deployments quickly.
+Google AI
+StudioPrompt-first
+prototyping, build-
+mode experiments,
+exportable codeGoogle’s docs describe AI Studio as the fastest
+way to start with Gemini, and its Build mode as a
+way to quickly build and deploy apps with
+generated files and live preview; use it for
+structured prototyping, then move final site
+ownership into Git.
+Accessibility and performance targets
+Use semantic page landmarks so assistive technologies can navigate the site structure cleanly. WAI
+guidance recommends landmark regions and section labeling for exactly this reason. Informative images
+should have real alt text; decorative images should use null alt text. 
+For visual accessibility, keep body text combinations above the WCAG minimum contrast threshold of 4.5:1 ,
+and large text above 3:1. 
+For performance, optimize toward “good” Core Web Vitals: LCP ≤ 2.5s , INP ≤ 200ms , and CLS ≤ 0.1  at the
+75th percentile. Those are the current published thresholds. 
+A practical homepage performance budget for this project is:
+Budget item Target
+Initial JS under 90 KB compressed if possible
+Above-the-fold images under 250 KB total
+Font payload 1 sans family + 1 mono family, WOFF2 only
+Hero media static SVG/PNG or CSS-only illustration
+Lighthouse / CWV posture design for green CWV before adding visual flourishes29
+30
+31
+32
+23
+33
+13
+Open questions and limitations
+Trustplane and Clawvisor were useful adjacent references, but their public pages in this pass did not give
+me enough confidence to catalog them as verified OSS projects with publicly obvious license/repo surfaces.
+Trustplane’s public docs are clear on product ideas such as request proofs, short-lived JWTs, and audit;
+Clawvisor’s public site is clear on approvals, vaulting, and policy checks. But if trustplane.dev is going to ship
+as a pure OSS  project, the launch page should make the repository and license unmistakable from day one. 
+A second limitation is licensing clarity across some modern auth vendors. ZITADEL’s open-source page and
+repo messaging are not phrased identically, and projects like Authentik, Hanko, and SuperTokens visibly mix
+OSS and additional licensing layers/components. That does not make them bad references, but it does
+mean they are weaker precedents for a “pure OSS” positioning than Dex, Authelia, SPIFFE/SPIRE, Kanidm,
+Tinyauth, or Keycloak. 
+https://dexidp.io/
+https://dexidp.io/
+https://goauthentik.io/
+https://goauthentik.io/
+https://docs.trustplane.mergematter .io/
+https://docs.trustplane.mergematter .io/
+https://spiffe.io/
+https://spiffe.io/
+https://www.keycloak.org/
+https://www.keycloak.org/
+https://www.authelia.com/
+https://www.authelia.com/
+https://zitadel.com/opensource
+https://zitadel.com/opensource
+https://logto.io/
+https://logto.io/
+https://supertokens.com/
+https://supertokens.com/
+https://www.hanko.io/
+https://www.hanko.io/
+https://kanidm.com/
+https://kanidm.com/
+https://www.pomerium.com/
+https://www.pomerium.com/
+https://www.apereo.org/cas
+https://www.apereo.org/cas34
+35
+1 3 618 20 21 25 26
+2 8
+424 34
+527
+719
+922
+10 35
+11
+12
+13
+14
+15
+16
+14
+https://tinyauth.app/
+https://tinyauth.app/
+https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html?pt=BureoF4GVB
+https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html?pt=BureoF4GVB
+https://github.com/dexidp/dex
+https://github.com/dexidp/dex
+https://antigravity.gr .com/
+https://antigravity.gr .com/
+https://manus.im/docs/website-builder/getting-started
+https://manus.im/docs/website-builder/getting-started
+https://ai.google.dev/aistudio/
+https://ai.google.dev/aistudio/
+https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/
+https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/
+https://web.dev/articles/defining-core-web-vitals-thresholds?authuser=1&hl=en
+https://web.dev/articles/defining-core-web-vitals-thresholds?authuser=1&hl=en17
+23
+28
+29
+30
+31
+32
+33
+15

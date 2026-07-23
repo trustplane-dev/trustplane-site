@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane Auth - Runtime Authorization for Machine Requests</title>
+<meta name="description" content="TrustPlane Auth is the runtime authorization layer for AI agents, machine clients, and service APIs. Enforce locally, verify request intent, and audit every decision.">
+<link rel="canonical" href="https://trustplane.dev/auth.html">
+<meta name="keywords" content="runtime authorization, AI agent authorization runtime, machine request verification, service API authorization, MCP server authorization, local policy enforcement">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane Auth - Runtime Authorization for Machine Requests">
+<meta property="og:description" content="Local authorization enforcement for AI agents, machine clients, and service APIs.">
+<meta property="og:url" content="https://trustplane.dev/auth.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Auth","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","description":"Runtime authorization layer that verifies machine requests near protected APIs and records authorization decisions for audit."}
+</script>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="">TrustPlane</a>
+  <nav class="navlinks" aria-label="Primary"><a href="./auth.html">Auth</a><a href="./control.html">Control</a><a href="./solutions.html">Solutions</a><a href="./pricing.html">Subscriptions</a><a href="./downloads.html">Downloads</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a></nav>
+  <div class="nav-actions"><a class="link" href="./pricing.html#contact">Talk to sales</a><a class="btn primary" href="./downloads.html">Start building</a></div>
+</div></header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">TrustPlane Auth</span>
+      <h1>Runtime authorization where machine traffic enters.</h1>
+      <p class="lead">TrustPlane Auth enforces near protected APIs, tools, and services. It verifies machine requests, applies local policy, denies unsafe calls early, and emits decision evidence.</p>
+      <div class="actions"><a class="btn primary large" href="./downloads.html">Get the preview</a><a class="btn secondary large" href="https://docs.auth.trustplane.dev">Read the docs</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">Runtime job</span>
+        <h2>Make the boundary smart enough to say no.</h2>
+        <p class="lead">A machine caller should not get a free pass because it has a token-shaped string. Auth evaluates caller, request, policy, freshness, and replay signals before forwarding traffic.</p>
+      </div>
+      <pre class="terminal"><span class="dim">incoming</span> POST /v1/refunds
+<span class="dim">caller</span> agent.checkout.prod
+<span class="dim">policy</span> payments.refunds.v18
+
+<span class="info">verify</span> identity, audience, request binding
+<span class="info">check</span> policy, freshness, replay state
+<span class="ok">allow</span> forward upstream with audit context
+
+<span class="deny">deny</span> replay, mismatch, stale policy, unknown caller</pre>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head center"><span class="eyebrow">Capabilities</span><h2>What Auth handles in the request path.</h2></div>
+      <div class="grid-3">
+        <div class="card"><div class="meta">Verification</div><h3>Request-aware decisions</h3><p>Evaluate machine requests using caller identity, intended action, target audience, route, method, freshness, and policy context.</p></div>
+        <div class="card"><div class="meta">Replay resistance</div><h3>Stop reused authorization material</h3><p>Detect replay and mismatch conditions before traffic reaches sensitive APIs or tool handlers.</p></div>
+        <div class="card"><div class="meta">Local enforcement</div><h3>No per-request dependency on Control</h3><p>Auth is built to make decisions locally using trusted configuration and policy state distributed to the runtime.</p></div>
+        <div class="card"><div class="meta">Integration</div><h3>Fit existing infrastructure</h3><p>Use gateway, sidecar, service-adjacent, or cluster deployment models rather than rewriting every protected application.</p></div>
+        <div class="card"><div class="meta">Evidence</div><h3>Emit useful audit events</h3><p>Record allow and deny decisions with the policy and caller context operators need during reviews and incidents.</p></div>
+        <div class="card"><div class="meta">Operations</div><h3>Clear failure modes</h3><p>Stable deny reasons help engineering teams debug access without hiding security decisions behind generic 403s.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Deployment patterns</span><h2>Run Auth where your applications already live.</h2></div>
+      <div class="architecture">
+        <div class="arch-head"><strong>TrustPlane Auth deployments</strong><span>same authorization model, different operating environments</span></div>
+        <div class="arch-row">
+          <div class="arch-cell"><b>API boundary</b><p>Protect customer-facing and partner-facing machine APIs before requests reach business services.</p></div>
+          <div class="arch-cell"><b>Internal platform</b><p>Enforce service-to-service authorization inside clusters, environments, and shared platform gateways.</p></div>
+          <div class="arch-cell"><b>Agent tool layer</b><p>Place authorization in front of MCP servers, tool endpoints, and sensitive automation actions.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-band">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">With Control</span>
+        <h2>Auth gets stronger when the fleet is governed.</h2>
+        <p class="lead">Teams can begin with runtime enforcement, then use TrustPlane Control to manage enrollment, policy releases, revocation, audit search, and enterprise operator access across every Auth deployment.</p>
+        <div class="actions"><a class="btn dark large" href="./control.html">See Control</a><a class="btn primary large" href="./pricing.html">Compare subscriptions</a></div>
+      </div>
+      <div class="grid-2">
+        <div class="card dark-card"><h3>Signed policy delivery</h3><p>Publish policy changes to Auth deployments with versioning, freshness, and rollback-friendly operations.</p></div>
+        <div class="card dark-card"><h3>Revocation path</h3><p>Remove compromised or retired machine access without waiting for every service team to redeploy.</p></div>
+        <div class="card dark-card"><h3>Fleet observability</h3><p>See which environments are enforcing, which policy version is active, and where decisions are happening.</p></div>
+        <div class="card dark-card"><h3>Audit workflow</h3><p>Connect runtime decisions back to the governance events that approved, changed, or revoked access.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta"><div class="wrap"><h2>Put authorization in front of the next machine workflow.</h2><p class="lead">Start with Auth, then add Control when you need fleet operations and enterprise governance.</p><div class="actions"><a class="btn primary large" href="./downloads.html">See downloads</a><a class="btn dark large" href="https://docs.auth.trustplane.dev">Open docs</a></div></div></section>
+
+<footer><div class="wrap"><div class="top">
+  <div><a class="brand" href="./"><img src="./assets/logo.svg" width="26" height="26" alt="">TrustPlane</a><p>Authorization infrastructure for AI agents, machine clients, and service APIs.</p></div>
+  <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./pricing.html">Subscriptions</a></div>
+  <div><h4>Solutions</h4><a href="./solutions.html">AI agents</a><a href="./solutions.html#mcp">MCP and tools</a><a href="./solutions.html#partners">Partner access</a></div>
+  <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="./downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a></div>
+  <div><h4>Company</h4><a href="./pricing.html#contact">Contact</a><a href="./llms.txt">llms.txt</a></div>
+</div><div class="legal"><span>© 2026 TrustPlane</span><span>Runtime authorization for machine traffic.</span></div></div></footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane Auth — Request-Bound Machine Authorization, Enforced Locally</title>
+<meta name="description" content="TrustPlane Auth verifies a short-lived passport for every machine request — signature, issuer, audience, expiry, trust domain, confirmation, and replay — inside your infrastructure, with no per-request network dependency.">
+<link rel="canonical" href="https://trustplane.dev/auth.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane Auth — Request-Bound Machine Authorization">
+<meta property="og:description" content="SPIFFE authenticates workloads. TrustPlane Passport authenticates requests. Seven checks per decision, enforced in your infrastructure.">
+<meta property="og:url" content="https://trustplane.dev/auth.html">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"TrustPlane Auth","item":"https://trustplane.dev/auth.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a TrustPlane Passport?","acceptedAnswer":{"@type":"Answer","text":"A TrustPlane Passport is a short-lived, proof-bound authorization artifact derived from workload identity. It binds authority to one intended request rather than to a reusable credential. Verifiers check signature, issuer, audience, expiry, trust domain, confirmation claim, and replay state before allowing the request."}},
+{"@type":"Question","name":"How do I protect an existing service without changing its code?","acceptedAnswer":{"@type":"Answer","text":"Deploy the TrustPlane adapter in front of the service. The adapter verifies each passport and only forwards requests that pass verification. Services built in Go can use the HTTP middleware instead."}},
+{"@type":"Question","name":"Does verification require a network call?","acceptedAnswer":{"@type":"Answer","text":"No. Issuer keys resolve from signed local trust bundle documents, so verification is a local computation. The request path has no dependency on TrustPlane's cloud or any external service."}}
+]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="TrustPlane home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2E5BFF"/><path d="M9 17.5 14 22l9-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      TrustPlane
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="./auth.html">Auth</a>
+      <a href="./control.html">Control</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="https://docs.auth.trustplane.dev">Docs</a>
+      <a href="https://github.com/trustplane-dev">GitHub</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="link" href="./pricing.html#contact">Talk to an engineer</a>
+      <a class="btn primary" href="https://docs.auth.trustplane.dev">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">TrustPlane Auth</span>
+        <h1>A passport for every request. Checked at your door.</h1>
+        <p class="lead">SPIFFE authenticates workloads. TrustPlane Passport authenticates requests. Auth is the runtime that verifies each machine call — agent, service, or partner — before your upstream code runs, using nothing but signed material already on disk.</p>
+        <div class="actions">
+          <a class="btn primary large" href="https://docs.auth.trustplane.dev">Read the docs</a>
+          <a class="btn ghost large" href="https://github.com/trustplane-dev">View on GitHub</a>
+        </div>
+        <div class="checks" aria-label="Verification checks">
+          <span><b>✓</b>signature</span><span><b>✓</b>issuer</span><span><b>✓</b>audience</span><span><b>✓</b>expiry</span><span><b>✓</b>trust domain</span><span><b>✓</b>confirmation</span><span><b>✓</b>replay / JTI</span>
+        </div>
+      </div>
+      <div>
+        <pre class="code" aria-label="Example decision"><span class="c"># one request, one passport, one decision</span>
+caller      agent.checkout.prod
+request     POST /v1/refunds
+passport    tpp_9f42… <span class="c">(expires in 58s)</span>
+
+<span class="b">verify</span>  signature ✓  issuer ✓  audience ✓
+        expiry ✓  trust_domain ✓
+        confirmation ✓  jti unseen ✓
+
+<span class="g">decision  ALLOW</span>
+policy    payments.refunds.v18
+evidence  decision event emitted</pre>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap narrow">
+      <div class="definition">
+        <p><b>TrustPlane Auth</b> is a free-to-run authorization runtime for machine and AI-agent traffic. It issues and verifies <b>TrustPlane Passports</b> — short-lived, proof-bound authorization artifacts derived from workload identity — and applies local policy before a request reaches the protected service. Verification is offline-capable: issuer keys resolve from signed local trust bundles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why request-bound</span>
+        <h2>A key says who you are. A passport says what this request may do.</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>Short-lived by design</h3><p>Passports expire in seconds to minutes, not quarters. A leaked passport is a shrinking problem; a leaked API key is a standing one.</p></div>
+        <div class="card"><h3>Bound to intent</h3><p>The proof covers the request being made — route, method, audience — so authority can't quietly stretch to actions nobody approved.</p></div>
+        <div class="card"><h3>Replay is a first-class enemy</h3><p>JTI tracking rejects the second use of a passport. A recorded request can't be replayed into a second refund.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">Deployment</span>
+        <h2>Three ways in. None of them a rewrite.</h2>
+        <p class="lead">Auth meets your services where they are — including the ones nobody wants to touch.</p>
+      </div>
+      <div class="numbered">
+        <div class="item"><div><b>The adapter, for brownfield services.</b><span>A verifier-forwarding proxy that sits in front of an existing HTTP service. Requests that fail verification never reach the service; no application changes required.</span></div></div>
+        <div class="item"><div><b>Middleware, for Go services.</b><span>Drop-in HTTP middleware and reverse-proxy primitives when you'd rather verify in-process.</span></div></div>
+        <div class="item"><div><b>Gateway and sidecar patterns.</b><span>Run verification at the API edge, beside a workload, or in front of MCP and tool servers — Kubernetes-compatible, not Kubernetes-dependent.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="eyebrow">Trust material</span>
+        <h2>Decisions from signed files, not from someone's uptime.</h2>
+        <p class="lead">Verifiers accept a request when issuer, trust domain, subject, key binding, and context match local policy. That policy — and the keys behind it — arrives as signed bundle documents you can inspect, pin, and mirror.</p>
+      </div>
+      <div>
+        <div class="promise"><b>Offline verification.</b><p>Bundle documents give verifiers issuer public keys without a mandatory online lookup. Your authorization boundary works during an internet outage — and during ours.</p></div>
+        <div class="promise"><b>Pluggable identity.</b><p>TrustPlane-native issuers, OIDC/JWT issuers, and SPIFFE/SPIRE integrations share the same passport semantics. Bring the workload identity you already have.</p></div>
+        <div class="promise"><b>Fail closed, explain why.</b><p>Unknown route, missing trust material, unsupported proof profile — the verifier denies and says exactly why. Deny reasons are for debugging, not divination.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Auth, in five honest answers.</h2></div>
+      <div class="faq">
+        <details open><summary>Is Auth really free? What's the catch?</summary><p>It's free to run, with docs and community support. The catch is the honest kind: when your fleet grows, you'll want enrollment, signed policy rollout, revocation, and audit from one place — that's <a href="./control.html">Control</a>, and that's what we charge for.</p></details>
+        <details><summary>What identity systems does it work with?</summary><p>OIDC/JWT issuers, SPIFFE/SPIRE, and TrustPlane-native issuers. Auth consumes workload identity; it doesn't replace it.</p></details>
+        <details><summary>What does “proof-bound” mean concretely?</summary><p>The passport carries a confirmation claim binding it to the presenting client and intended request context. Verification checks that binding along with signature, issuer, audience, expiry, trust domain, and replay state — seven checks per decision.</p></details>
+        <details><summary>How does policy get to the verifier?</summary><p>On Develop, you place signed trust-material and policy bundles as files. With Control, the same artifacts are versioned, signed, and distributed to your Auth Sites — and revocation propagates the same way.</p></details>
+        <details><summary>What languages are supported?</summary><p>The runtime and middleware are Go; the adapter protects services written in anything, because it works at the HTTP boundary.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cta">
+      <h2>Protect one API this afternoon.</h2>
+      <p class="lead">Adapter in front, passports required, deny reasons you can read. Start where the risk is and grow from there.</p>
+      <div class="actions">
+        <a class="btn primary large" href="https://docs.auth.trustplane.dev">Start with the docs</a>
+        <a class="btn ghost large" href="./control.html">See what Control adds</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="./index.html"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#2E5BFF"/><path d="M9 17.5 14 22l9-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>TrustPlane</a>
+        <p>Authorization infrastructure for AI agents, machine clients, and service APIs. A Mergematter Labs product.</p>
+      </div>
+      <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./pricing.html">Pricing</a></div>
+      <div><h4>Use cases</h4><a href="./index.html#use-cases">AI agents</a><a href="./auth.html">MCP &amp; tools</a><a href="./control.html">Partner access</a></div>
+      <div><h4>Developers</h4><a href="https://docs.auth.trustplane.dev">Documentation</a><a href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+      <div><h4>Company</h4><a href="https://mergematter.io">Mergematter Labs</a><a href="mailto:hello@trustplane.dev">Contact</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Mergematter Labs · TrustPlane</span><span>Control centrally. Enforce locally.</span></div>
+  </div>
+</footer>
+</body>
+</html>

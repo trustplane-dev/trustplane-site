@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Trustplane">
+  <path d="M16 5 26 10.8v10.4L16 27 6 21.2V10.8L16 5Z" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M16 11 21 13.8v4.4L16 21 11 18.2v-4.4L16 11Z" fill="#00d4ff" fill-opacity=".18" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

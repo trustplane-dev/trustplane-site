@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPlane — A System of Record for Machine Authorization</title>
+<meta name="description" content="TrustPlane is an authorization plane for AI agents, MCP servers, and machine-to-machine traffic. Every request is verified against a short-lived passport in your infrastructure, and every decision becomes evidence your auditors can read.">
+<link rel="canonical" href="https://trustplane.dev/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustPlane">
+<meta property="og:title" content="TrustPlane — A System of Record for Machine Authorization">
+<meta property="og:description" content="Every machine action: verified in your infrastructure, governed centrally, recorded as evidence.">
+<meta property="og:url" content="https://trustplane.dev/">
+<meta property="og:image" content="https://trustplane.dev/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,550;9..144,600&family=Inter:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","@id":"https://trustplane.dev/#org","name":"TrustPlane","legalName":"Mergematter Labs","url":"https://trustplane.dev","logo":{"@type":"ImageObject","url":"https://trustplane.dev/assets/logo.svg","width":112,"height":112},"description":"TrustPlane is an authorization plane for AI agents, MCP servers, and machine-to-machine traffic, built by Mergematter Labs. TrustPlane Auth verifies short-lived, request-bound passports inside customer infrastructure. TrustPlane Control governs enrollment, policy, and revocation across fleets.","parentOrganization":{"@type":"Organization","name":"Mergematter Labs","url":"https://mergematter.io"},"sameAs":["https://github.com/trustplane-dev","https://mergematter.io"],"contactPoint":{"@type":"ContactPoint","email":"hello@trustplane.dev","contactType":"sales"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://trustplane.dev/#website","name":"TrustPlane","url":"https://trustplane.dev","publisher":{"@id":"https://trustplane.dev/#org"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane","applicationCategory":"SecurityApplication","operatingSystem":"Linux, Kubernetes, macOS","provider":{"@id":"https://trustplane.dev/#org"},"description":"Authorization plane for AI agents, MCP servers, and machine-to-machine traffic. TrustPlane Auth enforces request-bound authorization in customer infrastructure. TrustPlane Control governs trust anchors, enrollment, signed policy distribution, revocation, and audit.","featureList":["Short-lived, request-bound passport verification","Local enforcement with no per-request network dependency","Replay and JTI protection","Signed policy and trust-material distribution","Fleet revocation and audit evidence","Managed and self-hosted control plane"],"softwareHelp":"https://docs.auth.trustplane.dev","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"0","highPrice":"399","offerCount":"3"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is TrustPlane?","acceptedAnswer":{"@type":"Answer","text":"TrustPlane is an authorization plane for AI agents, MCP servers, and machine-to-machine traffic. TrustPlane Auth verifies a short-lived, request-bound passport for each machine request inside your infrastructure. TrustPlane Control governs enrollment, policy releases, revocation, and audit across the fleet."}},
+{"@type":"Question","name":"Why does machine authorization need a system of record?","acceptedAnswer":{"@type":"Answer","text":"Because reviews, regulators, incident response, and customers all ask the same question: what called what, under which policy, and why was it allowed. TrustPlane emits a decision event for every allow and deny, tied to a signed, versioned policy release."}},
+{"@type":"Question","name":"Does TrustPlane route my traffic through its cloud?","acceptedAnswer":{"@type":"Answer","text":"No. Enforcement runs in your infrastructure and verifies against signed local trust bundles. The control plane distributes policy out-of-band and is never a per-request hop."}},
+{"@type":"Question","name":"What happens if the subscription lapses?","acceptedAnswer":{"@type":"Answer","text":"Running enforcement continues on the last signed state. Billing can block new activations; it can never disable running Auth Sites, anchors, clients, or policy."}}
+]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="TrustPlane home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="4" fill="#14171A"/><path d="M9 17.5 14 22l9-11" stroke="#FCFBF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      TrustPlane
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="./auth.html">Auth</a>
+      <a href="./control.html">Control</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="https://docs.auth.trustplane.dev">Documentation</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="link" href="./pricing.html#contact">Talk to our team</a>
+      <a class="btn primary" href="./pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="rule-top">
+        <span class="kicker">Machine authorization, governed</span>
+        <h1>Your machines act on your behalf. Keep the record that proves it was allowed.</h1>
+        <div class="standfirst">
+          <p>AI agents, services, and partner systems now execute decisions that used to wait for a human signature. The question a board, an auditor, or an incident review asks is no longer whether software can act — it is whether each action was authorized, by which policy, and on whose authority.</p>
+          <p>TrustPlane answers with architecture rather than assurance. Every machine request carries a short-lived, request-bound passport, verified inside your own infrastructure. Every decision — allowed or denied — becomes evidence. And the entire fleet is governed from one plane: enrollment, signed policy releases, revocation, audit.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary large" href="./pricing.html">Start free with Auth</a>
+          <a class="btn ghost large" href="./pricing.html#contact">Talk to our team</a>
+        </div>
+      </div>
+
+      <div class="ledger" aria-label="Authorization register (illustrative)">
+        <div class="ledger-head"><span>Authorization register — payments boundary, production</span><span>policy release v18 · signed</span></div>
+        <table>
+          <thead><tr><th>Time (UTC)</th><th>Principal</th><th>Request</th><th>Policy cited</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td class="entry">14:02:11</td><td class="entry">checkout-agent</td><td class="entry">POST /v1/refunds</td><td class="entry">payments.refunds.v18 §3</td><td class="v-allow">ALLOWED</td></tr>
+            <tr><td class="entry">14:02:11</td><td class="entry">billing-sync</td><td class="entry">GET /v1/invoices</td><td class="entry">payments.read.v18 §1</td><td class="v-allow">ALLOWED</td></tr>
+            <tr><td class="entry">14:02:12</td><td class="entry">unknown (replay)</td><td class="entry">POST /v1/refunds</td><td class="entry">passport already presented</td><td class="v-deny">DENIED</td></tr>
+            <tr><td class="entry">14:02:13</td><td class="entry">research-agent</td><td class="entry">DELETE /v1/records</td><td class="entry">no clause grants route</td><td class="v-deny">DENIED</td></tr>
+            <tr><td class="entry">14:02:14</td><td class="entry">deploy-bot</td><td class="entry">POST /v1/releases</td><td class="entry">platform.deploy.v18 §7</td><td class="v-allow">ALLOWED</td></tr>
+          </tbody>
+        </table>
+        <div class="ledger-foot">Illustrative register. Seven verifications per entry: signature · issuer · audience · expiry · trust domain · confirmation · replay.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="definition">
+        <p><b>TrustPlane</b> is an authorization plane for AI agents, MCP servers, and machine-to-machine traffic. <b>TrustPlane Auth</b> verifies a short-lived, request-bound passport for each machine request inside your infrastructure. <b>TrustPlane Control</b> governs enrollment, policy releases, revocation, and audit across the fleet. Control centrally; enforce locally.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">The examination</span>
+        <h2>Four questions every serious review asks. One architecture that answers them.</h2>
+      </div>
+      <div class="cols" style="grid-template-columns:repeat(4,1fr)">
+        <div><span class="num">i</span><h3>What may it do?</h3><p>Not “who does it claim to be” — a bearer token settles that and nothing else. Authority here is bound to the specific request being made, and expires with it.</p></div>
+        <div><span class="num">ii</span><h3>Where are the credentials?</h3><p>Nowhere to leak. Standing secrets give way to passports that live for seconds; there is no long-lived key to land in a log, a prompt, or a partner's repository.</p></div>
+        <div><span class="num">iii</span><h3>How fast is revocation?</h3><p>One motion, centrally, with propagation tracked per enforcement site until convergence — an answer given with a timestamp, not a shrug.</p></div>
+        <div><span class="num">iv</span><h3>Where is the evidence?</h3><p>Every decision is recorded against the signed policy release that produced it. Reviews receive records; incident channels receive answers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">The instruments</span>
+        <h2>Enforcement at your boundary. Governance above your fleet.</h2>
+      </div>
+      <div class="grid-2">
+        <article class="article">
+          <span class="kicker">TrustPlane Auth · free to run</span>
+          <h3>The verifier</h3>
+          <p>Auth runs where your requests land. It verifies seven properties of every passport — signature, issuer, audience, expiry, trust domain, confirmation, replay — from signed trust material held locally. No round trip, no external dependency, no exception for a bad day.</p>
+          <ul>
+            <li>Brownfield adapter: protect an existing service without changing its code</li>
+            <li>Go middleware and reverse-proxy primitives for new services</li>
+            <li>Offline-capable verification from signed local bundles</li>
+            <li>Fails closed, with a written reason for every denial</li>
+          </ul>
+          <p style="margin-top:26px"><a class="btn ghost" href="./auth.html">Read about Auth</a></p>
+        </article>
+        <article class="article">
+          <span class="kicker">TrustPlane Control · enterprise</span>
+          <h3>The registry</h3>
+          <p>Control is where machine access becomes an administered estate: clients enter through trust anchors, policy ships as signed and versioned releases, revocation is tracked to convergence, and the audit trail reads like a ledger because it is one.</p>
+          <ul>
+            <li>Trust anchors and enrollment workflows, automated or ceremonial</li>
+            <li>Signed policy distribution to every Auth Site</li>
+            <li>Central revocation with per-site propagation tracking</li>
+            <li>Operator roles, environments, SSO and SCIM foundations</li>
+          </ul>
+          <p style="margin-top:26px"><a class="btn ghost" href="./control.html">Read about Control</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slate">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Covenants</span>
+        <h2>Terms we hold ourselves to, written where buyers can see them.</h2>
+        <p class="lead">These are behaviors of the product, contractual in spirit and tested in code — not positions on a slide.</p>
+      </div>
+      <div>
+        <div class="clause"><span class="no">Clause 1</span><div><b>Billing shall not enter the request path.</b><p>Authorization reads policy and trust material, never subscription state. A payment failure may block new activations; it may never stop a running verifier.</p></div></div>
+        <div class="clause"><span class="no">Clause 2</span><div><b>No termination shall disable running enforcement.</b><p>On cancellation or lapse, existing Auth Sites, anchors, clients, and policy continue on the last signed state. Your runtime is not collateral.</p></div></div>
+        <div class="clause"><span class="no">Clause 3</span><div><b>Verification shall not depend on our availability.</b><p>Issuer keys resolve from signed local bundle documents. The verifier renders the same judgment with or without a network path to anything.</p></div></div>
+        <div class="clause"><span class="no">Clause 4</span><div><b>The unknown shall be denied, in writing.</b><p>Missing trust material, an unrecognized route, an unsupported proof profile: the request fails closed, and the denial states its reason.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Jurisdiction</span>
+        <h2>Wherever machines transact with machines.</h2>
+      </div>
+      <div class="grid-4">
+        <div><h3>AI agents</h3><p>Authority follows the request an agent is making now — not whatever a resident credential would permit in perpetuity.</p></div>
+        <div><h3>MCP &amp; tool servers</h3><p>A verification boundary before each tool call, so an agent's suggestion must be authorized before it becomes an outcome.</p></div>
+        <div><h3>Service-to-service APIs</h3><p>Shared internal keys retire in favor of governed, request-bound authorization that platform teams can operate.</p></div>
+        <div><h3>Partner machine access</h3><p>External clients enroll through trust anchors and are revoked centrally, without a single upstream deployment.</p></div>
+      </div>
+      <p class="aside-note" style="margin-top:26px">Compatible with the identity estate you already hold: OIDC/JWT issuers, SPIFFE/SPIRE, Kubernetes, API gateways, MCP servers. Kubernetes-compatible, never Kubernetes-dependent.</p>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <p class="pull">“We are not in the business of making agents sound trustworthy. We are in the business of making every machine action verifiable, deniable, revocable, and explicable.”<small>Working principle · Mergematter Labs</small></p>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Terms of engagement</span>
+        <h2>Free where it must be. Priced plainly where it counts.</h2>
+      </div>
+      <div class="cols">
+        <div><span class="num">$0</span><h3>Develop</h3><p>The full Auth runtime, adapter, CLI, and documentation. Your first authorization boundary, in place this week, at no cost and on no clock.</p></div>
+        <div><span class="num">$399</span><h3>Control Enterprise</h3><p>The managed control plane, monthly, with two Auth Sites included. Additional sites at $49, additional trust anchor sources at $29. No per-request meter, ever.</p></div>
+        <div><span class="num">§</span><h3>Control Edge</h3><p>The control plane within your own boundary — self-hosted, offline-licensed, air-gap ready. Priced per engagement; a conversation, not a form.</p></div>
+      </div>
+      <p style="margin-top:36px"><a class="btn primary large" href="./pricing.html">Review the full terms</a></p>
+    </div>
+  </section>
+
+  <section class="toprule">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Questions of record</span>
+        <h2>Asked often. Answered plainly.</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>What is AI agent authorization?</summary><p>The practice of deciding, per request, whether an autonomous software actor may perform a specific action — and recording evidence of that decision. It is distinct from authentication, which establishes identity only. TrustPlane implements it with short-lived, request-bound passports verified inside your infrastructure.</p></details>
+        <details><summary>Is TrustPlane an identity provider or a service mesh?</summary><p>Neither. TrustPlane consumes workload identity from systems you already operate — OIDC/JWT, SPIFFE/SPIRE, or its own issuers — and adds request-level authorization. Your identity program and network architecture remain your own.</p></details>
+        <details><summary>Does any request traffic transit TrustPlane's cloud?</summary><p>No. Enforcement is local; the control plane distributes signed policy and trust material out-of-band and is never a per-request hop. This is an architectural property, not a configuration.</p></details>
+        <details><summary>Must we purchase Control to begin?</summary><p>No. Develop is free and sufficient for a single boundary. Control becomes valuable when enrollment, policy rollout, revocation, and audit across many sites become an operation with an owner.</p></details>
+        <details><summary>Who is behind TrustPlane?</summary><p>TrustPlane is built by <a href="https://mergematter.io">Mergematter Labs</a>. Correspondence to <a href="mailto:hello@trustplane.dev">hello@trustplane.dev</a> is read by the engineers who build the product.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <span class="kicker" style="text-align:center;display:block">Proceed</span>
+      <h2>Begin the record.</h2>
+      <p class="lead">Deploy Auth without charge today. Engage Control when the fleet warrants governance. Bring it inside your walls when your obligations require it.</p>
+      <div class="actions">
+        <a class="btn primary large" href="./pricing.html">Start free</a>
+        <a class="btn ghost large" href="mailto:hello@trustplane.dev?subject=TrustPlane%20inquiry">Write to our team</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="./index.html"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="4" fill="#FCFBF8"/><path d="M9 17.5 14 22l9-11" stroke="#14171A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>TrustPlane</a>
+        <p>Authorization infrastructure for AI agents, machine clients, and service APIs. A Mergematter Labs product.</p>
+      </div>
+      <div><h4>Product</h4><a href="./auth.html">TrustPlane Auth</a><a href="./control.html">TrustPlane Control</a><a href="./pricing.html">Pricing</a></div>
+      <div><h4>Use cases</h4><a href="./index.html">AI agents</a><a href="./auth.html">MCP &amp; tools</a><a href="./control.html">Partner access</a></div>
+      <div><h4>Developers</h4><a href="https://docs.auth.trustplane.dev">Documentation</a><a href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+      <div><h4>Company</h4><a href="https://mergematter.io">Mergematter Labs</a><a href="mailto:hello@trustplane.dev">Contact</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Mergematter Labs · TrustPlane</span><span>Control centrally. Enforce locally.</span></div>
+  </div>
+</footer>
+</body>
+</html>

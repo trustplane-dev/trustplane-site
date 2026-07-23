@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TrustPlane — Sample C · Trust-Graph Cockpit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+/* ============ TOKENS (dark default + light) ============ */
+:root,[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0b0e14; --bg2:#0e1219; --surface:#141923; --surface-2:#1a212c; --border:#222b38; --border-strong:#313c4c;
+  --text:#e9eef5; --muted:#97a2b2; --faint:#5f6b7a;
+  --accent:#5b9dff; --accent-2:#22d3ee; --accent-soft:rgba(91,157,255,.13);
+  --ok:#34d399; --ok-soft:rgba(52,211,153,.14); --deny:#fb7185; --deny-soft:rgba(251,113,133,.14); --warn:#fbbf24;
+  --edge:#2b3340; --edge-live:#5b9dff; --node:#141923; --grid:rgba(91,157,255,.05);
+  --shadow:0 10px 40px rgba(0,0,0,.5);
+}
+[data-theme="light"]{
+  color-scheme:light;
+  --bg:#f5f7fb; --bg2:#eef1f6; --surface:#ffffff; --surface-2:#f1f4f9; --border:#e2e7ef; --border-strong:#cfd6e1;
+  --text:#0f1722; --muted:#52607a; --faint:#8a94a6;
+  --accent:#2563eb; --accent-2:#0891b2; --accent-soft:rgba(37,99,235,.09);
+  --ok:#059669; --ok-soft:rgba(5,150,105,.10); --deny:#e11d48; --deny-soft:rgba(225,29,72,.09); --warn:#b45309;
+  --edge:#cdd5e1; --edge-live:#2563eb; --node:#ffffff; --grid:rgba(37,99,235,.06);
+  --shadow:0 10px 32px rgba(15,23,42,.10);
+}
+*{box-sizing:border-box} html,body{height:100%;margin:0}
+body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--muted);font-size:14px;-webkit-font-smoothing:antialiased;transition:background-color .25s,color .25s}
+h1,h2,h3{margin:0;color:var(--text);font-weight:600;letter-spacing:-.01em}
+.mono{font-family:"JetBrains Mono",monospace}
+.eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+
+/* ============ COCKPIT SHELL: no big sidebar; command bar + graph + rail ============ */
+.cockpit{display:flex;flex-direction:column;height:100vh}
+.bar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.bar .left{display:flex;align-items:center;gap:14px}
+.logo{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--accent),var(--accent-2));flex:none}
+.title{color:var(--text);font-weight:700}
+.cmdk{display:flex;align-items:center;gap:10px;width:380px;max-width:38vw;padding:8px 12px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--faint);cursor:text;font-size:13px}
+.cmdk .kbd{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:10px;border:1px solid var(--border-strong);border-radius:5px;padding:2px 6px;color:var(--muted)}
+.bar .right{display:flex;align-items:center;gap:10px}
+.scope{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px;font-weight:600}
+.scope span{padding:5px 11px;cursor:pointer;color:var(--muted)}
+.scope .on{background:var(--accent-soft);color:var(--accent)}
+.ibtn{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--muted);cursor:pointer;font-size:14px}
+.ibtn:hover{color:var(--text);border-color:var(--border-strong)}
+
+.body{flex:1;display:grid;grid-template-columns:1fr 360px;min-height:0}
+
+/* ---- GRAPH STAGE ---- */
+.stage{position:relative;overflow:hidden;background:
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/40px 40px,
+  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/40px 40px,
+  radial-gradient(900px 500px at 30% 0%,var(--accent-soft),transparent 70%),var(--bg)}
+.stage-head{position:absolute;top:18px;left:22px;z-index:5}
+.stage-head h1{font-size:19px}
+.stage-head .sub{color:var(--faint);font-size:12.5px;margin-top:4px}
+.legend{position:absolute;top:18px;right:22px;z-index:5;display:flex;gap:14px;font-size:11px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:5px;vertical-align:middle}
+
+svg{width:100%;height:100%;display:block}
+.node-box{cursor:pointer}
+.node-rect{fill:var(--node);stroke:var(--border-strong);stroke-width:1.2;rx:11}
+.node-rect.sel{stroke:var(--accent);stroke-width:2;filter:drop-shadow(0 0 10px var(--accent-soft))}
+.node-t{fill:var(--text);font:600 13px Inter,sans-serif}
+.node-s{fill:var(--faint);font:500 10px 'JetBrains Mono',monospace}
+.col-label{fill:var(--faint);font:600 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.edge{stroke:var(--edge);stroke-width:1.5;fill:none}
+.edge.allow{stroke:var(--ok)} .edge.deny{stroke:var(--deny);stroke-dasharray:4 4}
+.pulse{fill:var(--accent)}
+.tierdot{font:600 9px 'JetBrains Mono',monospace}
+
+/* ---- RIGHT RAIL: live decisions + selected detail ---- */
+.rail{border-left:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column;min-height:0}
+.rail-sec{padding:16px 18px;border-bottom:1px solid var(--border)}
+.rail-sec h3{font-size:13px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.stream{flex:1;overflow-y:auto}
+.dec{display:flex;align-items:center;gap:10px;padding:9px 18px;border-bottom:1px solid var(--border);cursor:pointer;font-size:12.5px}
+.dec:hover{background:var(--surface)}
+.dec .dot{width:7px;height:7px;border-radius:99px;flex:none}
+.dec .dot.a{background:var(--ok)} .dec .dot.d{background:var(--deny)}
+.dec .who{color:var(--text);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dec .t{color:var(--faint);font-family:"JetBrains Mono",monospace;font-size:10.5px}
+.badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.badge.attested{color:var(--accent);background:var(--accent-soft)}
+.badge.software{color:var(--faint);background:var(--surface-2);border:1px solid var(--border)}
+.badge.allow{color:var(--ok);background:var(--ok-soft)} .badge.deny{color:var(--deny);background:var(--deny-soft)}
+.badge.warn{color:var(--warn);background:rgba(251,191,36,.13)}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px}
+.kv .k{color:var(--faint);font-size:11px} .kv .v{color:var(--text)}
+.code{font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.65;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--muted);white-space:pre;overflow-x:auto;margin-top:6px}
+.code .k{color:var(--accent)} .code .s{color:var(--ok)} .code .n{color:var(--warn)}
+.detail-empty{padding:18px;color:var(--faint);font-size:12.5px}
+.flash{position:absolute;inset:0;background:var(--accent-soft);opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="cockpit">
+  <!-- command bar -->
+  <header class="bar">
+    <div class="left"><div class="logo"></div><div class="title">TrustPlane</div>
+      <div class="scope"><span class="">Global</span><span class="on">acme-demo</span></div>
+    </div>
+    <div class="cmdk" onclick="alert('⌘K command palette (mock): jump to anchor, route, caller, decision, or run an action')">⌕ Search anchors, routes, callers, decisions… <span class="kbd">⌘K</span></div>
+    <div class="right"><button class="ibtn" id="themeToggle" title="Theme">🌙</button><span class="badge software">ops@acme.io</span></div>
+  </header>
+
+  <div class="body">
+    <!-- ============ GRAPH STAGE ============ -->
+    <section class="stage">
+      <div class="stage-head">
+        <h1>Trust Graph</h1>
+        <div class="sub">acme-demo · who is trusted to reach what, and how strongly — live</div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--ok)"></i>allow</span>
+        <span><i style="background:var(--deny)"></i>deny</span>
+        <span><i style="background:var(--accent)"></i>attested</span>
+      </div>
+
+      <svg id="graph" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet">
+        <!-- column labels -->
+        <text class="col-label" x="120" y="70">Trust anchors</text>
+        <text class="col-label" x="440" y="70">Verifier · routes</text>
+        <text class="col-label" x="735" y="70">Protected upstream</text>
+
+        <!-- edges anchors -> route (drawn first, behind nodes) -->
+        <path class="edge attested" d="M250,130 C350,130 360,250 410,250"/>
+        <path class="edge allow"    d="M250,210 C350,210 360,260 410,265"/>
+        <path class="edge deny"     d="M250,290 C350,290 360,275 410,280"/>
+        <path class="edge allow"    d="M250,370 C350,370 360,290 410,290"/>
+        <!-- route -> upstream -->
+        <path class="edge allow" d="M620,270 C680,270 690,270 720,270"/>
+
+        <!-- animated pulses along an allow edge -->
+        <circle class="pulse" r="3.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M250,210 C350,210 360,260 410,265"/></circle>
+        <circle class="pulse" r="3.5"><animateMotion dur="3.1s" begin="1s" repeatCount="indefinite" path="M250,130 C350,130 360,250 410,250"/></circle>
+        <circle class="pulse" r="3.5" fill="var(--ok)"><animateMotion dur="2.2s" repeatCount="indefinite" path="M620,270 C680,270 690,270 720,270"/></circle>
+
+        <!-- ANCHOR NODES -->
+        <g class="node-box" onclick="selectNode(this,'spire')">
+          <rect class="node-rect" x="70" y="105" width="180" height="50" rx="11"/>
+          <text class="node-t" x="86" y="128">DOKS SPIRE</text>
+          <text class="node-s" x="86" y="144">acme-demo-doks.local</text>
+          <text class="tierdot" x="232" y="134" text-anchor="end" fill="var(--accent)">●</text>
+        </g>
+        <g class="node-box" onclick="selectNode(this,'eks')">
+          <rect class="node-rect" x="70" y="185" width="180" height="50" rx="11"/>
+          <text class="node-t" x="86" y="208">EKS · n8n</text>
+          <text class="node-s" x="86" y="224">acme.demo.eks-n8n</text>
+          <text class="tierdot" x="232" y="214" text-anchor="end" fill="var(--faint)">●</text>
+        </g>
+        <g class="node-box" onclick="selectNode(this,'ec2')">
+          <rect class="node-rect" x="70" y="265" width="180" height="50" rx="11"/>
+          <text class="node-t" x="86" y="288">EC2 JWKS</text>
+          <text class="node-s" x="86" y="304">acme.demo.ec2</text>
+          <text class="tierdot" x="232" y="294" text-anchor="end" fill="var(--deny)">●</text>
+        </g>
+        <g class="node-box" onclick="selectNode(this,'ext')">
+          <rect class="node-rect" x="70" y="345" width="180" height="50" rx="11"/>
+          <text class="node-t" x="86" y="368">External JWKS</text>
+          <text class="node-s" x="86" y="384">acme.demo.external</text>
+          <text class="tierdot" x="232" y="374" text-anchor="end" fill="var(--faint)">●</text>
+        </g>
+
+        <!-- ROUTE NODE (verifier) -->
+        <g class="node-box" onclick="selectNode(this,'route')">
+          <rect class="node-rect sel" x="410" y="235" width="210" height="70" rx="13"/>
+          <text class="node-t" x="430" y="262">mock-api.read</text>
+          <text class="node-s" x="430" y="280">GET /v1/mock/items/:id</text>
+          <text class="node-s" x="430" y="296" fill="var(--accent)">requires ≥ software · bounded 300s</text>
+        </g>
+
+        <!-- UPSTREAM NODE -->
+        <g class="node-box" onclick="selectNode(this,'up')">
+          <rect class="node-rect" x="720" y="245" width="150" height="50" rx="11"/>
+          <text class="node-t" x="736" y="268">mock-api</text>
+          <text class="node-s" x="736" y="284">internal · adapter-only</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ============ RIGHT RAIL ============ -->
+    <aside class="rail">
+      <div class="rail-sec">
+        <h3>Selected <span class="eyebrow" id="sel-kind">route</span></h3>
+        <div id="detail">
+          <div class="kv"><span class="k">Route</span><span class="v mono" style="font-size:12px">mock-api.read</span></div>
+          <div class="kv"><span class="k">Audience</span><span class="v mono" style="font-size:12px">acme.demo.mock-api</span></div>
+          <div class="kv"><span class="k">Accepts sources</span><span class="v">4</span></div>
+          <div class="kv"><span class="k">Required tier</span><span class="v"><span class="badge software">≥ software</span></span></div>
+          <div class="kv" style="border:0"><span class="k">Freshness</span><span class="v"><span class="badge warn">bounded · 300s</span></span></div>
+          <div class="eyebrow" style="margin:14px 0 6px">Allowed sources</div>
+          <div class="kv"><span class="k">DOKS SPIRE</span><span class="badge attested">attested</span></div>
+          <div class="kv"><span class="k">EKS · n8n</span><span class="badge software">software</span></div>
+          <div class="kv"><span class="k">EC2 JWKS</span><span class="badge software">software</span></div>
+          <div class="kv" style="border:0"><span class="k">External</span><span class="badge software">software</span></div>
+        </div>
+      </div>
+      <div class="rail-sec" style="flex:1;display:flex;flex-direction:column;min-height:0;padding-bottom:0">
+        <h3>Live decisions <span class="badge allow" style="font-weight:600">● streaming</span></h3>
+        <div class="stream" id="stream"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+var root=document.documentElement,tbtn=document.getElementById('themeToggle');
+function applyTheme(t){root.setAttribute('data-theme',t);tbtn.textContent=t==='dark'?'🌙':'☀️';localStorage.setItem('tp-theme-c',t)}
+(function(){var s=localStorage.getItem('tp-theme-c');var pl=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches;applyTheme(s||(pl?'light':'dark'))})();
+tbtn.onclick=function(){applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')};
+
+var details={
+ spire:{kind:'anchor',rows:[['Issuer','issuer.acme.demo/doks-spire'],['Trust domain','acme-demo-doks.local'],['Subject prefix','spiffe://…/ns/acme-demo/sa/'],['Tier','attested'],['Posture','spiffe_svid_verified']]},
+ eks:{kind:'anchor',rows:[['Issuer','issuer.acme.demo/eks-n8n-jwks'],['Trust domain','acme.demo.eks-n8n'],['Subject','system:serviceaccount:n8n:n8n-runner'],['Tier','software'],['Context','tool=n8n']]},
+ ec2:{kind:'anchor',rows:[['Issuer','issuer.acme.demo/ec2-jwks'],['Trust domain','acme.demo.ec2'],['Subject prefix','aws:ec2:us-east-1:'],['Tier','software'],['Note','recent deny: insufficient_key_binding']]},
+ ext:{kind:'anchor',rows:[['Issuer','issuer.acme.demo/external-jwks'],['Trust domain','acme.demo.external'],['Subject','external:jwks:hosted-demo-caller'],['Tier','software'],['Context','purpose=read_mock_api']]},
+ up:{kind:'upstream',rows:[['Service','mock-api'],['Reachability','internal · NetworkPolicy: adapter-only'],['Auth in app','none (brownfield)']]}
+};
+function badge(t){return t==='attested'?'<span class="badge attested">attested</span>':'<span class="badge software">software</span>'}
+function selectNode(el,id){
+  document.querySelectorAll('.node-rect').forEach(r=>r.classList.remove('sel'));
+  el.querySelector('.node-rect').classList.add('sel');
+  var d=details[id]; var sel=document.getElementById('sel-kind'); var box=document.getElementById('detail');
+  if(!d){sel.textContent='route';return} sel.textContent=d.kind;
+  box.innerHTML=d.rows.map((r,i)=>'<div class="kv" '+(i===d.rows.length-1?'style="border:0"':'')+'><span class="k">'+r[0]+'</span><span class="v" style="font-size:12.5px">'+(r[1]==='attested'||r[1]==='software'?badge(r[1]):r[1])+'</span></div>').join('');
+}
+// live decision stream
+var subs=[['orders-worker','a','attested'],['n8n-runner','a','software'],['ec2:i-09f3a','d','software'],['orders-worker','a','attested'],['external:hosted','a','software'],['ec2:i-22b1','d','software']];
+var stream=document.getElementById('stream');
+function pad(n){return n<10?'0'+n:n}
+function pushDecision(){
+  var s=subs[Math.floor(Math.random()*subs.length)];var now=new Date();
+  var row=document.createElement('div');row.className='dec';
+  row.innerHTML='<span class="dot '+s[1]+'"></span><span class="t">'+pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds())+'</span>'+
+    '<span class="who">'+s[0]+'</span><span class="badge '+(s[1]==='a'?'attested':'software')+'">'+s[2]+'</span>'+
+    '<span class="badge '+(s[1]==='a'?'allow':'deny')+'">'+(s[1]==='a'?'allow':'deny')+'</span>';
+  stream.insertBefore(row,stream.firstChild);
+  while(stream.children.length>14)stream.removeChild(stream.lastChild);
+}
+for(var i=0;i<8;i++)pushDecision();
+setInterval(pushDecision,1800);
+</script>
+</body>
+</html>

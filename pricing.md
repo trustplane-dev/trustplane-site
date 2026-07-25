@@ -1,33 +1,34 @@
-# Pricing — TrustPlane Auth
+# Pricing — TrustPlane
 
-TrustPlane Auth is open-source software. The runtime, SDKs, CLI, adapter, broker, and Helm chart are free to use, modify, and self-host.
+TrustPlane is open-source software. The auth plane, SDKs, CLI, provider adapter, local broker, and Helm chart are free to use, modify, and self-host.
 
-## Open Source (self-hosted)
+## Open source (self-hosted)
 
 - **Price:** $0
-- **License:** MIT
+- **Licence:** MIT
 - **Includes:**
-  - TrustPlane Auth runtime (verifier, broker, brownfield adapter)
-  - Go SDK and TypeScript SDK for signing proof-bound requests
-  - CLI for key generation, passport issue/verify, and bundle signing
-  - Brownfield reverse-proxy adapter (digest-pinned container image)
-  - Local broker for request-bound passport issuance
+  - TrustPlane Auth — the auth plane: verifier, local broker, reverse-proxy provider adapter
+  - Go SDK and TypeScript SDK for signing request proofs
+  - CLI for key generation, request-proof signing, and policy bundle signing
+  - Reverse-proxy provider adapter (digest-pinned container image)
+  - Local broker that signs request proofs on behalf of callers
   - Helm chart for Kubernetes deployment
-  - Example demos and worked integration flows
+  - Conformance vectors, example demos, and worked integration flows
 - **Support:** Community support via GitHub issues at github.com/trustplane-dev
 - **Limits:** No usage limits — self-hosted, runs in your own infrastructure
-- **No mandatory phone-home:** The verifier uses local trust material and policy during request handling. It works offline, with no account, database, or hosted bundle source required to run.
+- **No external dependency per request:** The auth plane verifies using local trust anchors and a signed policy bundle. It works offline, with no account, database, or hosted bundle source required to run.
 
-## Managed Fleet Governance (future)
+## Managed fleet governance (future direction)
 
-- **Price:** Not yet available
-- **Status:** Managed fleet governance (signed bundle distribution, revocation, audit at scale, multi-tenant policy management) is a separate, future enterprise direction. It is not part of the current open-source runtime.
-- **Target:** Teams that want TrustPlane Auth enforcement without operating the signing and distribution plane themselves.
+- **Price:** Not available
+- **Status:** Managed fleet governance — signed bundle distribution, revocation propagation, audit at scale, and multitenant policy management across many deployments — is a separate future direction. It is not part of the open-source project and is not for sale today.
+- **Target:** Teams that want TrustPlane enforcement without operating the signing and distribution plane themselves.
 
-## Getting Started
+## Getting started
 
 - **Self-hosted (free):** https://github.com/trustplane-dev
 - **Documentation:** https://docs.auth.trustplane.dev
-- **Quickstart:** https://trustplane.dev/downloads.html
+- **Quickstart:** https://docs.auth.trustplane.dev/start/quickstart
+- **Downloads:** https://trustplane.dev/downloads.html
 
 Last updated: 2026-06-30

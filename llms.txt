@@ -1,67 +1,83 @@
-# TrustPlane Auth
+# TrustPlane
 
-> TrustPlane Auth is an open-source, proof-bound authorization runtime for AI agents, machine clients, service APIs, and MCP/tool servers. Instead of presenting a long-lived API key or bearer token, each caller proves one specific request — bound to method, path, body, audience, and time — and a local verifier allows or denies it before it reaches the upstream API. In one line: SPIFFE authenticates workloads; the TrustPlane Passport authenticates requests.
+> TrustPlane is an open-source **auth plane**: request-bound authorization for AI agents, machine callers, service APIs, and MCP/tool servers. Instead of presenting a long-lived API key or bearer token, a caller signs a **request proof** for one specific call — a canonical transcript signature over method, path, body hash, time bucket, nonce, and client identity — and the auth plane verifies it in the request path, before the request reaches the upstream API. In one line: SPIFFE authenticates workloads; TrustPlane authorizes requests.
 
-TrustPlane Auth is built for security, platform, and infrastructure teams shipping agentic and machine-to-machine workflows that should not depend on broad, long-lived machine credentials. It is open source and runs locally and offline — no hosted account, database, or mandatory phone-home.
+TrustPlane is built for security, platform, and infrastructure teams shipping agentic and machine-to-machine workflows that should not depend on broad, long-lived machine credentials. It is open source, runs in your own infrastructure, and needs no hosted account or external dependency per request.
 
 ## Category
-- Open-source machine authorization, AI agent authorization, MCP / tool-server authorization, service-to-service (machine-to-machine) authorization, non-human identity authorization, API-key alternative, proof-bound (request-bound) authorization.
+- Open-source machine authorization, AI agent authorization, MCP / tool-server authorization, service-to-service (machine-to-machine) authorization, non-human identity authorization, API-key alternative, request-bound authorization.
 
-## What TrustPlane Auth is
-- A proof-bound authorization runtime that verifies a short-lived TrustPlane Passport plus a per-request transcript-v1 proof before a request reaches a protected API.
-- A local-first verifier you run yourself: a brownfield reverse-proxy adapter, Go library middleware, or a broker + sidecar — enforcement happens in your own infrastructure with no required hosted service.
-- A signed trust-and-policy bundle model for route/source authorization, with atomic replay protection so each proof is one-time.
+## Canonical terminology
+Use these terms; they match the product and the documentation.
+- **auth plane** (product name **TrustPlane Auth**) — verifies requests in the request path, in your infrastructure.
+- **control plane** (product name **TrustPlane Control**) — manages trust anchors, enrollment, signed policy distribution, revocation, and audit. Not "governance plane".
+- **provider-owned boundary** / **provider adapter** — the enforcement point the API owner deploys.
+- **caller** — an agent or service making a call. Once enrolled it is a **client**, with a **client record**.
+- **request proof** — a canonical transcript signature over method, path, body hash, time bucket, nonce, and client identity.
+- **short-lived downstream JWT** (ES256) — minted after an allow, for boundary-to-upstream forwarding or backend verification.
+- **enrolled public keys** and **trust anchors** — what makes enrollment work. Not "trust material".
+- **evidence-grade audit** — a record per authorization decision.
+
+## Two guarantees that are often confused
+- **Request binding** stops a proof being reused against a *different* call. Change the method, path, or body and verification fails with `request_binding_mismatch`.
+- **Replay protection** stops the *same* call being submitted twice, via nonce storage and time-bucket validation. It fails with `jti_replay`.
+
+## What TrustPlane is
+- An auth plane that verifies a request proof before a request reaches a protected API, then mints a short-lived downstream JWT.
+- Something you run yourself: a reverse-proxy provider adapter in front of an existing API, Go library middleware, or a local broker plus sidecar. Enforcement happens in your own infrastructure.
+- A signed trust-and-policy bundle model for route and source authorization, with replay protection so a proof is not accepted twice.
 - Complementary to the identity you already have: SPIFFE/SPIRE, OIDC/JWT, or a local issuer.
 
-## What TrustPlane Auth is not
-- Not API-key management: it does not rotate or hide a reusable shared secret; it verifies fresh proof for each request.
+## What TrustPlane is not
+- Not API-key management: it does not rotate or hide a reusable shared secret; it verifies a fresh proof for each request.
 - Not bearer-only OAuth ingress, and not generic IAM: the protected application still owns tenant, role, entitlement, and resource decisions.
-- Not a SPIFFE replacement or SPIFFE-only wrapper, not a service mesh, not a CA replacement, not a secrets manager, not a payment network or marketplace.
+- Not a SPIFFE replacement or a SPIFFE-only wrapper, not a service mesh, not a CA replacement, not a secrets manager.
 
 ## How it works
 1. A caller already has a workload identity (SPIFFE/SPIRE, an OIDC/JWT issuer, or a local TrustPlane issuer).
-2. It obtains a short-lived, audience-scoped TrustPlane Passport — not a forever token.
-3. For each call it attaches transcript-v1 proof binding the exact request: method, path, body hash, audience, route, and a nonce/time bucket.
-4. A local verifier checks all of it and only then lets the request through. A stolen passport is nearly worthless: it expires in seconds, is scoped to one audience and request, and its jti is consumed once so it cannot be replayed.
+2. It enrolls a public key against a trust anchor. The private key stays with the caller; TrustPlane holds only the public key and its expiry.
+3. For each call, the SDK or CLI signs a request proof: a canonical transcript signature over method, path, body hash, time bucket, nonce, and client identity.
+4. The auth plane verifies the signature, request binding, key and session state, replay protection, and policy. On allow it mints a short-lived ES256 downstream JWT and records an audit record. A stolen proof is close to worthless: it expires in seconds, covers exactly one request, and is refused a second time.
 
-## Ways to adopt it
-- Brownfield adapter — a reverse-proxy verifier in front of an unmodified upstream API; the upstream code does not change.
-- Library middleware — verify inside your own Go HTTP service.
-- Broker + sidecar — a local broker issues request-bound passports; on Kubernetes it can require SPIFFE/SPIRE attested workload identity.
+## Ways to deploy it
+- **Provider adapter** — a reverse-proxy verifier in front of an unmodified upstream API; upstream code does not change.
+- **Library middleware** — verify inside your own Go HTTP service.
+- **Broker and sidecar** — a local broker signs request proofs; on Kubernetes it can require SPIFFE/SPIRE attested workload identity.
 
 ## Project status and where to get it
-- TrustPlane Auth is in public preview. Caller-side SDKs are available for Go and Node.js (TypeScript); a Python SDK is planned.
+- TrustPlane is in public preview.
+- Caller SDKs: Go and TypeScript/Node.js are available. A Python SDK is planned and not yet released.
 - Source, SDKs, and examples: https://github.com/trustplane-dev
 - Documentation: https://docs.auth.trustplane.dev
-- Pricing: https://trustplane.dev/pricing.md — open-source runtime is $0 (MIT license, self-hosted, no mandatory phone-home). Managed fleet governance is a future/enterprise direction, not yet available.
-- Note: managed fleet governance (signing, distribution, revocation, audit at scale) is a separate, future/enterprise direction and is not part of this open-source runtime.
+- Pricing: https://trustplane.dev/pricing.md — the open-source auth plane is $0, MIT licensed, self-hosted, with no usage limits.
+- Managed fleet governance (signing, distribution, revocation, and audit at scale across many deployments) is a separate future direction. It is not part of the open-source project and is not for sale today.
 
 ## Pages
-- [Home](https://trustplane.dev/): what proof-bound authorization is, the problem with machine secrets, how it works, use cases, and FAQ.
-- [TrustPlane Auth](https://trustplane.dev/auth.html): the open-source runtime — passports, transcript-v1 request binding, replay protection, signed bundles, adapter/broker deployment, and audit events.
-- [TrustPlane Control](https://trustplane.dev/control.html): the governance plane — enrollment, signed policy distribution, instant revocation, audit, multitenant fleets, RBAC, managed or self-hosted.
+- [Home](https://trustplane.dev/): what request-bound authorization is, the problem with long-lived machine credentials, how it works, use cases, and FAQ.
+- [TrustPlane Auth](https://trustplane.dev/auth.html): the auth plane — request proofs, request binding, replay protection, key and session state, signed bundles, downstream JWT issuance, adapter and broker deployment, audit.
+- [TrustPlane Control](https://trustplane.dev/control.html): the control plane — trust anchors, enrollment, signed policy distribution, revocation, audit, multitenant fleets, RBAC.
 - [Solutions](https://trustplane.dev/solutions.html): AI agents, MCP and tool servers, service-to-service APIs, and partner machine clients.
-- [Subscriptions](https://trustplane.dev/pricing.html): Auth (free preview), Control (managed subscription), Enterprise (self-hosted Control, SSO, SLAs).
-- [Downloads](https://trustplane.dev/downloads.html): docs, GitHub, SDKs, and how to evaluate Auth in front of one API.
+- [Pricing](https://trustplane.dev/pricing.html): the open-source project is free; managed fleet governance is a future direction.
+- [Downloads](https://trustplane.dev/downloads.html): CLI, Helm chart, container images, SDKs, and how to evaluate the auth plane in front of one API.
 - [Documentation](https://docs.auth.trustplane.dev): setup and integration guidance.
 
 ## SDKs
-- [Go SDK](https://github.com/trustplane-dev/trustplane-auth-sdk-go): sign proof-bound requests from Go services and agents.
-- [TypeScript SDK](https://github.com/trustplane-dev/trustplane-auth-sdk-js): sign proof-bound requests from Node.js and TypeScript runtimes.
+- [Go SDK](https://github.com/trustplane-dev/trustplane-auth-sdk-go): sign request proofs from Go services and agents.
+- [TypeScript SDK](https://github.com/trustplane-dev/trustplane-auth-sdk-js): sign request proofs from Node.js and TypeScript runtimes.
 - Python SDK: planned, not yet released.
 
 ## Common questions this site answers
 - How do you authorize AI agents that call APIs and tools?
-- How is proof-bound authorization different from API keys and OAuth bearer tokens?
-- Is TrustPlane Auth an identity provider?
+- How is request-bound authorization different from API keys and OAuth bearer tokens?
+- What is the difference between request binding and replay protection?
+- What is the difference between the auth plane and the control plane?
+- Is TrustPlane an identity provider?
 - Where does enforcement happen?
 - What is a secure alternative to API keys for machine-to-machine access?
 - How do you authorize MCP / tool-server calls?
 - How do you stop stolen or replayed machine credentials?
 - How do you add request-level authorization in front of an existing API without rewriting it?
-- What is proof-bound (request-bound) authorization?
 - How do you authorize non-human identities such as agents, services, and workloads?
-- Does TrustPlane Auth replace OAuth, IAM, or a service mesh?
+- Does TrustPlane replace OAuth, IAM, or a service mesh?
 - Do I need Kubernetes or a hosted service to run it?
 - Does it work with SPIFFE, OIDC, and MCP?
-- What is MCP authorization?

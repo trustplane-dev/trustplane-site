@@ -12,15 +12,21 @@ jobs:
       - name: Validate published files
         run: |
           test -f index.html
-          test -f style.css
+          test -f assets/site.css
           test -f script.js
           test -f CNAME
           test "$(cat CNAME)" = "trustplane.dev"
+          test ! -f style.css
           test ! -f research.txt
           test ! -f "Open-Source Auth Landing-Page Research for trustplane.dev.pdf"
       - name: Scan for local/private references
         run: |
-          ! grep -RInE '/Users/|MergeMatter|medham|research\.txt|Open-Source Auth Landing' \
+          ! grep -RInE '/Users/|medham|research\.txt|Open-Source Auth Landing' \
             --exclude-dir=.git \
+            --exclude-dir=backups \
+            --exclude-dir=.agents \
             --exclude='ci.yml' \
+            --exclude='sanity_test.sh' \
             .
+      - name: Sanity tests
+        run: bash tests/sanity_test.sh

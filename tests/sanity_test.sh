@@ -266,14 +266,16 @@ else:
 done
 echo ""
 
-# ─── 14. SCRIPT.JS INTEGRITY ─────────────────────────────────────────────────
+# ─── 14. SCRIPT REFERENCES ───────────────────────────────────────────────────
 echo "14. Script references"
 for f in $HTML_FILES; do
-  # Check for script tags that aren't JSON-LD
-  scripts=$(grep '<script' "$f" | grep -v 'application/ld+json' | wc -l | tr -d ' ')
-  if [ "$scripts" -gt 0 ]; then
-    # Check if referenced script file exists
-    for src in $(grep -oE 'src="[^"]*\.js"' "$f" | sed 's/src="//;s/"//'); do
+  # Check referenced script files exist. Pages may legitimately have no
+  # non-JSON-LD <script> tags, so keep this pipeline pipefail-safe.
+  srcs=$(grep -oE 'src="[^"]*\.js"' "$f" | sed 's/src="//;s/"//' || true)
+  if [ -z "$srcs" ]; then
+    pass "$f references no external scripts"
+  else
+    for src in $srcs; do
       if [ -f ".$src" ]; then
         pass "$f references $src (exists)"
       else

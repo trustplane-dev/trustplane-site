@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pricing — TrustPlane Auth & Control Plans</title>
-<meta name="description" content="TrustPlane pricing: start free with the proof-bound Auth runtime, scale with managed Control, and run self-hosted Control with enterprise support, SSO and SLAs.">
+<title>Pricing — TrustPlane Auth is Open Source</title>
+<meta name="description" content="TrustPlane Auth is open source and free to run: MIT licensed, self-hosted, no usage limits and no mandatory external dependency. Managed fleet governance is a future direction and is not available yet.">
 <link rel="canonical" href="https://trustplane.dev/pricing.html">
-<meta name="keywords" content="TrustPlane pricing, machine authorization pricing, agent authorization plans, self-hosted authorization, enterprise authorization">
+<meta name="keywords" content="TrustPlane pricing, open-source authorization, MIT licence, self-hosted auth plane, machine authorization pricing, agent authorization">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="alternate" hreflang="en" href="https://trustplane.dev/pricing.html">
 <link rel="alternate" hreflang="x-default" href="https://trustplane.dev/pricing.html">
@@ -18,33 +18,34 @@
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TrustPlane">
-<meta property="og:title" content="Pricing — TrustPlane Auth & Control Plans">
-<meta property="og:description" content="Start free with Auth, scale with managed Control, run self-hosted Control with enterprise support.">
+<meta property="og:title" content="Pricing — TrustPlane Auth is Open Source">
+<meta property="og:description" content="MIT licensed, self-hosted, free to run, with no usage limits. Managed fleet governance is a future direction, not available yet.">
 <meta property="og:url" content="https://trustplane.dev/pricing.html">
 <meta property="og:image" content="https://trustplane.dev/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TrustPlane — proof-bound authorization for AI agents and machine systems.">
+<meta property="og:image:alt" content="TrustPlane — the open-source auth plane for AI agents and machine callers.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://trustplane.dev/assets/og.png">
-<meta name="twitter:image:alt" content="TrustPlane — proof-bound authorization for AI agents and APIs">
+<meta name="twitter:image:alt" content="TrustPlane — request-bound authorization for AI agents and APIs">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is TrustPlane Auth really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Auth runtime runs in your own infrastructure and you can put it in front of your APIs without talking to us first."}},
-{"@type":"Question","name":"What do the paid plans add?","acceptedAnswer":{"@type":"Answer","text":"Paid plans add TrustPlane Control: managed enrollment, signing and distributing policy across your fleet, fast revocation, and searchable audit. Enterprise adds self-hosting, SSO and support."}},
-{"@type":"Question","name":"Can I self-host TrustPlane Control?","acceptedAnswer":{"@type":"Answer","text":"Yes, on the Enterprise plan you run the full control plane in your own environment. Either way your data plane never leaves, because requests are verified locally by Auth."}},
-{"@type":"Question","name":"Do I have to replace OAuth or my service mesh?","acceptedAnswer":{"@type":"Answer","text":"No. TrustPlane sits at the request boundary and consumes the identity you already have, such as SPIFFE or OIDC. It is an authorization layer for machine traffic, not a replacement for your mesh or identity provider."}}
+{"@type":"Question","name":"Is TrustPlane Auth really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. TrustPlane Auth is open source under the MIT licence. The auth plane runs in your own infrastructure, there are no usage limits, and you can put it in front of your APIs without talking to us first."}},
+{"@type":"Question","name":"What does open source cover?","acceptedAnswer":{"@type":"Answer","text":"The auth plane itself: the verifier, the local broker, the reverse-proxy provider adapter, the CLI, the Helm chart, the Go and TypeScript SDKs, the conformance vectors, and the example integrations."}},
+{"@type":"Question","name":"Is there a managed or paid offering?","acceptedAnswer":{"@type":"Answer","text":"Not today. Managed fleet governance — signed bundle distribution, revocation and audit at scale across many deployments — is a separate future direction and is not part of the open-source project. Nothing on this site is for sale."}},
+{"@type":"Question","name":"Do I have to replace OAuth, IAM or my service mesh?","acceptedAnswer":{"@type":"Answer","text":"No. The auth plane sits at the request boundary and consumes the identity you already have, such as SPIFFE or OIDC. It authorizes machine traffic per request; it is not a replacement for your mesh, your identity provider, or your application's own tenant and entitlement decisions."}},
+{"@type":"Question","name":"Do I need Kubernetes?","acceptedAnswer":{"@type":"Answer","text":"No. The provider adapter is happy in a cluster, but it also runs at the edge, on a VM, or as a sidecar next to an agent. Kubernetes-compatible, never Kubernetes-required."}}
 ]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trustplane.dev/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://trustplane.dev/pricing.html"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemList","name":"TrustPlane plans","description":"Subscription tiers for TrustPlane Auth and Control.","itemListElement":[{"@type":"ListItem","position":1,"name":"Developer","description":"Free — for engineering teams evaluating runtime authorization."},{"@type":"ListItem","position":2,"name":"Team","description":"Usage-based — managed Control for growing fleets."},{"@type":"ListItem","position":3,"name":"Enterprise","description":"Custom — self-hosted Control, SSO, SLAs."}]}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TrustPlane Auth","applicationCategory":"SecurityApplication","operatingSystem":"Linux, macOS, Kubernetes","isAccessibleForFree":true,"license":"https://opensource.org/license/mit","description":"Open-source auth plane for AI agents, machine callers and service APIs.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 </head>
 <body>
@@ -56,7 +57,7 @@
     <a href="/pricing.html">Pricing</a><a class="ext" href="https://docs.auth.trustplane.dev">Docs</a><a href="/downloads.html">Downloads</a>
   </nav>
   <div class="nav-cta">
-    <a class="ghost-link" href="#contact">Talk to sales</a>
+    <a class="ghost-link ext" href="https://github.com/trustplane-dev">GitHub</a>
     <a class="btn btn-primary" href="/downloads.html">Get started <span class="arr">→</span></a>
   </div>
 </div></header>
@@ -66,83 +67,67 @@
 <section class="phero">
   <div class="wrap center">
     <span class="kicker" style="justify-content:center">Pricing</span>
-    <h1>Start free, scale when you need to.</h1>
-    <p class="lead" style="margin:14px auto 0;max-width:620px">Run the proof-bound Auth runtime for free in your own infrastructure. Add Control when you need fleet-scale governance, audit, and revocation.</p>
+    <h1>It's open source. Run it for free.</h1>
+    <p class="lead" style="margin:14px auto 0;max-width:640px">TrustPlane Auth is MIT licensed and self-hosted. There is no paid tier, no seat count, and no request quota — the auth plane runs in your infrastructure and answers to you.</p>
   </div>
 </section>
 
 <section style="padding-top:48px">
   <div class="wrap">
     <div class="tiers">
-      <!-- Developer -->
-      <div class="tier">
-        <div class="tname">Developer</div>
-        <div class="tsub">For builders and self-serve teams</div>
-        <div class="price">Free</div>
-        <ul>
-          <li>TrustPlane Auth runtime</li>
-          <li>Runs in your own infrastructure</li>
-          <li>CLI, Helm chart &amp; container images</li>
-          <li>JavaScript, Python &amp; Go SDKs</li>
-          <li>Local verification &amp; per-request audit</li>
-          <li>Community support &amp; docs</li>
-        </ul>
-        <a class="btn btn-ghost" href="/downloads.html">Get started free</a>
-      </div>
-      <!-- Team (featured) -->
       <div class="tier feat-tier">
-        <span class="badge">Most popular</span>
-        <div class="tname">Team</div>
-        <div class="tsub">Managed Control for growing fleets</div>
-        <div class="price">Usage-based</div>
-        <div class="tsub" style="margin:2px 0 0">Priced to the fleet you run. Get a quote.</div>
+        <span class="badge">Available now</span>
+        <div class="tname">Open source</div>
+        <div class="tsub">Self-hosted auth plane</div>
+        <div class="price">$0</div>
+        <div class="tsub" style="margin:2px 0 0">MIT licence · no usage limits</div>
         <ul>
-          <li>Everything in Developer</li>
-          <li>Managed TrustPlane Control</li>
-          <li>Auto-enrollment &amp; trust anchors</li>
-          <li>Signed policy distribution across fleet</li>
-          <li>Instant revocation with propagation</li>
-          <li>Evidence-grade audit &amp; search</li>
-          <li>Multi-environment, role-based access</li>
+          <li>TrustPlane Auth: verifier, local broker, provider adapter</li>
+          <li>Runs entirely in your own infrastructure</li>
+          <li>CLI, Helm chart &amp; container images</li>
+          <li>Go &amp; TypeScript SDKs (Python planned)</li>
+          <li>Request verification in the request path</li>
+          <li>Replay protection &amp; evidence-grade audit</li>
+          <li>Conformance vectors &amp; worked examples</li>
+          <li>Community support via GitHub issues</li>
         </ul>
-        <a class="btn btn-primary" href="#contact">Start with Team</a>
+        <a class="btn btn-primary" href="/downloads.html">Get started free</a>
       </div>
-      <!-- Enterprise -->
       <div class="tier">
-        <div class="tname">Enterprise</div>
-        <div class="tsub">Self-hosted, compliance &amp; scale</div>
-        <div class="price">Custom</div>
+        <div class="tname">Managed fleet governance</div>
+        <div class="tsub">A future direction</div>
+        <div class="price">Not available</div>
+        <div class="tsub" style="margin:2px 0 0">Not part of the open-source project</div>
         <ul>
-          <li>Everything in Team</li>
-          <li>Self-hosted Control option</li>
-          <li>Multitenant fleet management</li>
-          <li>SSO &amp; advanced RBAC</li>
-          <li>Audit export &amp; retention controls</li>
-          <li>SLAs &amp; dedicated support</li>
-          <li>Security &amp; procurement review</li>
+          <li>Signed policy distribution at fleet scale</li>
+          <li>Revocation that propagates across deployments</li>
+          <li>Audit search and retention across many sites</li>
+          <li>Multitenant policy management</li>
         </ul>
-        <a class="btn btn-ghost" href="#contact">Talk to sales</a>
+        <p class="muted" style="margin-top:6px">For teams who would rather not operate the signing and distribution plane themselves. We are not taking orders for this — when it exists, it will be announced on GitHub.</p>
+        <a class="btn btn-ghost ext" href="https://github.com/trustplane-dev">Follow on GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- comparison -->
+<!-- what's in the box -->
 <section class="section-soft">
   <div class="wrap">
-    <div class="shead"><span class="kicker">Compare plans</span><h2>What's included.</h2></div>
+    <div class="shead"><span class="kicker">What you get</span><h2>Everything in the open-source project.</h2></div>
     <table class="cmp">
-      <thead><tr><th>Capability</th><th>Developer</th><th>Team</th><th class="tp">Enterprise</th></tr></thead>
+      <thead><tr><th>Component</th><th>What it does</th><th class="tp">Included</th></tr></thead>
       <tbody>
-        <tr><td>Auth runtime (in your infra)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>SDKs, CLI, Helm, images</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Managed Control</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Signed policy distribution</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Instant revocation</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Evidence-grade audit &amp; export</td><td class="n">—</td><td class="ink">Basic</td><td class="tpcell">Advanced</td></tr>
-        <tr><td>Self-hosted Control</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
-        <tr><td>SSO &amp; advanced RBAC</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
-        <tr><td>SLAs &amp; dedicated support</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
+        <tr><td>Auth plane verifier</td><td>Verifies request proofs in the request path</td><td class="y">✓</td></tr>
+        <tr><td>Provider adapter</td><td>Reverse proxy in front of an unmodified upstream API</td><td class="y">✓</td></tr>
+        <tr><td>Local broker</td><td>Signs request proofs on behalf of callers</td><td class="y">✓</td></tr>
+        <tr><td>CLI</td><td>Key generation, signing, bundle signing</td><td class="y">✓</td></tr>
+        <tr><td>Helm chart &amp; images</td><td>Kubernetes deployment, digest-pinned images</td><td class="y">✓</td></tr>
+        <tr><td>Go &amp; TypeScript SDKs</td><td>Sign request proofs from callers</td><td class="y">✓</td></tr>
+        <tr><td>Python SDK</td><td>Planned, not yet released</td><td class="n">—</td></tr>
+        <tr><td>Replay protection</td><td>Nonce storage and time-bucket validation</td><td class="y">✓</td></tr>
+        <tr><td>Evidence-grade audit</td><td>A record per authorization decision</td><td class="y">✓</td></tr>
+        <tr><td>Conformance vectors</td><td>Shared vectors so every SDK verifies identically</td><td class="y">✓</td></tr>
       </tbody>
     </table>
   </div>
@@ -153,26 +138,25 @@
   <div class="wrap">
     <div class="shead"><span class="kicker">FAQ</span><h2>Questions, answered.</h2></div>
     <div class="faq">
-      <details open><summary>Is TrustPlane Auth really free?</summary><p>Yes, genuinely. The Auth runtime runs in your own infrastructure and you can put it in front of your APIs without talking to us first. We'd rather you try it than fill out a form.</p></details>
-      <details><summary>What do the paid plans actually add?</summary><p>Control is the part that gets painful by hand once you're past a couple of services. Managed enrollment, signing and shipping policy to your whole fleet, revocation that lands in seconds, and audit you can actually search. Enterprise adds self-hosting, SSO, and the support and paperwork bigger teams need.</p></details>
-      <details><summary>Can I self-host Control?</summary><p>Yes. On Enterprise you run the whole control plane in your own environment. Either way your data plane never leaves, because requests are always verified locally by Auth, in your infrastructure.</p></details>
-      <details><summary>Do I have to rip out OAuth or my service mesh?</summary><p>No, and please don't. TrustPlane sits at the request boundary and consumes the identity you already have (SPIFFE, OIDC). It's an authorization layer for machine traffic, not a replacement for your mesh or your identity provider.</p></details>
-      <details><summary>Do I need Kubernetes?</summary><p>No. The adapter is happy in a cluster, but it also runs at the edge, on a VM, or as a sidecar next to an agent. Kubernetes-compatible, never Kubernetes-required.</p></details>
+      <details open><summary>Is TrustPlane Auth really free?</summary><p>Yes, genuinely. TrustPlane Auth is open source under the MIT licence. The auth plane runs in your own infrastructure, there are no usage limits, and you can put it in front of your APIs without talking to us first. We'd rather you read the code than fill in a form.</p></details>
+      <details><summary>What does open source cover?</summary><p>The auth plane itself: the verifier, the local broker, the reverse-proxy provider adapter, the CLI, the Helm chart, the Go and TypeScript SDKs, the conformance vectors, and the example integrations.</p></details>
+      <details><summary>Is there a managed or paid offering?</summary><p>Not today. Managed fleet governance — signed bundle distribution, revocation and audit at scale across many deployments — is a separate future direction and is not part of the open-source project. Nothing on this site is for sale.</p></details>
+      <details><summary>Do I have to replace OAuth, IAM or my service mesh?</summary><p>No, and please don't. The auth plane sits at the request boundary and consumes the identity you already have (SPIFFE, OIDC). It authorizes machine traffic per request. Your application still owns tenant, role, entitlement and resource decisions.</p></details>
+      <details><summary>Do I need Kubernetes?</summary><p>No. The provider adapter is happy in a cluster, but it also runs at the edge, on a VM, or as a sidecar next to an agent. Kubernetes-compatible, never Kubernetes-required.</p></details>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- contact / talk to sales -->
-<section class="ctaband" id="contact">
+<section class="ctaband">
   <div class="wrap">
-    <span class="kicker" style="justify-content:center">Talk to sales</span>
-    <h2>Let's scope your deployment.</h2>
-    <p class="lead">Tell us about your fleet, environments, and compliance needs, and we'll help you choose between managed and self-hosted Control.</p>
+    <span class="kicker" style="justify-content:center">Get started</span>
+    <h2>Clone it, run it, verify a request.</h2>
+    <p class="lead">The quickstart takes you from a fresh install to a denied replay.</p>
     <div class="actions">
-      <a class="btn btn-primary btn-lg" href="mailto:hello@trustplane.dev?subject=TrustPlane%20Control%20enquiry">Contact sales <span class="arr">→</span></a>
-      <a class="btn btn-ghost btn-lg" href="/downloads.html">Or start free</a>
+      <a class="btn btn-primary btn-lg" href="/downloads.html">Get started free <span class="arr">→</span></a>
+      <a class="btn btn-ghost btn-lg ext" href="https://github.com/trustplane-dev">View on GitHub</a>
     </div>
   </div>
 </section>
@@ -180,12 +164,12 @@
 <footer class="site"><div class="wrap">
   <div class="top">
     <div><a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt="TrustPlane logo">TrustPlane</a>
-      <p class="blurb">Cryptographic, proof-bound authorization for AI agents and machine systems.</p></div>
+      <p class="blurb">The open-source auth plane: request-bound authorization for AI agents and machine callers.</p></div>
     <div><h4>Product</h4><a href="/auth.html">TrustPlane Auth</a><a href="/control.html">TrustPlane Control</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a></div>
     <div><h4>Developers</h4><a class="ext" href="https://docs.auth.trustplane.dev">Documentation</a><a href="/downloads.html">Downloads</a><a class="ext" href="https://github.com/trustplane-dev">GitHub</a><a href="/llms.txt">llms.txt</a></div>
-    <div><h4>Company</h4><a href="#contact">Contact sales</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
+    <div><h4>Project</h4><a class="ext" href="https://docs.auth.trustplane.dev/start/quickstart">Quickstart</a><a href="/solutions.html">Use cases</a><a href="/auth.html#standards">Standards</a></div>
   </div>
-  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for machine and agent traffic.</span></div>
+  <div class="legal"><span>© 2026 TrustPlane</span><span>Request-bound authorization for agent and machine traffic.</span></div>
 </div></footer>
 
 </body>

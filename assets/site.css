@@ -18,9 +18,30 @@
   --gold: #9a6a12;
   --radius: 8px;
   --shadow: 0 1px 2px rgba(7, 17, 31, .05), 0 18px 45px rgba(7, 17, 31, .08);
+  --shadow-lg: 0 2px 4px rgba(7, 17, 31, .06), 0 26px 60px rgba(7, 17, 31, .12);
   --wrap: 1180px;
   --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: "Space Grotesk", Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Restored: these were referenced throughout but their :root block was lost
+     when the humanised stylesheet was merged, leaving buttons, badges and the
+     dark sections unstyled. Values derive from the rgba() literals still in
+     use alongside each variable. */
+  --primary: #3730a3;
+  --primary-2: #4338ca;
+  --accent: #0891b2;
+  --accent-bright: #22d3ee;
+  --ink-2: #374151;
+  --ink-3: #6b7280;
+  --line-2: #d9e2ec;
+  --bg-soft: #f5f8fb;
+  --dark: #0b1322;
+  --dark-ink: #e6edf7;
+  --dark-mut: #93a4bd;
+  --dark-line: #1e2d47;
+  --ok: #138a5e;
+  --no: #b91c1c;
 }
 
 * { box-sizing: border-box; }
@@ -414,7 +435,11 @@ footer .legal { display: flex; justify-content: space-between; gap: 18px; flex-w
 .btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
 .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
 .btn-lg{padding:14px 26px;font-size:1rem}
-.btn-ghost{background:transparent;color:var(--dark-ink);border-color:var(--dark-line)}
+/* The dark ghost button belongs to the dark sections only. It was previously
+   unscoped and overrode the light variant everywhere, rendering pale text on
+   white cards. */
+.hero .btn-ghost,.ctaband .btn-ghost,.arch .btn-ghost{background:transparent;color:var(--dark-ink);border-color:var(--dark-line)}
+.hero .btn-ghost:hover,.ctaband .btn-ghost:hover,.arch .btn-ghost:hover{color:#fff;border-color:#6f86a3}
 .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .kicker{color:var(--accent-bright)}
 .note{margin-top:22px;font-family:var(--mono);font-size:.82rem;color:var(--dark-mut)}
@@ -495,11 +520,22 @@ footer .legal { display: flex; justify-content: space-between; gap: 18px; flex-w
 .pullquote{max-width:840px;margin:0 auto;text-align:center}
 .manifesto{max-width:680px}
 .sign{font-family:var(--mono);font-size:.85rem;color:var(--ink-3);margin-top:4px}
-.plane{grid-template-columns:minmax(0,1fr)}
-.ftext{order:0}
-.menu-btn{display:block}
-.ghost-link{display:none}
-.cmp{table-layout:fixed}
+
+/* Flow node: label and sub-label are separate lines, not run together. */
+.fnode b{display:block}
+.fnode span:not(.ic){display:block}
+.fnode .ic{display:flex;align-items:center;justify-content:center}
+
+/* These five are mobile-only overrides. They lost their @media wrapper in the
+   stylesheet merge, so they were collapsing the two-plane grid and hiding the
+   header link at every viewport width. */
+@media (max-width: 980px) {
+  .plane{grid-template-columns:minmax(0,1fr)}
+  .ftext{order:0}
+  .menu-btn{display:block}
+  .ghost-link{display:none}
+  .cmp{table-layout:fixed}
+}
 
 /* Utility classes for humanised-branch HTML compatibility */
 .cols-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
@@ -511,3 +547,30 @@ footer .legal { display: flex; justify-content: space-between; gap: 18px; flex-w
 .is-control { display: none; }
 .fvis { visibility: visible; }
 .rev { flex-direction: row-reverse; }
+
+/* ── Responsive layout ──────────────────────────────────────────────────────
+   The media queries earlier in this file were written for an older markup
+   revision and target class names this HTML does not use (.hero-grid, .grid-2,
+   .grid-4, .split, .proof-strip, .arch-row), so the grids actually in use never
+   collapsed and every page overflowed horizontally on a phone. Appended last so
+   these win at equal specificity. */
+@media (max-width: 980px) {
+  .grid, .twocol, .feat, .grid-icon-list { grid-template-columns: minmax(0, 1fr); }
+  .feat { gap: 26px; }
+  .feat .ftext { order: -1; }
+  .steps, .tiers, .cols-3, .cols-4, .grid-3, .dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .marks { flex-wrap: wrap; }
+}
+
+@media (max-width: 640px) {
+  .steps, .tiers, .cols-3, .cols-4, .grid-3, .dl, .arch .row { grid-template-columns: minmax(0, 1fr); }
+  /* Undo the blanket 330px clamp from the older breakpoint: it truncated the
+     measure of every paragraph on the page, not just the hero. */
+  .hero h1, .phero h1, .shead h2, .lead, p { max-width: none; }
+  .term, .copy { font-size: .76rem; }
+  .flow { padding: 16px; }
+}
+
+/* Nothing should be able to force a horizontal scrollbar on a phone. */
+html, body { max-width: 100%; overflow-x: hidden; }
+.term, .copy, .table-wrap { max-width: 100%; overflow-x: auto; }
